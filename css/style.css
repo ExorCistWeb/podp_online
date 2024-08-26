@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 113%;
+    color: #235DCF;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 113%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #4F4F4F;
+    margin-bottom: 75px;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 162%;
+    /* or 32px */
+    text-align: center;
+    color: #235DCF;
+}
+
+h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 113%;
+    color: #474747;
+}
+
+h5 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 135%;
+    /* or 27px */
+    text-align: center;
+    color: #2F2F2F;
+}
+
+p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 162%;
+    color: #4F4F4F;
+}
+
+body {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    padding: 37px 150px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header ol {
+    display: flex;
+    align-items: center;
+    gap: 47px;
+}
+
+.header ol li a {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    color: #1D1D1D;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header ol li .header_exit_link span {
+    color: #235DCF;
+    width: 100%;
+    line-height: 100%;
+    border-bottom: 2px solid #235DCF;
+}
+
+.header_right {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.header_right a {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    color: #1D1D1D;
+}
+
+.header_right select {
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #000000;
+}
+
+#about {
+    padding: 230px 0 100px;
+}
+
+.about {
+    display: flex;
+    align-items: self-start;
+    gap: 80px;
+}
+
+.about_info {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    max-width: 553px;
+}
+
+.about_bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.about_bottom_info {
+    display: flex;
+    align-items: flex-end;
+    gap: 75px;
+}
+
+.num_box {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    align-items: flex-start;
+}
+
+.num_box h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 113%;
+    color: #235DCF;
+    letter-spacing: -1.5px;
+    margin-bottom: 0;
+}
+
+.num_box h2 span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    color: #1D1D1D;
+}
+
+.about_bottom a {
+    width: 338px;
+    height: 63px;
+    background: #FF626C;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+#chips {
+    padding: 108px 0 110px;
+}
+
+.chips {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 933px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.chips_box {
+    width: 100%;
+    max-width: 439px;
+    min-height: 219px;
+    background: #F1F1F1;
+    border: 1px solid #235DCF;
+    box-shadow: 4px 4px 10.2px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    text-align: center;
+}
+
+#you_get {
+    padding: 108px 0;
+}
+
+.you_get {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.you_get_box {
+    width: 100%;
+    max-width: 525px;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 44px 30px 20px 90px;
+    background: #fff;
+    filter: drop-shadow(13px 12px 6.6px rgba(0, 0, 0, 0.15));
+    border: 1px solid #235DCF;
+    border-radius: 8px;
+}
+
+.you_get_box ol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 26px;
+}
+
+.you_get_box ol li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 162%;
+    color: #4F4F4F;
+    display: flex;
+    position: relative;
+}
+
+.you_get_box ol li::before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    min-width: 12px;
+    min-height: 12px;
+    max-width: 12px;
+    max-height: 12px;
+    border-radius: 100px;
+    background: #FF626C;
+    top: 7px;
+    left: -20px;
+}
+
+#tarif {
+    padding: 78px 0 110px;
+}
+
+.tarif {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tarif_box {
+    position: relative;
+    width: 360px;
+    height: 1119px;
+    border: 1px solid #FF626C;
+    border-radius: 8px;
+    padding: 35px 23px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tarif_box_info h3,
+.tarif_box_info span,
+.tarif_box_info p {
+    text-align: center;
+}
+
+.tarif_box_info h3 {
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.tarif_box_info span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 113%;
+    /* identical to box height, or 17px */
+    text-align: center;
+    color: #4F4F4F;
+    margin-bottom: 25px;
+}
+
+.tarif_box_info p {
+    font-size: 14px;
+}
+
+.tarif_box_info hr {
+    width: 100%;
+    margin: 9px 0 20px;
+    opacity: .25;
+    border-bottom: 1px solid #323232;
+}
+
+.tarif_box_info ol {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tarif_box_info ol li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 198%;
+    color: #4F4F4F;
+    display: flex;
+}
+
+.tarif_box_info ol li b {
+    margin-bottom: 20px;
+}
+
+.tarif_box_info ol li::before {
+    content: ' ';
+    display: block;
+    min-width: 9px;
+    min-height: 9px;
+    max-width: 9px;
+    max-height: 9px;
+    background: #235DCF;
+    border-radius: 100px;
+    margin-right: 20px;
+    position: relative;
+    bottom: -8px;
+}
+
+.tarif_box_bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    bottom: -25px;
+}
+
+.tarif_box_bottom .price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 113%;
+    /* or 45px */
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.tarif_box_bottom .price_text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 113%;
+    /* identical to box height, or 17px */
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.tarif_box_bottom a {
+    width: 263px;
+    height: 63px;
+    background: #FF626C;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.tarif_box_blue {
+    background: #235DCF;
+    border: none;
+    color: #fff;
+}
+
+.tarif_box_blue .tarif_box_info h3,
+.tarif_box_blue .tarif_box_info span,
+.tarif_box_blue .tarif_box_info p,
+.tarif_box_blue .tarif_box_info li,
+.tarif_box_blue .tarif_box_bottom span {
+    color: #fff;
+}
+
+.tarif_box_blue ol li::before {
+    background: #fff;
+}
+
+.tarif_box_blue .tarif_box_info hr {
+    border-color: #fff;
+}
+
+.action_tarif {
+    position: absolute;
+    width: 282px;
+    height: 55px;
+    background: #FFFFFF;
+    border: 2px solid #FF626C;
+    border-radius: 12px;
+    transform: rotate(-6.2deg);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FF626C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -35px;
+    left: -15px;
+}
+
+.action_tarif_two {
+    background: #FF626C;
+    border-color: #FF626C;
+    color: #fff;
+}
+
+#free {
+    padding: 92px 0;
+}
+
+.free {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 22px;
+}
+
+.free h2 {
+    /* попробуйте пакет GOLD 7 дней бесплатно */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 135%;
+    /* or 32px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #474747;
+    margin: 0;
+}
+
+.free h2 span b {
+    color: #235DCF;
+}
+
+.free a {
+    width: 301px;
+    height: 63px;
+    background: #FF626C;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.free_span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 135%;
+    /* identical to box height, or 22px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #4F4F4F;
+}
+
+#faq {
+    padding: 108px 0;
+}
+
+#chosen {
+    padding: 108px 0 160px;
+}
+
+#chosen h2 {
+    margin-bottom: 59px;
+}
+
+.chosen {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.chosen_card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 13px;
+    justify-content: space-between;
+    height: 136px;
+    max-width: 202px;
+}
+
+.chosen_card h5 span {
+    color: #235DCF;
+    font-weight: bold;
+}
+
+.chosen_h2_b {
+    margin-bottom: 0;
+    margin-top: 92px;
+    text-transform: none;
+}
