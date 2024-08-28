@@ -1,0 +1,72 @@
+@media (max-width:1440px) {}
+
+@media (max-width:1120px) {}
+
+@media (max-width:996px) {}
+
+@media (max-width:768px) {
+    .nav {
+        display: none;
+        /* Скрываем меню по умолчанию */
+        position: absolute;
+        top: 0;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        /* Высота шапки */
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        height: 100vh;
+    }
+    .nav.active {
+        display: block;
+        /* Показываем меню при активации */
+        animation: slideDown 0.3s ease forwards;
+        /* Анимация появления */
+    }
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .nav ol,
+    .nav .header_right {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .nav .header_right {
+        margin-top: 20px;
+    }
+    .menu-toggle {
+        display: flex;
+        /* Показываем бургер-меню */
+        z-index: 9999;
+    }
+    .menu-toggle.toggle .bar:nth-child(1) {
+        transform: rotate(45deg);
+        top: 8px;
+        position: absolute;
+        /* Изменяем позицию первой полоски */
+    }
+    .menu-toggle.toggle .bar:nth-child(2) {
+        opacity: 0;
+        /* Скрываем среднюю полоску */
+    }
+    .menu-toggle.toggle .bar:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 8px;
+        position: absolute;
+        /* Изменяем позицию третьей полоски */
+    }
+}
+
+@media (max-width:440px) {}
+
+@media (max-width:320px) {}

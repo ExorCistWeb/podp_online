@@ -120,6 +120,12 @@ header {
     gap: 6px;
 }
 
+.nav {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
 .header ol li .header_exit_link span {
     color: #235DCF;
     width: 100%;
@@ -150,6 +156,22 @@ header {
     line-height: 113%;
     /* identical to box height, or 16px */
     color: #000000;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    /* Для позиционирования полосок */
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #235DCF;
+    margin: 2px 0;
+    transition: all 0.3s ease;
 }
 
 #about {
@@ -702,7 +724,7 @@ video.playing+.video-container::before {
     color: #4F4F4F;
 }
 
-.toggle {
+.accordion-header .toggle {
     width: 31px;
     height: 31px;
     display: flex;
@@ -713,7 +735,7 @@ video.playing+.video-container::before {
     border-radius: 100px;
 }
 
-.toggle p {
+.accordion-header .toggle p {
     color: #fff;
     font-style: normal;
     font-weight: 500;

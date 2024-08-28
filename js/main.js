@@ -61,3 +61,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const currentYear = new Date().getFullYear();
     document.querySelector('.copy_js').textContent = currentYear;
 });
+
+
+$(document).ready(function() {
+    $('#mobile-menu').click(function() {
+        $('.nav').toggleClass('active'); // Переключаем класс для отображения меню
+        $(this).toggleClass('toggle'); // Добавляем анимацию бургер-меню
+    });
+});
