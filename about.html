@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close"><img src="img/oui_cross.svg" alt=""></span>
+            <div style="display: none;" class="error_info">
+                <span>контрагент не найден</span>
+            </div>
+            <div class="round_info">
+                <img src="img/ic_round-check.svg" alt="">
+                <span>контрагент зарегистрирован на подпиши.онлайн</span>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <ol>
+                        <li><a href="">Особенности</a></li>
+                        <li><a href="">Тарифы</a></li>
+                        <li><a href="">API</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Попробовать</a></li>
+                        <li>
+                            <a class="header_exit_link" href=""><img src="img/exit.svg" alt=""><span>Вход</span></a>
+                        </li>
+                    </ol>
+                    <div class="header_right">
+                        <a href="https://wa.me/message/XMV3IDTUD4DUA1">+7 708 812 98 76</a>
+                        <select name="language" id="language">
+                            <option selected>Русский</option>
+                            <option>Казакша</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <section id="about_piple">
+        <div class="wrapper">
+            <h2>О нас</h2>
+            <div class="about_piple">
+                <div class="about_piple_card">
+                    <img src="img/oldjaz.png" alt="">
+                    <h4>Олжас Кундакбаев</h4>
+                    <p>Основатель и Генеральный директор.<br> 25 лет опыта в бизнесе создал 17 стартапов</p>
+                </div>
+                <div class="about_piple_card">
+                    <img src="img/yaroslav.png" alt="">
+                    <h4>Ярослав Черкашин</h4>
+                    <p>Технический директор<br> 20 лет опыта в облачных сервисах</p>
+                </div>
+                <div class="about_piple_card">
+                    <img src="img/ruslan.png" alt="">
+                    <h4>Руслан Муканов</h4>
+                    <p>Руководитель работы с клиентами<br> и отдела маркетинг опыт 10 лет</p>
+                </div>
+            </div>
+            <h3>Команда</h3>
+        </div>
+    </section>
+    <section id="about_vision">
+        <div class="wrapper">
+            <h2>НАШе виденье</h2>
+            <div class="about_vision">
+                <div class="about_vision_card">
+                    <img src="img/fluent_target-arrow-20-filled.svg" alt="">
+                    <h4>Миссия</h4>
+                    <p>Помочь бизнесу автоматизировать бизнес процессы</p>
+                </div>
+                <div class="about_vision_card">
+                    <img src="img/material-symbols-light_diamond.svg" alt="">
+                    <h4>Ценности</h4>
+                    <p>Простота и доступность наших технологий для всех и каждого</p>
+                </div>
+                <div class="about_vision_card">
+                    <img src="img/mingcute_check-2-fill.svg" alt="">
+                    <h4>Цель</h4>
+                    <p>Стать платформой номер <br> 1 в странах СНГ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

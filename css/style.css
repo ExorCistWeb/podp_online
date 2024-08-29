@@ -1412,3 +1412,269 @@ footer {
 #api_links h2 {
     color: #235DCF;
 }
+
+
+/* О нас */
+
+#about_piple {
+    padding: 150px 0 47px;
+}
+
+#about_piple h2 {
+    color: #235DCF;
+    margin-bottom: 90px;
+}
+
+.about_piple {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.about_piple_card {
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+}
+
+.about_piple_card img {
+    width: 214px;
+    height: 214px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+}
+
+.about_piple_card h4 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 113%;
+    /* or 27px */
+    text-align: center;
+    color: #474747;
+}
+
+.about_piple_card p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* or 18px */
+    text-align: center;
+    color: #474747;
+}
+
+#about_piple h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 113%;
+    /* or 27px */
+    text-align: center;
+    color: #474747;
+    margin-top: 65px;
+}
+
+#about_vision {
+    padding: 65px 0 75px;
+}
+
+#about_vision h2 {
+    color: #235DCF;
+    margin-bottom: 90px;
+}
+
+.about_vision {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.about_vision_card {
+    max-width: 305px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.about_vision_card img {
+    width: 75px;
+    height: 75px;
+}
+
+.about_vision_card h4 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 113%;
+    /* or 27px */
+    text-align: center;
+    color: #474747;
+}
+
+.about_vision_card p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* or 18px */
+    text-align: center;
+    color: #474747;
+    margin-top: 18px;
+}
+
+#our_api {
+    padding: 70px 0 90px;
+}
+
+#our_api h2 {
+    color: #235DCF;
+}
+
+.our_api {
+    text-align: start;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.our_api h3 {
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 14px;
+    display: flex;
+    width: 100%;
+    padding: 0 0 14px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.our_api p {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.our_api p a {
+    text-decoration: underline;
+    color: #4F4F4F;
+}
+
+
+/* Инструкции */
+
+#android_info {
+    padding: 70px 0;
+}
+
+#android_info h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.31);
+    padding-bottom: 21px;
+    margin-bottom: 19px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 135%;
+    /* or 32px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #235DCF;
+}
+
+.android_info p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 162%;
+    /* or 32px */
+    color: #4F4F4F;
+}
+
+.android_info p a {
+    text-decoration: underline;
+    color: #235DCF;
+}
+
+#ios_info {
+    padding: 70px 0;
+}
+
+#ios_info h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.31);
+    padding-bottom: 21px;
+    margin-bottom: 19px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 135%;
+    /* or 32px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #235DCF;
+}
+
+.ios_info p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 162%;
+    /* or 32px */
+    color: #4F4F4F;
+    margin-bottom: 30px;
+}
+
+.ios_info h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 162%;
+    /* or 32px */
+    color: #235DCF;
+    text-align: start;
+    margin-bottom: 19px;
+}
+
+.ios_info p span {
+    color: #235DCF;
+}
+
+.ios_info p span.info_red {
+    color: #FF626C;
+}
+
+#ios_info form {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.file_btn {
+    height: 63px;
+}
+
+#ios_info form span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    text-align: center;
+    color: rgba(79, 79, 79, 0.7);
+}
+
+.file_btn {
+    width: 283px;
+    height: 63px;
+    margin-bottom: 0;
+}
