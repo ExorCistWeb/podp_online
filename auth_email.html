@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <ol>
+                        <li><a href="">Особенности</a></li>
+                        <li><a href="">Тарифы</a></li>
+                        <li><a href="">API</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Попробовать</a></li>
+                        <li>
+                            <a class="header_exit_link" href=""><img src="img/exit.svg" alt=""><span>Вход</span></a>
+                        </li>
+                    </ol>
+                    <div class="header_right">
+                        <a href="https://wa.me/message/XMV3IDTUD4DUA1">+7 708 812 98 76</a>
+                        <select name="language" id="language">
+                            <option selected>Русский</option>
+                            <option>Казакша</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <section id="reg">
+        <div class="wrapper reg_wrapper">
+            <div class="reg">
+                <img class="auth_img" src="img/auth.svg" alt="">
+                <div class="reg_form">
+                    <h3>Вход <br> в личный кабинет</h3>
+                    <p>Для входа выберите удобный для вас способ</p>
+                    <div class="reg_select">
+                        <a href="">ЭЦП</a>
+                        <a href="">eGov mobile</a>
+                        <a class="active" href="">Email</a>
+                    </div>
+                    <form action="">
+                        <p style="justify-content: center; margin-bottom: 20px;">Вход по Email</p>
+
+                        <div class="reg_input">
+                            <label for="">Email</label>
+                            <input type="email">
+                            <label style="margin-top: 15px;" for="">Пароль</label>
+                            <input type="password">
+                            <div class="error_password">
+                                Введен неправильный логин или пароль
+                            </div>
+                        </div>
+                        <button class="reg_btn" value="">ВОЙТИ</button>
+                        <a class="href_ios" href="">Забыли пароль?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

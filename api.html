@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close"><img src="img/oui_cross.svg" alt=""></span>
+            <div style="display: none;" class="error_info">
+                <span>контрагент не найден</span>
+            </div>
+            <div class="round_info">
+                <img src="img/ic_round-check.svg" alt="">
+                <span>контрагент зарегистрирован на подпиши.онлайн</span>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <ol>
+                        <li><a href="">Особенности</a></li>
+                        <li><a href="">Тарифы</a></li>
+                        <li><a href="">API</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Попробовать</a></li>
+                        <li>
+                            <a class="header_exit_link" href=""><img src="img/exit.svg" alt=""><span>Вход</span></a>
+                        </li>
+                    </ol>
+                    <div class="header_right">
+                        <a href="https://wa.me/message/XMV3IDTUD4DUA1">+7 708 812 98 76</a>
+                        <select name="language" id="language">
+                            <option selected>Русский</option>
+                            <option>Казакша</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <section class="api_about_id" id="about">
+        <div class="wrapper">
+            <div class="about api_about">
+                <div class="about_info">
+                    <h1>API сервиса «подпиши.онлайн»</h1>
+                    <h4>API загрузки документов в систему</h4>
+                </div>
+                <div class="about_img">
+                    <img src="img/api.svg" alt="">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="api_info">
+        <div class="wrapper">
+            <div class="api_info">
+                <h2>API предназначено</h2>
+                <p>для автоматизированной загрузки документов из любой системы, которая генерирует электронные документы, требующие подписи. Загружаемые документы могут быть в любом удобном вам формате:
+                    <br><br>
+                    <span><b>txt, html, jpeg, doc, xls, docx, rtf, pdf или любые другие.</b></span></p>
+
+            </div>
+        </div>
+    </section>
+    <section id="api_allows">
+        <div class="wrapper">
+            <h2>API позволяет</h2>
+            <div class="api_allows">
+                <div class="api_allows_card">
+                    <img src="img/ic_round-check2.svg" alt="">
+                    <p>загрузить документ в сервис для подписи</p>
+                </div>
+                <div class="api_allows_card">
+                    <img src="img/ic_round-check2.svg" alt="">
+                    <p>загрузить подписанный документ в сервис</p>
+                </div>
+                <div class="api_allows_card">
+                    <img src="img/ic_round-check2.svg" alt="">
+                    <p>проверить статус документа</p>
+                </div>
+                <div class="api_allows_card">
+                    <img src="img/ic_round-check2.svg" alt="">
+                    <p>загрузить подписи документа</p>
+                </div>
+                <div class="api_allows_card">
+                    <img src="img/ic_round-check2.svg" alt="">
+                    <p>загрузить входящие документы</p>
+                </div>
+                <div class="api_allows_card">
+                    <img src="img/ic_round-check2.svg" alt="">
+                    <p>подписать входящие документы</p>
+                </div>
+            </div>
+            <p class="api_allows_p">Кодировка текстовых полей воспринимается только как <span>UTF-8</span>.</p>
+        </div>
+    </section>
+    <section id="api_links">
+        <h2>НАШИ API</h2>
+        <div class="wrapper">
+            <div class="api_links">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <a href="" class="accordion-header">
+                            <span class="title_faq">ЗАГРУЗКА ДОКУМЕНТА: Входные параметры</span>
+                            <span class="toggle"><p>+</p></span>
+                        </a href="">
+
+                    </div>
+                    <div class="accordion-item">
+                        <a href="" class="accordion-header">
+                            <span class="title_faq">ЗАГРУЗКА ДОКУМЕНТА: Выходные параметры</span>
+                            <span class="toggle"><p>+</p></span>
+                        </a href="">
+
+                    </div>
+                    <div class="accordion-item">
+                        <a href="" class="accordion-header">
+                            <span class="title_faq">Советы разработчику</span>
+                            <span class="toggle"><p>+</p></span>
+                        </a href="">
+
+                    </div>
+                    <div class="accordion-item">
+                        <a href="" class="accordion-header">
+                            <span class="title_faq">Набор готовых скриптов для установки на сайт</span>
+                            <span class="toggle"><p>+</p></span>
+                        </a href="">
+
+                    </div>
+                    <div class="accordion-item">
+                        <a href="" class="accordion-header">
+                            <span class="title_faq">Постановка задачи для написания модуля</span>
+                            <span class="toggle"><p>+</p></span>
+                        </a href="">
+
+                    </div>
+                    <div class="accordion-item">
+                        <a href="" class="accordion-header">
+                            <span class="title_faq">API получение статуса документа в системе</span>
+                            <span class="toggle"><p>+</p></span>
+                        </a href="">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
