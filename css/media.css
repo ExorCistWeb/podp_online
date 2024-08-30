@@ -448,6 +448,10 @@
     .round_info {
         font-size: 20px;
     }
+    .password .reg_form form .reg_btn {
+        width: 100%;
+        max-width: unset;
+    }
 }
 
 @media (max-width:320px) {}

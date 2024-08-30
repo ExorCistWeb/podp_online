@@ -1703,3 +1703,41 @@ footer {
 .egov_timer_one {
     display: none;
 }
+
+#password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 0;
+}
+
+.password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.password .reg_form {
+    width: 100%;
+    max-width: 414px;
+    min-width: unset;
+}
+
+.password .reg_form h3 {
+    max-width: unset;
+}
+
+.password .reg_form form {
+    width: 100%;
+    max-width: 414px;
+}
+
+.password .reg_form form .reg_btn {
+    width: 100%;
+    max-width: 283px;
+    min-width: 283px;
+    margin: 0 auto;
+}
