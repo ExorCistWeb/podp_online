@@ -374,6 +374,58 @@
         flex-direction: column;
         align-items: start;
     }
+    .about_img img {
+        width: 100%;
+    }
+    .api_allows_card p {
+        font-size: 14px;
+    }
+    #api_allows h2 {
+        margin-bottom: 40px;
+    }
+    .api_about_id {
+        padding: 113px 0 40px;
+    }
+    #api_info {
+        padding: 50px 0;
+    }
+    .reg {
+        flex-direction: column;
+    }
+    .reg_img,
+    .egov_qr img,
+    .auth_img {
+        width: 100%;
+        height: auto;
+    }
+    #reg .reg_wrapper {
+        width: auto;
+        margin: 0 auto;
+    }
+    .info_block_btn {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .info_block_btn a {
+        font-size: 14px;
+    }
+    #reg {
+        padding: 120px 0 20px;
+    }
+    .reg_form h3 {
+        font-size: 20px;
+    }
+    .reg_form p,
+    .reg_form form p,
+    .file-label,
+    .reg_input label,
+    .reg_btn {
+        font-size: 14px;
+    }
+    .file_btn span,
+    .reg_form form .href_ios {
+        font-size: 11px;
+    }
 }
 
 @media (max-width:320px) {}
