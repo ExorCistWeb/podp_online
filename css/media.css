@@ -433,6 +433,13 @@
     .reg_form form .href_ios {
         font-size: 11px;
     }
+    .egov_timer_one {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .egov_timer_two {
+        display: none;
+    }
 }
 
 @media (max-width:320px) {}
