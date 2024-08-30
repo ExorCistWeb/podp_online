@@ -403,7 +403,7 @@ video.playing+.video-container::before {
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    padding: 44px 30px 20px 90px;
+    padding: 44px 60px 20px 60px;
     background: #fff;
     filter: drop-shadow(13px 12px 6.6px rgba(0, 0, 0, 0.15));
     border: 1px solid #235DCF;
@@ -1677,4 +1677,8 @@ footer {
     width: 283px;
     height: 63px;
     margin-bottom: 0;
+}
+
+.reg_wrapper .reg_form .file_btn {
+    margin-bottom: 25px;
 }
