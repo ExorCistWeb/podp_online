@@ -397,6 +397,7 @@
     }
     .reg {
         flex-direction: column;
+        align-items: center;
     }
     .reg_img,
     .egov_qr img,
