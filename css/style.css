@@ -1673,6 +1673,8 @@ footer {
 
 .file_btn {
     height: 63px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 #ios_info form span {

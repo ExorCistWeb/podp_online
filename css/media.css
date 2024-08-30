@@ -357,6 +357,23 @@
     .about_vision_card p {
         font-size: 16px;
     }
+    #android_info h2,
+    #ios_info h2 {
+        flex-direction: column;
+        font-size: 20px;
+    }
+    .android_info,
+    #ios_info {
+        font-size: 13px;
+    }
+    .ios_info h3 {
+        font-size: 16px;
+    }
+    #ios_info form {
+        gap: 20px;
+        flex-direction: column;
+        align-items: start;
+    }
 }
 
 @media (max-width:320px) {}
