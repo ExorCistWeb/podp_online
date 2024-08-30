@@ -441,6 +441,13 @@
     .egov_timer_two {
         display: none;
     }
+    .modal {
+        padding: 20px;
+    }
+    .error_info,
+    .round_info {
+        font-size: 20px;
+    }
 }
 
 @media (max-width:320px) {}
