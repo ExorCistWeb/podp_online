@@ -67,6 +67,257 @@
     }
 }
 
-@media (max-width:440px) {}
+@media (max-width:440px) {
+    header {
+        padding: 25px 25px;
+    }
+    #about {
+        padding: 124px 0 64px;
+    }
+    .about,
+    .about_bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .about_bottom_info {
+        flex-direction: column;
+        gap: 22px;
+    }
+    .num_box {
+        flex-direction: row;
+        gap: 22px;
+        width: 100%;
+        max-width: unset;
+        align-items: center;
+    }
+    .num_box h2 span {
+        display: none;
+    }
+    .num_box p {
+        font-size: 16px;
+    }
+    .num_box p span {
+        display: block;
+    }
+    h1 {
+        font-size: 30px;
+        line-height: 33.9px;
+    }
+    h4 {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 22.6px;
+    }
+    .wrapper {
+        padding: 0 40px;
+    }
+    .about_info {
+        gap: 22px;
+    }
+    .about_img {
+        width: 100%;
+    }
+    .about {
+        gap: 30px;
+    }
+    .about_bottom {
+        gap: 50px;
+        margin-top: 33px;
+    }
+    .about_bottom a {
+        width: 259px;
+        font-size: 14px;
+    }
+    .br_none {
+        display: none;
+    }
+    #chips {
+        padding: 70px 0px;
+    }
+    h2 {
+        font-size: 20px;
+        line-height: 22.6px;
+        margin-bottom: 34px;
+    }
+    .br_block {
+        display: block;
+    }
+    h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .chips_box {
+        gap: 7px;
+        min-height: 194px;
+    }
+    .chips_box {
+        padding: 32px 20px;
+    }
+    .chips_box h3 {
+        padding: 0 20px;
+    }
+    .chips_box p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    #reviews {
+        padding: 70px 0;
+    }
+    .video-container {
+        width: 100%;
+        height: 384px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .video-container video {
+        border-radius: 8px;
+    }
+    #reviews {
+        padding: 70px 0 30px;
+    }
+    #you_get {
+        padding: 70px 0 30px;
+    }
+    .you_get_box {
+        width: 100%;
+        min-height: 321px;
+        padding: 20px 45px;
+    }
+    .you_get_box h3 {
+        font-weight: 16px;
+    }
+    .you_get_box ol {
+        margin-top: 15px;
+    }
+    .you_get_box ol li {
+        font-size: 14px;
+    }
+    #tarif {
+        padding: 70px 0;
+    }
+    .tarif {
+        flex-direction: column;
+        gap: 125px;
+    }
+    .tarif_box {
+        padding: 35px 15px 0 15px;
+        height: auto;
+    }
+    .tarif_box_info h3 {
+        font-size: 20px;
+    }
+    .tarif_box_info ol li b {
+        margin-bottom: 0;
+    }
+    .tarif_box_bottom a {
+        font-size: 14px;
+        width: 260px;
+    }
+    .tarif_box_bottom {
+        bottom: -40px;
+    }
+    #free {
+        padding: 50px 0;
+    }
+    .free {
+        gap: 20px;
+    }
+    .free h2 {
+        font-size: 20px;
+    }
+    .free a {
+        width: 269px;
+        font-size: 14px;
+    }
+    #faq {
+        padding: 70px 0;
+    }
+    .accordion {
+        width: 100%;
+    }
+    .accordion-header .toggle {
+        width: 20px;
+        min-width: 20px;
+        max-width: 20px;
+        height: 20px;
+        min-height: 20px;
+        max-height: 20px;
+    }
+    .accordion-header .toggle p {
+        font-size: 14px;
+    }
+    .accordion-header span {
+        font-size: 15px;
+    }
+    .accordion-content p {
+        font-size: 15px;
+    }
+    #chosen {
+        padding: 70px 0 80px;
+    }
+    .chosen {
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+    }
+    .chosen_card {
+        gap: 11px;
+    }
+    .free form {
+        max-width: 269px;
+    }
+    #contact {
+        padding: 70px 0;
+    }
+    .contact {
+        flex-direction: column-reverse;
+        align-items: start;
+    }
+    .contact_map {
+        width: 100%;
+        height: 290px;
+    }
+    .contact_info h6 a,
+    h6 {
+        font-size: 16px;
+    }
+    .soc {
+        margin-top: 23px;
+    }
+    .footer,
+    .footer_contact_info,
+    .footer_link_info {
+        flex-direction: column;
+    }
+    .footer_copy span {
+        font-size: 16px;
+    }
+    .footer_contact_one {
+        display: none;
+    }
+    .footer_contact_two {
+        display: flex;
+    }
+    .footer_link_info {
+        gap: 36px;
+    }
+    .footer_link a {
+        font-size: 12px;
+    }
+    .footer_link h6 {
+        font-size: 14px;
+    }
+    .footer_link {
+        gap: 7px;
+    }
+    .footer_logo a img {
+        width: 50px;
+        height: 48px;
+    }
+    footer {
+        padding: 50px 0;
+    }
+}
 
 @media (max-width:320px) {}

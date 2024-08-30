@@ -9,6 +9,11 @@ var swiper = new Swiper(".reviewsSwiper", {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
+    breakpoints: {
+        320: {
+            slidesPerView: 1
+        },
+    },
 });
 
 function playPauseVideo(videoId) {
@@ -67,5 +72,16 @@ $(document).ready(function() {
     $('#mobile-menu').click(function() {
         $('.nav').toggleClass('active'); // Переключаем класс для отображения меню
         $(this).toggleClass('toggle'); // Добавляем анимацию бургер-меню
+    });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });

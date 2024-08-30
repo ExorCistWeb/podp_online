@@ -239,6 +239,10 @@ header {
     color: #1D1D1D;
 }
 
+.num_box p span {
+    display: none;
+}
+
 .about_bottom a {
     width: 338px;
     height: 63px;
@@ -253,6 +257,10 @@ header {
     line-height: 113%;
     text-transform: uppercase;
     color: #FFFFFF;
+}
+
+.br_block {
+    display: none;
 }
 
 #chips {
@@ -735,7 +743,11 @@ video.playing+.video-container::before {
 
 .accordion-header .toggle {
     width: 31px;
+    min-width: 31px;
+    max-width: 31px;
     height: 31px;
+    min-height: 31px;
+    max-height: 31px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1681,4 +1693,8 @@ footer {
 
 .reg_wrapper .reg_form .file_btn {
     margin-bottom: 25px;
+}
+
+.footer_contact_two {
+    display: none;
 }
