@@ -13,6 +13,9 @@ var swiper = new Swiper(".reviewsSwiper", {
         320: {
             slidesPerView: 1
         },
+        1440: {
+            slidesPerView: 3
+        },
     },
 });
 
