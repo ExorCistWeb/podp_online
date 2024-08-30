@@ -318,6 +318,45 @@
     footer {
         padding: 50px 0;
     }
+    .about_piple,
+    .about_vision {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about_piple_card img {
+        width: 152px;
+        height: 152px;
+        margin-bottom: 21px;
+    }
+    #about_piple {
+        padding: 110px 0 40px;
+    }
+    #about_piple h2 {
+        margin-bottom: 60px;
+    }
+    .about_piple_card h4 {
+        font-size: 22px;
+    }
+    .about_piple_card p {
+        font-size: 14px;
+    }
+    .about_piple {
+        gap: 44px;
+    }
+    #about_vision h2 {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+    .about_vision_card img {
+        width: 60px;
+        height: 60px;
+    }
+    .about_vision_card h4 {
+        font-size: 20px;
+    }
+    .about_vision_card p {
+        font-size: 16px;
+    }
 }
 
 @media (max-width:320px) {}
