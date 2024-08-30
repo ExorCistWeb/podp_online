@@ -1,5 +1,11 @@
 @media (max-width:1440px) {}
 
+@media (min-width: 1920px) {
+    .reg_wrapper {
+        margin: 0 auto;
+    }
+}
+
 @media (max-width:1120px) {}
 
 @media (max-width:996px) {}
@@ -395,7 +401,8 @@
     .reg_img,
     .egov_qr img,
     .auth_img {
-        width: 100%;
+        width: 70%;
+        margin: 0 auto;
         height: auto;
     }
     #reg .reg_wrapper {

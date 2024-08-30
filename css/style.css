@@ -1045,8 +1045,7 @@ footer {
 }
 
 #reg .reg_wrapper {
-    width: 1176px;
-    margin-left: 90px;
+    max-width: 1176px;
 }
 
 .reg {
