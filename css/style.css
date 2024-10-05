@@ -1741,3 +1741,42 @@ footer {
     min-width: 283px;
     margin: 0 auto;
 }
+
+.reg_right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.red_text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* or 18px */
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 479px;
+    background: #FF626C;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.blue_text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 113%;
+    /* or 18px */
+    text-align: center;
+    color: #235DCF;
+    margin-top: 30px;
+}
