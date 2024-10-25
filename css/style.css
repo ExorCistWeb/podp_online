@@ -1780,3 +1780,88 @@ footer {
     color: #235DCF;
     margin-top: 30px;
 }
+
+#email_info {
+    padding-top: 100px;
+}
+
+.email_info {
+    margin-top: 20px;
+}
+
+.email_info p {
+    max-width: 970px;
+    font-size: 16px;
+}
+
+.massage_box {
+    width: 100%;
+    background: rgba(35, 93, 207, 0.06);
+    border: 1px solid rgba(79, 79, 79, 0.11);
+    border-radius: 6px;
+    padding: 22px 75px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.massage_box ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+.massage_box ul li {
+    list-style: disc;
+}
+
+.open_massage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 100px;
+}
+
+.open_massage a {
+    width: 100%;
+    max-width: 480px;
+    background: #235DCF;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email_after {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 100px;
+}
+
+.email_after a,
+p a {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 162%;
+    color: #4F4F4F;
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
+}
