@@ -11,6 +11,9 @@
 @media (max-width:996px) {}
 
 @media (max-width:768px) {
+    .massage_box {
+        padding: 30px 20px;
+    }
     .nav {
         display: none;
         /* Скрываем меню по умолчанию */
