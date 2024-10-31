@@ -1865,3 +1865,84 @@ p a {
     margin: 0;
     padding: 0;
 }
+
+.viewing_template {
+    padding: 140px 0;
+    width: 100%;
+    max-width: 981px;
+    margin: 0 auto;
+}
+
+.viewing_template h2 {
+    color: #235DCF;
+    font-size: 20px;
+    text-transform: unset;
+    margin-bottom: 30px;
+}
+
+.name_document {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 153%;
+    /* or 24px */
+    color: #4F4F4F;
+    padding: 5px 30px 5px 10px;
+    background: #C8D8F9;
+    margin: 5px 0 20px;
+    display: inline-block;
+}
+
+.viewing_template p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 153%;
+    /* or 24px */
+    color: #4F4F4F;
+}
+
+.viewing_template ul {
+    padding: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.viewing_template ul li {
+    list-style: decimal;
+}
+
+.viewing_document_link {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 153%;
+    /* or 24px */
+    color: #4F4F4F;
+    display: inline-block;
+    margin: 40px 0 20px 20px;
+}
+
+.viewing_document_link a {
+    color: #235DCF;
+    font-weight: 700;
+}
+
+.viewing_template .reg_form {
+    max-width: unset;
+    min-width: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.file_inputs {
+    height: unset;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <ol>
+                        <li><a href="">Особенности</a></li>
+                        <li><a href="">Тарифы</a></li>
+                        <li><a href="">API</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Попробовать</a></li>
+                        <li>
+                            <a class="header_exit_link" href=""><img src="../img/exit.svg" alt=""><span>Вход</span></a>
+                        </li>
+                    </ol>
+                    <div class="header_right">
+                        <a href="https://wa.me/message/XMV3IDTUD4DUA1">+7 708 812 98 76</a>
+                        <select name="language" id="language">
+                            <option selected>Русский</option>
+                            <option>Казакша</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <section id="viewing_template">
+        <div class="wrapper">
+
+            <div class="viewing_template">
+                <h2>Шаблон документа от <br> ТОО “SMART PAY” БИН/ИИН 234322765783</h2>
+                <p>
+                    Ваш партнёр, ТОО "SMART PAY", использует сервис “Подпиши Онлайн” для онлайн подписания документов и разместил шаблон документа для вашего удобства и ускорения процесса работы с документами.
+                </p>
+                <span class="name_document">Название документа: Кредитный договор </span>
+                <p> Подписание электронного шаблона документа имеет несколько преимуществ:</p>
+                <ul>
+                    <li>
+                        <p>Упрощение процесса: Шаблон заранее содержит все основные данные, вам нужно только заполнить поля, что сокращает время и исключает ошибки.</p>
+                    </li>
+                    <li>
+                        <p>Автоматизация: Система автоматически генерирует финальный документ, ускоряя процесс подписания без необходимости встреч или отправки по почте.</p>
+                    </li>
+                    <li>
+                        <p>Юридическая безопасность: Документ, подписанный через систему с ЭЦП, имеет полную юридическую силу и защищён от изменений.</p>
+                    </li>
+                    <li>
+                        <p>Удобный доступ: Шаблон доступен онлайн в любое время, позволяя подписывать и получать документы мгновенно.</p>
+                    </li>
+                </ul>
+                <p> Это обеспечивает удобство, скорость и безопасность взаимодействия с документами для всех сторон.</p>
+
+                <span class="viewing_document_link">Вы можете просмотреть данный документ <a href="">по следующей ссылке</a></span>
+                <div class="massage_box">
+                    <p> Этапы подписания документа:</p>
+                    <ul>
+                        <li>
+                            <p>Авторизутесь в системе ключем ЭЦП или приложением eGov Mobile</p>
+                        </li>
+                        <li>
+                            <p>Введите данные, предусмотренных документом</p>
+                        </li>
+                        <li>
+                            <p>Проверьте правильности введенных вами данных и текста документа</p>
+                        </li>
+                        <li>
+                            <p>После нажмите подписать и выберите удобный для вас способ</p>
+                        </li>
+                    </ul>
+                    <p>В случае возникновения вопросов, вы можете обратиться к отправителю данного документа.</p>
+                </div>
+                <div class="reg_form">
+
+                    <p>Авторизутесь в системе ключем ЭЦП или приложением eGov Mobile</p>
+                    <div class="reg_select">
+                        <a class="active" href="">ЭЦП</a>
+                        <a href="">eGov mobile</a>
+                    </div>
+                    <form action="">
+                        <p>Выберите сертификат ЭЦП</p>
+                        <div class="file_btn file_inputs">
+                            <input type="file" id="keyFile" class="file-input" accept=".key">
+                            <label for="keyFile" class="file-label">Выбрать файл ключа</label>
+                            <span>начинается с AUTH или GOST512</span>
+                        </div>
+                        <div class="reg_input">
+                            <label for="">Пароль от ЭЦП</label>
+                            <input type="text">
+                            <div class="error_password">
+                                Введен неправильный пароль
+                            </div>
+                        </div>
+                        <button class="reg_btn" value="">ВОЙТИ</button>
+                        <a class="href_ios" href="">Инструкция для iOS/Android</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
