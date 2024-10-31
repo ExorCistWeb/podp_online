@@ -10,6 +10,10 @@
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 h1 {
     font-style: normal;
     font-weight: 600;
@@ -1985,4 +1989,27 @@ p a {
     justify-content: center;
     margin: 0 auto;
     margin-top: 30px;
+}
+
+.standard_agreement {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.standard_agreement h2 {
+    text-align: start;
+    margin-bottom: 0;
+}
+
+.agreemetn {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.agreemetn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
