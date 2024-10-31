@@ -1946,3 +1946,43 @@ p a {
     height: unset;
     margin-bottom: 15px;
 }
+
+.ul_circle {
+    padding-left: 25px;
+}
+
+.ul_circle li {
+    list-style: disc !important;
+}
+
+.integrator_partners {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.integrator_partners h2 {
+    text-align: start;
+}
+
+.parthners_btn {
+    width: 100%;
+    max-width: 523px;
+    background: #235DCF;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 30px;
+}
