@@ -88,3 +88,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+function playVideo(thumbnail) {
+    // Скрываем изображение превью для текущего видео
+    thumbnail.style.display = 'none';
+
+    // Находим iframe, который находится рядом с превью, и запускаем его
+    var video = thumbnail.nextElementSibling;
+    video.style.display = 'block';
+    video.src += '?autoplay=1';
+}
