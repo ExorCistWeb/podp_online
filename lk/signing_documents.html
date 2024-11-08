@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/lk.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper">
+                    <div class="lk_title lk_title_upl">
+                        <h1>Документы к подписанию </h1>
+                        <p>С помощью Egov Mobile </p>
+                        <p>При подписании документов через наш сервис вы будете получать уведомления о статусе их обработки. Это позволит вам всегда быть в курсе, где находится ваш документ, и когда он будет подписан.<br> Кроме того, все подписанные документы
+                            будут храниться в вашем личном кабинете в течение 5 лет. Это гарантирует вам легкий доступ к важным документам в любое время.<br> Если у вас есть вопросы по содержанию документа, вы можете обратиться к отпраивтелю.</p>
+                    </div>
+                    <div class="delete_document_info_box signing_document_info_box">
+                        <span>Дата и время: <span class="data">22.08.1488 12:13 </span></span>
+                        <span>Номер документа: <span class="number">1232139</span></span>
+                        <span>Название: <a href="" class="name_file_delete">Модуль №7, Рабочая бизнес модель (1).docx</a></span>
+                        <h3>Подписано: <span>1/2</span></h3>
+                    </div>
+                    <div class="lk_title lk_title_upl">
+                        <h2 class="lk_uploading_form_h2">Метод подписания: Egov Mobile </h2>
+                        <p class="egov_p">Для подписания, со сканируйте QR-код через приложение “Egov Mobile” или нажмите на QR-код для перехода “Egov Mobile” и следуйте интсрукциям. После успешного подписания нажмите кнопку <span>“Проверить состояние подписи”</span>.</p>
+                    </div>
+                    <div class="signing_flex">
+                        <div class="signing_qr">
+                            <img src="../img/qr.svg" alt="">
+                            <h3>осталось <span class="timer">3:00</span></h3>
+                        </div>
+                        <div class="signing_qr_cont">
+                            <button>Проверить состояние подписи</button>
+                            <h3>Подписано: <span class="h3_red_span">0 шт</span></h3>
+                            <h3>Вы подписываете документ как <span>ИИН 0000000000 КУНДАКБАЕВ ОЛЖАС БАЛХАШБАЕВИЧ</span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

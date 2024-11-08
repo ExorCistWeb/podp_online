@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/lk.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+                    <div class="lk_title lk_title_upl">
+                        <h1>Удаление документа / Отказ от подписи</h1>
+                        <p>После удаления документ(ов) из вашего аккаунта, вы больше не сможете его просматривать или редактировать. Документ останется доступен только владельцу, и вся работа с ним будет прекращена для вас. </p>
+                    </div>
+                    <div class="delete_document_info">
+                        <h2>Документы к удалению / отказу, где вы не являетесь владельцем:</h2>
+                        <div class="delete_document_info_box">
+                            <span>Дата и время: <span class="data">22.08.2024 12:13 </span></span>
+                            <span>Номер документа: <span class="number">1232139</span></span>
+                            <span>Название: <a href="" class="name_file_delete">Модуль №7, Рабочая бизнес модель (1).docx</a></span>
+                        </div>
+                    </div>
+                    <form class="delete_document_form">
+                        <h3>Укажите причину исключения документа (при необходимости):</h3>
+                        <input class="input_problem" type="text" name="" id="">
+                        <div class="delete_input_check">
+                            <input type="checkbox" name="" id="">
+                            <label for="">Уведомить партнера о причине отказа</label>
+                        </div>
+                        <p>Вы можете добавить причину удаления или отказа. В случае необходимости уведомить вашего подписанта об отказе от подписи вами документа поставьте галочку в соответствующем поле. Причины отказа будет отправлена вашему подписанту.</p>
+                        <div class="delete_btns">
+                            <button>удалить документ</button>
+                            <button>отказаться от подписи</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
