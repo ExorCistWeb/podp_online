@@ -41,6 +41,13 @@
             </div>
         </div>
     </header>
+    <div class="search_error" id="popup">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Ошибка пароля</h3>
+            <p>проверьте правильность пароля</p>
+        </div>
+    </div>
     <div class="lk_content">
         <div class="wrapper">
             <div class="sidebar">
@@ -58,15 +65,36 @@
             </div>
             <div class="container">
                 <div class="lk_wrapper">
-                    <div class="lk_title">
-                        <h1>Новый запрос в техподдежку Подпиши Оналйн</h1>
-                        <p>Здесь размещена информация о купленных вами услугах, доступном обьеме в облаке и обо всем, что может пригодиться для работы с нами.</p>
+                    <div class="lk_title lk_title_upl">
+                        <h1>Документы к подписанию </h1>
+                    </div>
+                    <div class="delete_document_info_box signing_document_info_box">
+                        <span>Название: <a href="" class="name_file_delete">Модуль №7, Рабочая бизнес модель (1).docx</a></span>
+                        <span>Дата и время: <span class="data">22.08.1488 12:13 </span></span>
+                        <span>Номер документа: <span class="number">1232139</span></span>
+                    </div>
+                    <div class="signing_doc_flex">
+                        <h3>Всего к подписанию: <span class="blue_t">1 шт</span></h3>
+                        <h3>Подписано: <span class="red_t">0 шт</span></h3>
+                    </div>
+                    <div class="info_acc_signing">
+                        <h3>Вы подписываете документ как <span>ИИН 0000000000 КУНДАКБАЕВ ОЛЖАС БАЛХАШБАЕВИЧ</span></h3>
+                    </div>
+                    <div class="lk_title_upl lk_title_signing">
+                        <p>Для подписания, со сканируйте QR-код через приложение “Egov Mobile” или нажмите на QR-код для перехода “Egov Mobile” и следуйте интсрукциям. После успешного подписания нажмите кнопку <span class="blue_t">“Проверить состояние подписи”</span>.</p>
+                    </div>
+                    <div class="signing_doc_flex signing_doc_flex_two">
+                        <h3>Автоматическое обновление каждые 5 секунд</h3>
+                        <div class="signing_box_load">
+                            <p>Получение данных о подписании.</p>
+                            <span></span>
+                        </div>
+                        <button type="submit" id="findButton">Проверить состояние подписи</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/modal.js"></script>

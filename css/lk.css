@@ -1142,3 +1142,139 @@ p {
     width: 400px;
     height: 400px;
 }
+
+.signing_doc_flex {
+    display: flex;
+    gap: 50px;
+}
+
+.blue_t {
+    color: #235DCF;
+}
+
+.red_t {
+    color: #FF626C;
+}
+
+.info_acc_signing {
+    margin-top: 40px;
+}
+
+.lk_title_signing {
+    margin-top: 40px;
+}
+
+.signing_doc_flex_two {
+    margin-top: 40px;
+    align-items: center;
+}
+
+.signing_doc_flex_two h3 {
+    max-width: 184px;
+}
+
+.signing_box_load {
+    max-width: 109px;
+}
+
+.signing_doc_flex_two button {
+    padding-top: 2px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #235DCF;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 395px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lk_filter {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin: 20px 0;
+}
+
+.lk_filter button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    /* identical to box height, or 18px */
+    color: #235DCF;
+    background: none;
+}
+
+.labels_btn {
+    transition: all .3s ease-in-out;
+    color: rgba(79, 79, 79, 0.39) !important;
+}
+
+.labels_btn:hover {
+    transition: all .3s ease-in-out;
+    color: #235DCF !important;
+}
+
+.labels_btn:hover svg path {
+    fill: #235DCF !important;
+}
+
+.labels_btn svg path {
+    transition: all .3s ease-in-out;
+    fill: rgba(79, 79, 79, 0.39) !important;
+}
+
+.my_table_top {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.my_table_top_flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.my_table_top_flex button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    /* identical to box height, or 14px */
+    text-align: center;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 0 10px;
+    min-width: 153px;
+    max-width: 197px;
+    background: #A4A4A4;
+    border-radius: 3px;
+}
+
+.select_input {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.select_input input {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+}
