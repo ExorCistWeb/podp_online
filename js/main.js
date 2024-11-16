@@ -99,3 +99,20 @@ function playVideo(thumbnail) {
     video.style.display = 'block';
     video.src += '?autoplay=1';
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const dropdownTrigger = document.querySelector(".lk_dropdown > a");
+    const dropdownBox = document.querySelector(".dropdown_box");
+
+    dropdownTrigger.addEventListener("click", function(event) {
+        event.preventDefault(); // предотвращает переход по ссылке
+        dropdownBox.style.display = dropdownBox.style.display === "none" || dropdownBox.style.display === "" ? "flex" : "none";
+    });
+
+    // Закрытие dropdown, если клик вне блока
+    document.addEventListener("click", function(event) {
+        if (!dropdownTrigger.contains(event.target) && !dropdownBox.contains(event.target)) {
+            dropdownBox.style.display = "none";
+        }
+    });
+});

@@ -70,6 +70,7 @@
 .nav {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .lk_content .wrapper {
@@ -1277,4 +1278,75 @@ p {
     width: 21px;
     height: 21px;
     cursor: pointer;
+}
+
+.search_header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dropdown_box {
+    display: none;
+    position: absolute;
+    padding: 30px 25px;
+    z-index: 1000;
+    width: 252px;
+    right: 0;
+    top: 60px;
+    height: 198px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 5.3px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 5px 5px;
+    flex-direction: column;
+}
+
+.dropdown_box .name {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* or 16px */
+    color: #000000;
+    margin-bottom: 22px;
+}
+
+.dropdown_box .iin_info {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+    display: flex;
+    align-items: center;
+}
+
+.iin_number {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+}
+
+.dropdown_box hr {
+    width: 100%;
+    margin: 28px 0 22px;
+    border: 1px solid rgba(79, 79, 79, 0.16);
+}
+
+.dropdown_box a {
+    /* Выход */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
 }
