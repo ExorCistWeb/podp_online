@@ -41,16 +41,7 @@
             </div>
         </div>
     </header>
-    <div class="search_error" id="popup">
-        <div class="popup_time_error">
-            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
-            <h3>Ошибка</h3>
-            <p>начиная c <span> 03.08.2024 </span> <span>02.09.2024 </span>включительно</p>
 
-            <p> У вас нет документов (возможно, требуется изменить <br> условия фильтра)</p>
-
-        </div>
-    </div>
     <div class="lk_content">
         <div class="wrapper">
             <div class="sidebar">
@@ -68,39 +59,48 @@
             </div>
             <div class="container">
                 <div class="lk_wrapper ">
-                    <div class="lk_title ">
-                        <h1>Расширенный поиск документов</h1>
-                        <p>Страница для удобного поиска нужных документов. Введите подробную информацию, чтобы получить наиболее подходящие результаты. </p>
+                    <div class="ready_templates ready_templates_settings">
+                        <a class="active" href="">Уведомление <br> в Телеграм</a>
+                        <a href="">Еmail для получения <br> документов</a>
+                        <a href="">Доступ <br>
+                            к кабинету</a>
+                        <a href="">Ключи <br>
+                            API</a>
+                        <a href="">Модуль СМС<br>
+                            подписание </a>
+                        <a href="">Сотрудники  <br>
+                            компании</a>
+                        <a href="">Экспорт<br>
+                            данных</a>
+                        <a href="">Другие <br>
+                            настройки</a>
                     </div>
-                    <form action="" class="search_form">
-                        <h3>Укажите параметры для поиска документа</h3>
-                        <div class="period">
-                            <p>Период:</p>
-                            <input type="date" name="" id="">
-                            <input type="date" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Номер документа</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Название документа</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">БИН/ИИН подписанта</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Референс экспорта</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Номер пакета</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <button type="submit" id="findButton">Найти</button>
-                    </form>
+                    <div class="lk_title lk_title_upl lk_title_settings">
+                        <h1>Управление привязкой личного кабинета к боту Telegram</h1>
+                        <p> Для создания привязки к Телеграм к вашего ЛК выполните следующие действия: </p>
+                        <ul>
+                            <li>
+                                <p>В Телеграм в поле поиска найдите нас <span>"@podpishikz_bot"</span><br>или откройте ссылку <a href="https://t.me/podpishikz_bot">https://t.me/podpishikz_bot</a></p>
+                            </li>
+                            <li>
+                                <p>Нажмите на кнопку <span>START</span></p>
+                            </li>
+                            <li>
+                                <p>Нажмите на кнопку <span>РЕГИСТРАЦИЯ</span></p>
+                            </li>
+                            <li>
+                                <p>Нажмите на кнопку <span>Привязка к боту для БИН/ИИН</span></p>
+                            </li>
+                            <li>
+                                <p>Отправьте боту строку:<br><span style="font-weight: 500;">217888-670723301790-123473-192557399032</span></p>
+                            </li>
+                            <li>
+                                <p>Получите ответ, об успешной привязке.</p>
+                            </li>
+                        </ul>
+                        <p>После привязки вы будете получать мгновенные оповещения о статусе документа, обновлениях и действиях с документами прямо в мессенджер. </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/modal.js"></script>
+
     <script src="../js/main.js"></script>
 
 </body>

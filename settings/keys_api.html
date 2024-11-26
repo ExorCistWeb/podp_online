@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/lk.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+                    <div class="ready_templates ready_templates_settings">
+                        <a href="">Уведомление <br> в Телеграм</a>
+                        <a href="">Еmail для получения <br> документов</a>
+                        <a href="">Доступ <br>
+                            к кабинету</a>
+                        <a class="active" href="">Ключи <br>
+                            API</a>
+                        <a href="">Модуль СМС<br>
+                            подписание </a>
+                        <a href="">Сотрудники  <br>
+                            компании</a>
+                        <a href="">Экспорт<br>
+                            данных</a>
+                        <a href="">Другие <br>
+                            настройки</a>
+                    </div>
+                    <div class="lk_title lk_title_upl lk_title_settings">
+                        <h1>Ключи API</h1>
+                        <p> Если вы хотите интегрировать сервис с другими приложениями или системами, API-ключи нужны для авторизации этой связи. Это позволяет автоматизировать процессы и улучшить рабочие процессы. Ниже вы можете видеть ваш API-ключ, который
+                            поможет автоматизировать ваши процессы.<br> Скопируйте ключ для интеграции с вашей CRM-системой или сайтом: </p>
+
+                        <p class="keys_api_info">
+                            Ваш логин API: <span>800228300156@noregemail.onlybin</span><br> Ваш пароль API: <span>5dd2aed41caf8a3571279c1348253d02</span>
+                        </p>
+                        <p class="keys_api_sert">
+                            Текущий сертификат пользователя: <br> <span>59B9E748A090F75CCFB7228EE15AD1503549352B</span>
+                        </p>
+
+
+                    </div>
+                    <div class="lk_title_settings lk_title_settings_two">
+                        <h2>Настроить WebHook</h2>
+                        <p>Здесь вы можете установить URL, который будет вызываться при любом изменении документа, к которому у вас есть доступ. URL вызывается методом GET с добавлением параметра <span>&uniq=DOC_NUMBER</span></p>
+                        <form class="email_binding_form" action="">
+                            <label for="">URL</label>
+                            <div class="input_box_email">
+                                <input type="url" placeholder="http://***********">
+
+
+                            </div>
+                            <button class="blue_btn">Сменить</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/lk.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="search_error popup">
+        <div class="popup_time_error popup_delete_alert">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Подтвердите действие</h3>
+            <p>Подтвердить удаление?</p>
+
+            <div class="delete_my_templates_flex">
+                <button class="red_btn no_delete">отмена</button>
+                <button class="blue_btn ">удалить</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+                    <div class="ready_templates">
+                        <a href="">Готовые <br>
+                            шаблоны</a>
+                        <a href="">Создать<br>
+                            шаблон</a>
+                        <a href="">Мои созданные<br> 
+                            шаблоны</a>
+                        <a class="active" href="">Шаблоны <br>
+                            голосовании</a>
+                    </div>
+
+                    <div class="lk_title lk_title_upl lk_title_vt_des">
+                        <h2>Для оформления документа заполните пожалуйста поля:</h2>
+                        <span>* - обязательные поля</span>
+                        <h1>ОБЩИЕ ДАННЫЕ ПОДПИСАНТА</h1>
+                    </div>
+
+                    <form action="/submit" class="voting_design_form" id="votingForm">
+                        <div id="formContent">
+                            <!-- Динамическое содержимое формы -->
+                        </div>
+                        <div class="voting_list_flex_btn" id="buttonContainer">
+                            <!-- Кнопки будут добавлены динамически -->
+                        </div>
+                    </form>
+
+                    <script>
+                        // Данные формы
+                        const formData = {
+                            name: "КУНДАКБАЕВ ОЛЖАС БАЛХАШБАЕВИЧ",
+                            address: "",
+                            contact: "",
+                            questions: [{
+                                question: "Правка связи ?",
+                                answers: ["За", "Против", "Воздержусь"],
+                                selected: ""
+                            }, {
+                                question: "Кто председатель",
+                                answers: ["За", "Против", "Воздержусь"],
+                                selected: ""
+                            }, {
+                                question: "Что за",
+                                answers: ["За", "Против", "Воздержусь"],
+                                selected: ""
+                            }, {
+                                question: "Почему а",
+                                answers: ["За", "Против", "Воздержусь"],
+                                selected: ""
+                            }]
+                        };
+
+                        const formContainer = document.getElementById('formContent');
+                        const buttonContainer = document.getElementById('buttonContainer');
+
+                        // Функция рендера формы
+                        function renderForm(editMode = false) {
+                            let html = `
+                                <div class="form-group form_align">
+                                    <label>Фамилия, имя, отчество подписанта</label>
+                                    <span>${formData.name}</span>
+                                </div>
+                                <div class="form-group form_align">
+                                    <label>*Адрес собственника квартиры, нежилого помещения</label>`;
+                            html += editMode ?
+                                `<input type="text" id="addressInput" value="${formData.address}">` :
+                                `<span>${formData.address || '-'}</span>`;
+                            html += `</div>
+                                <div class="form-group form_align">
+                                    <label>Номер сотовой связи и (или) электронный адрес собственника квартиры, нежилого помещения (на усмотрение собственника квартиры, нежилого помещения)</label>`;
+                            html += editMode ?
+                                `<input type="text" id="contactInput" value="${formData.contact}">` :
+                                `<span>${formData.contact || '-'}</span>`;
+                            html += `</div>`;
+
+                            // Вопросы
+                            formData.questions.forEach((q, index) => {
+                                html += `
+                                    <div class="form-group">
+                                        <label>*${q.question}</label>`;
+                                if (editMode) {
+                                    html += `<div class="radio-group">`;
+                                    q.answers.forEach((a) => {
+                                        html += `
+                                            <label>
+                                                <input type="radio" name="question${index}" value="${a}" ${
+                                            q.selected === a ? "checked" : ""
+                                        }>
+                                                ${a}
+                                            </label>`;
+                                    });
+                                    html += `</div>`;
+                                } else {
+                                    html += `<span>${q.selected || '-'}</span>`;
+                                }
+                                html += `</div>`;
+                            });
+
+                            formContainer.innerHTML = html;
+
+                            // Рендер кнопок
+                            renderButtons(editMode);
+                        }
+
+                        // Функция рендера кнопок
+                        function renderButtons(editMode) {
+                            let buttons = "";
+                            if (editMode) {
+                                buttons = `
+                                    <button type="button" class="blue_btn" onclick="saveForm()">Продолжить</button>
+                                `;
+                            } else {
+                                buttons = `
+                                    <button type="button" class="blue_btn" onclick="editForm()">Редактировать</button>
+                                    <button type="submit" class="blue_btn">Продолжить</button>
+                                `;
+                            }
+                            buttonContainer.innerHTML = buttons;
+                        }
+
+                        // Функция сохранения данных формы
+                        function saveForm() {
+                            formData.address = document.getElementById('addressInput').value;
+                            formData.contact = document.getElementById('contactInput').value;
+
+                            formData.questions.forEach((q, index) => {
+                                const selected = document.querySelector(
+                                    `input[name="question${index}"]:checked`
+                                );
+                                q.selected = selected ? selected.value : "";
+                            });
+
+                            // Переключение в режим просмотра
+                            renderForm(false);
+                        }
+
+                        // Функция переключения в режим редактирования
+                        function editForm() {
+                            renderForm(true);
+                        }
+
+                        // Начальный рендер
+                        renderForm(true);
+                    </script>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

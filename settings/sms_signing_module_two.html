@@ -41,16 +41,7 @@
             </div>
         </div>
     </header>
-    <div class="search_error" id="popup">
-        <div class="popup_time_error">
-            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
-            <h3>Ошибка</h3>
-            <p>начиная c <span> 03.08.2024 </span> <span>02.09.2024 </span>включительно</p>
 
-            <p> У вас нет документов (возможно, требуется изменить <br> условия фильтра)</p>
-
-        </div>
-    </div>
     <div class="lk_content">
         <div class="wrapper">
             <div class="sidebar">
@@ -68,39 +59,32 @@
             </div>
             <div class="container">
                 <div class="lk_wrapper ">
-                    <div class="lk_title ">
-                        <h1>Расширенный поиск документов</h1>
-                        <p>Страница для удобного поиска нужных документов. Введите подробную информацию, чтобы получить наиболее подходящие результаты. </p>
+
+                    <div class="lk_title lk_title_upl lk_title_settings">
+                        <h1>Установка АПИ ключа "ПОДПИСАНИЕ ДОКУМЕНТОВ ПО СМС"</h1>
+                        <h2>Для СМС шлюза “Мобизон”</h2>
+                        <p> *В случае наличия у вас другого оператора для управления SMS - напишите нам в техподдержку </p>
+                        <p>Для отправки SMS-уведомлений вашим клиентам с целью подписания документов, мы используем сервис SMS-рассылок Mobizon. Настройка отправки SMS через Мобизон<br>На этой странице вы можете ввести API-ключ из вашего кабинета Мобизон
+
+                            <a class="mobizon_link" href="https://mobizon.kz/">(mobizon.kz)</a> для настройки отправки SMS через наш сервис. После регистрации у вас есть возможность отправить ссылки на подпись.<br>
+                            <br> Однако вам нужно будет пополнить баланс в Мобизон, чтобы продолжить отправку документов на подпись через SMS.<br> Убедитесь, что вы правильно скопировали и вставили API-ключ, чтобы обеспечить корректную работу отправки
+                            SMS. </p>
+
+                        <p>Как получить ключ АРІ для SMS на сайте Mobizon.kz</p>
+
+                        <p>1) Пройти регистрацию на сайте MOBIZON (<a href="">инструкция по регистрации</a>).<br> 2) Активировать работу с SMS через АРІ (<a href="">инструкция по активации</a>).<br> 3) Полученный ключ АРІ сохранить в окошке ниже.
+                        </p>
+                        <form class="email_binding_form" action="">
+                            <label for="">АПИ ключ с Мобизон</label>
+                            <div class="input_box_email">
+                                <input type="password" placeholder="********">
+
+
+                            </div>
+                            <button class="blue_btn">Сохранить</button>
+                        </form>
                     </div>
-                    <form action="" class="search_form">
-                        <h3>Укажите параметры для поиска документа</h3>
-                        <div class="period">
-                            <p>Период:</p>
-                            <input type="date" name="" id="">
-                            <input type="date" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Номер документа</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Название документа</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">БИН/ИИН подписанта</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Референс экспорта</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Номер пакета</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <button type="submit" id="findButton">Найти</button>
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -108,7 +92,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/modal.js"></script>
+
     <script src="../js/main.js"></script>
 
 </body>

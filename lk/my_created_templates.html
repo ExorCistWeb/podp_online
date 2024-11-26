@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/lk.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="search_error popup">
+        <div class="popup_time_error popup_delete_alert">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Подтвердите действие</h3>
+            <p>Подтвердить удаление?</p>
+
+            <div class="delete_my_templates_flex">
+                <button class="red_btn no_delete">отмена</button>
+                <button class="blue_btn ">удалить</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+                    <div class="ready_templates">
+                        <a href="">Готовые <br>
+                            шаблоны</a>
+                        <a href="">Создать<br>
+                            шаблон</a>
+                        <a class="active" href="">Мои созданные<br> 
+                            шаблоны</a>
+                        <a href="">Шаблоны <br>
+                            голосовании</a>
+                    </div>
+                    <div class="lk_title lk_title_upl">
+                        <h1>Созданные вами шаблоны</h1>
+
+                        <p> В этом разделе вы можете просматривать, редактировать и управлять уже созданными шаблонами документов.<br> Используйте их для быстрого подписания документов с клиентами, что поможет сэкономить время и упростить вашу работу. Все
+                            готовые шаблоны всегда под рукой!</p>
+
+                        <p class="black_text">Шаблоны созданны для ИИН / БИН: <span>0000000000</span></p>
+                    </div>
+                    <div class="created_templates">
+                        <h2>Шаблон No. 333</h2>
+                        <h2 class="my_c_t_name">Название: <span>Тут могла бы быть ваша реклама :)</span></h2>
+                        <h2>Ссылка:</h2>
+                        <a class="link_my_templates" href="https://podpishi.kz/v.php?pp1=383_e669aef1705d8053bf56722ca7aeeb2d63953b3b">https://podpishi.kz/v.php?pp1=383_e669aef1705d8053bf56722ca7aeeb2d63953b3b</a>
+                        <div class="created_templates_button">
+                            <button class="blue_btn">редактировать</button>
+                            <button class="deleted_btn red_btn">удалить</button>
+                        </div>
+                    </div>
+                    <div class="created_templates">
+                        <h2>Шаблон No. 333</h2>
+                        <h2 class="my_c_t_name">Название: <span>Тут могла бы быть ваша реклама :)</span></h2>
+                        <h2>Ссылка:</h2>
+                        <a class="link_my_templates" href="https://podpishi.kz/v.php?pp1=383_e669aef1705d8053bf56722ca7aeeb2d63953b3b">https://podpishi.kz/v.php?pp1=383_e669aef1705d8053bf56722ca7aeeb2d63953b3b</a>
+                        <div class="created_templates_button">
+                            <button class="blue_btn">редактировать</button>
+                            <button class="deleted_btn red_btn">удалить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Показать окно при нажатии на кнопку "Удалить"
+        document.querySelectorAll('.deleted_btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // предотвращаем действия по умолчанию
+                document.querySelectorAll('.popup').forEach(popup => {
+                    popup.style.display = 'flex'; // открываем все элементы с классом .popup
+                });
+            });
+        });
+
+        // Закрытие окна при нажатии на крестик
+        document.querySelectorAll('.close_popup').forEach(closeButton => {
+            closeButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                this.closest('.popup').style.display = 'none'; // закрываем родительское модальное окно
+            });
+        });
+        document.querySelectorAll('.no_delete').forEach(closeButton => {
+            closeButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                this.closest('.popup').style.display = 'none'; // закрываем родительское модальное окно
+            });
+        });
+        // Закрытие окна при нажатии на фон
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.addEventListener('click', function(event) {
+                if (event.target === this) { // проверяем, что кликнули именно по фону
+                    this.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="stylesheet" href="../css/lk.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="search_error popup">
+        <div class="popup_time_error popup_delete_alert">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Подтвердите действие</h3>
+            <p>Подтвердить удаление?</p>
+
+            <div class="delete_my_templates_flex">
+                <button class="red_btn no_delete">отмена</button>
+                <button class="blue_btn ">удалить</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+
+                    <div class="lk_title lk_title_upl">
+                        <h2>Шаблон документа: Кредитный договор <br> от <span>ТОО “SMART PAY”  БИН/ИИН 234322765783</span></h2>
+
+                        <p>Ваш партнёр просит вас заполнить данные для подготовки финального документа перед его подписанием, чтобы автоматизировать процесс оформления и сократить время на создание документа. Заполнение полей важно по нескольким причинам:</p>
+                        <ul class="ul_acc_info">
+                            <li>
+                                <p>Точность информации: Правильное внесение ваших данных гарантирует, что финальный документ будет содержать актуальную и корректную информацию, соответствующую договорённостям между вами и вашим партнёром. Это особенно важно
+                                    для юридически значимых документов, где ошибки могут привести к недоразумениям или юридическим последствиям.</p>
+                            </li>
+                            <li>
+                                <p>Автоматизация: Заполнение полей позволяет системе автоматически сгенерировать документ, что снижает риск ошибок при ручном вводе данных и ускоряет процесс оформления.</p>
+                            </li>
+                            <li>
+                                <p>Удобство подписания: После заполнения и формирования документа, он будет готов к подписанию в электронном виде, что избавляет от необходимости собирать подписи в офлайн-формате и экономит время.</p>
+                            </li>
+                            <li>
+                                <p>Юридическая значимость: Документ, сформированный и подписанный через систему, является юридически значимым. Это обеспечивает его законную силу, и вы можете быть уверены, что все данные будут зафиксированы в надлежащем порядке.</p>
+                            </li>
+                        </ul>
+                        <p>
+                            Заполнив поля, вы ускорите процесс заключения сделки или соглашения и сможете перейти к следующему шагу — подписанию документа с вашей ЭЦП.
+                        </p>
+                    </div>
+                    <h2 class="ext_sig_h2">Данные подписанта</h2>
+                    <form action="" class="voting_templates_form external_signatory_form">
+                        <label for="">Фамилия, имя, отчество </label>
+                        <input type="text">
+                        <label for="">* Должность подписанта</label>
+                        <input type="text">
+                        <label for="">* Расчетный счет(IBAN)</label>
+                        <input type="text">
+                        <label for="">* Адрес</label>
+                        <input type="text">
+                        <label for="">Номер/серия документа, удостоверяющего личность</label>
+                        <input type="text">
+
+
+
+                        <button class="blue_btn next_btn">Продолжить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

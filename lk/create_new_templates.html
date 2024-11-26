@@ -41,16 +41,7 @@
             </div>
         </div>
     </header>
-    <div class="search_error" id="popup">
-        <div class="popup_time_error">
-            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
-            <h3>Ошибка</h3>
-            <p>начиная c <span> 03.08.2024 </span> <span>02.09.2024 </span>включительно</p>
 
-            <p> У вас нет документов (возможно, требуется изменить <br> условия фильтра)</p>
-
-        </div>
-    </div>
     <div class="lk_content">
         <div class="wrapper">
             <div class="sidebar">
@@ -68,38 +59,33 @@
             </div>
             <div class="container">
                 <div class="lk_wrapper ">
-                    <div class="lk_title ">
-                        <h1>Расширенный поиск документов</h1>
-                        <p>Страница для удобного поиска нужных документов. Введите подробную информацию, чтобы получить наиболее подходящие результаты. </p>
+
+                    <div class="lk_title lk_title_upl">
+                        <h1>Создание шаблона документа</h1>
+                        <p>Вы создаете шаблон документа для <span>ТОО СМАРТ ПЕЙ БИН/ИИН 290384023984</span> </p>
+                        <p>Внимательно подойдите по процессу создания шалона, так как правильно созданный и настроенный шаблон позволит вам быстро генерировать документы без необходимости повторного ввода одних и тех же данных. Это сэкономит время, уменьшит
+                            вероятность ошибок и сделает процесс оформления документов более эффективным. </p>
+
                     </div>
-                    <form action="" class="search_form">
-                        <h3>Укажите параметры для поиска документа</h3>
-                        <div class="period">
-                            <p>Период:</p>
-                            <input type="date" name="" id="">
-                            <input type="date" name="" id="">
+                    <form action="">
+                        <div class="create_new_templates">
+                            <p>Введите название шаблона, для вашего добства и дальнейшей работы с ним</p>
+                            <input type="text" name="" id="" placeholder="Например: Договор аренды">
                         </div>
-                        <div class="search_input">
-                            <label for="">Номер документа</label>
-                            <input type="text" name="" id="">
+                        <div class="create_new_templates">
+                            <p>Введите описание шаблона (текст отображается при переходе клиента по ссылке шаблона), чтобы клиентам было понятно что это за документ, от кого он и для чего предназначен:</p>
+                            <textarea name="" id=""></textarea>
                         </div>
-                        <div class="search_input">
-                            <label for="">Название документа</label>
-                            <input type="text" name="" id="">
+                        <h2>Пользовательские поля шаблона:</h2>
+                        <div class="create_new_templates">
+                            <div class="create_new_templates_box">
+                                <label for=""></label>
+                                <input type="text">
+                                <div class="create_new_templates_box_check">
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="search_input">
-                            <label for="">БИН/ИИН подписанта</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Референс экспорта</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="search_input">
-                            <label for="">Номер пакета</label>
-                            <input type="text" name="" id="">
-                        </div>
-                        <button type="submit" id="findButton">Найти</button>
                     </form>
                 </div>
             </div>
@@ -108,7 +94,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/modal.js"></script>
+
     <script src="../js/main.js"></script>
 
 </body>
