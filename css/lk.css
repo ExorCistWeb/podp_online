@@ -68,7 +68,6 @@
 }
 
 .nav {
-    display: flex;
     align-items: center;
     position: relative;
 }
@@ -94,6 +93,15 @@ header {
     min-width: 262px;
 }
 
+.sidebar_mobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
 .top_sidebar,
 .bottom_sidebar {
     display: flex;
@@ -114,7 +122,8 @@ header {
     padding: 56px 70px 100px 54px;
 }
 
-.sidebar a {
+.sidebar a,
+.sidebar_mobile a {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
@@ -235,7 +244,8 @@ p {
 }
 
 .acc_info_box p {
-    width: 310px;
+    width: 100%;
+    max-width: 310px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
@@ -536,6 +546,8 @@ p {
 .input_checkbox_qr input {
     width: 15px;
     height: 15px;
+    min-width: 15px;
+    min-height: 15px;
 }
 
 .input_checkbox_qr label {
@@ -770,7 +782,8 @@ p {
     color: #FFFFFF;
     background: #235DCF;
     border-radius: 8px;
-    width: 290px;
+    width: 100%;
+    max-width: 290px;
     height: 63px;
     display: flex;
     align-items: center;
@@ -781,6 +794,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center;
 }
 
 .view_sidebar_cont_two a {
@@ -1298,7 +1312,7 @@ p {
     width: 252px;
     right: 0;
     top: 60px;
-    height: 198px;
+    min-height: 198px;
     background: #FFFFFF;
     box-shadow: 4px 4px 5.3px rgba(0, 0, 0, 0.25);
     border-radius: 0px 0px 5px 5px;
@@ -2281,4 +2295,71 @@ table.voting_templ_table {
 
 .lk_title_settings_gap60 {
     gap: 60px;
+}
+
+.company_employees_table tr {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 164%;
+    /* or 26px */
+    color: #4F4F4F;
+}
+
+.company_employees_table td {
+    padding: 5px 0;
+}
+
+.export_data {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.export_data_flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.export_data_flex input {
+    height: 44px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    filter: drop-shadow(1px 1px 7.4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+    min-width: 205px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(79, 79, 79, 1);
+}
+
+.export_data_flex input::placeholder {
+    color: rgba(79, 79, 79, 0.31);
+}
+
+.export_btn {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    min-height: 63px;
 }
