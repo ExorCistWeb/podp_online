@@ -175,6 +175,7 @@
         .acc_info_box p {
             text-align: center;
             margin-top: -5px;
+            max-width: unset;
         }
         .acc_info_box {
             padding: 10px 15px;
@@ -270,7 +271,8 @@
         .upload-button,
         .next_blue_btn,
         .view_create_new_btn button,
-        .template_introduction_btn a {
+        .template_introduction_btn a,
+        .input_box_tarif_form_btn_flex button {
             font-size: 14px;
             height: 43px;
             width: 100%;
@@ -459,6 +461,49 @@
             flex-direction: column;
             gap: 20px;
             margin: 0;
+        }
+        .contract_lk_info h2 {
+            font-size: 16px;
+            word-break: unset;
+            padding-bottom: 10px;
+        }
+        .contract_lk_info h2 span {
+            font-size: 16px;
+        }
+        .tarif_title {
+            flex-direction: column;
+            gap: 0;
+            align-items: start;
+        }
+        .tarif_form select {
+            width: 100%;
+        }
+        .tarif_form_input_content {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .acc_info_box_view {
+            flex-direction: column;
+            align-items: start;
+        }
+        .acc_info_box_view .acc_info_flex,
+        .acc_info_box_view .acc_info_flex h3 {
+            align-items: start;
+            text-align: start;
+            width: auto;
+        }
+        .input_box_tarif_form_btn_flex {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .input_box_tarif_form_btn_flex button {
+            margin: 0;
+        }
+        .view_sidebar_cont {
+            min-width: unset;
+            width: 100%;
         }
     }
     

@@ -732,6 +732,7 @@ p {
     box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 47px 32px;
+    min-width: 371px;
 }
 
 .view_document_btns {
@@ -771,6 +772,26 @@ p {
 }
 
 .view_document_btns button {
+    padding-top: 2px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    /* identical to box height, or 18px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #235DCF;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 290px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view_document_btns a {
     padding-top: 2px;
     font-family: 'Montserrat';
     font-style: normal;
@@ -2784,4 +2805,159 @@ table.voting_templ_table {
     background: #4F4F4F;
     width: 100%;
     height: 750px;
+}
+
+.contract_lk_info h2 {
+    font-size: 20px;
+    word-break: break-all;
+}
+
+.contract_lk_info h2 span {
+    font-size: 20px;
+}
+
+.tarif_title {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 40px 0 20px;
+}
+
+.tarif_title h2 {
+    margin: 0;
+}
+
+.tarif_title a {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    text-decoration-line: underline;
+    color: #235DCF;
+    margin: 0;
+}
+
+.final_price_h3 {
+    margin-top: 20px;
+}
+
+.tarif_form select {
+    width: 262px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 20px;
+    background: rgba(35, 93, 207, 0.06);
+    border: 1px solid rgba(79, 79, 79, 0.11);
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 124%;
+    /* identical to box height, or 20px */
+    color: #4F4F4F;
+}
+
+.account_lk_info_form h2 {
+    font-size: 22px;
+}
+
+.tarif_form_input_content {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.input_box_tarif_form label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 124%;
+    /* or 20px */
+    color: rgba(79, 79, 79, 0.42);
+    margin-bottom: 5px;
+    display: flex;
+}
+
+.input_box_tarif_form input {
+    background: rgba(35, 93, 207, 0.06);
+    border: 1px solid rgba(79, 79, 79, 0.11);
+    border-radius: 6px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 370px;
+}
+
+.input_box_tarif_form,
+.left_tarif_form,
+.center_tarif_form,
+.right_tarif_form {
+    width: 100%;
+    max-width: 370px;
+}
+
+.left_tarif_form,
+.center_tarif_form,
+.right_tarif_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tarif_form_next {
+    border-radius: 8px;
+    width: 100%;
+    max-width: 290px;
+    min-width: 290px;
+    height: 63px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFFFFF;
+    background: #235DCF;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.input_box_tarif_form h4 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 124%;
+    /* identical to box height, or 20px */
+    color: #4F4F4F;
+}
+
+.input_box_tarif_form_btn_flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.acc_info_box_view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.acc_info_box_view .acc_info_flex {
+    flex-direction: column;
+    gap: 5px;
+    align-items: start;
 }
