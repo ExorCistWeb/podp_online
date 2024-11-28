@@ -1049,6 +1049,28 @@ p {
     margin-top: 5px;
 }
 
+.search_input textarea {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 140px;
+    background: rgba(35, 93, 207, 0.06);
+    border: 1px solid rgba(79, 79, 79, 0.11);
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    color: rgba(79, 79, 79, 1);
+    margin-top: 5px;
+    resize: none;
+}
+
 .search_input label {
     font-family: 'Montserrat';
     font-style: normal;
