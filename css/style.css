@@ -1219,6 +1219,7 @@ footer {
     text-transform: uppercase;
     color: #FFFFFF;
     cursor: pointer;
+    min-width: 230px;
 }
 
 .href_ios {
