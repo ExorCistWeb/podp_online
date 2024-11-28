@@ -237,7 +237,8 @@
         .voting_templates_form label,
         .link_my_templates,
         .search_input label,
-        .input_box label {
+        .input_box label,
+        .create_new_templates label {
             font-size: 14px;
         }
         .created_templates h2 {
@@ -265,7 +266,11 @@
         .export_btn,
         .sms_module_three_btn,
         .sms_document_btn,
-        .create_btn {
+        .create_btn,
+        .upload-button,
+        .next_blue_btn,
+        .view_create_new_btn button,
+        .template_introduction_btn a {
             font-size: 14px;
             height: 43px;
             width: 100%;
@@ -409,9 +414,63 @@
         .lk_title_settings ul li p span {
             font-size: 14px;
         }
+        header {
+            padding: 25px 25px;
+        }
+        .delete_my_templates_flex {
+            align-items: center;
+            justify-content: center;
+        }
+        .create_new_templates_box_check {
+            flex-direction: column;
+            align-items: start;
+        }
+        .upload-container {
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+        }
+        .upload-button {
+            margin: 0;
+        }
+        .create_new_templates input::placeholder {
+            font-size: 14px;
+        }
+        .create_new_templates_gap {
+            padding: 20px 15px;
+        }
+        .view_create_info {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .view_create_info_p,
+        .view_create_info_print {
+            width: 100%;
+            padding: 0;
+        }
+        .view_create_new_btn {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .doc_view_template {
+            height: 500px;
+        }
+        .template_introduction_btn {
+            flex-direction: column;
+            gap: 20px;
+            margin: 0;
+        }
     }
     
     @media (max-width:440px) {
+        .lk_content h2 {
+            margin: 0;
+        }
+        .size_qr {
+            flex-direction: column;
+            gap: 20px;
+            align-items: start;
+        }
         header {
             padding: 25px 25px;
         }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lk.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+
+                    <div class="lk_title lk_title_upl">
+                        <h1>Шаблон типовых документов</h1>
+                        <p>Вы создаете шаблон документа для ТОО СМАРТ ПЕЙ БИН/ИИН <span>290384023984</span></span>
+                        </p>
+                        <p>Проверьте введенные данные:</p>
+                        <p class="error">При обнаружении ошибки нажмите на кнопку “Редактировать”</p>
+
+                    </div>
+                    <form action="" id="create_new_templates">
+                        <div class="create_new_templates">
+                            <div class="view_create_info">
+                                <div class="view_create_info_p">
+                                    <p>Название шаблона:</p>
+                                </div>
+                                <div class="view_create_info_print">
+                                    <p>Шаблон 92082389г4</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h2>Пользовательские поля шаблона:</h2>
+                        <div class="create_new_templates create_new_templates_gap">
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Наименование поля field_1</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p>34545</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Наименование поля field_2</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p>34545</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Наименование поля field_3</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p>34545</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Обязательные поля шаблона:</h2>
+                        <div class="create_new_templates create_new_templates_gap">
+
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Фамилия, имя, отчество подписанта [${fio}]</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p class="green">обязательное поле</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Должность подписанта [${dolgnost}]</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p class="green">обязательное поле</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Название документа, на основании которого действует подписант [${osnovanie}]</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p class="green">обязательное поле</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <h2>Общие параметры интерфейса:</h2>
+                        <div class="create_new_templates create_new_templates_gap">
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Текстовое обозначение, которое добавляется к номеру документа:</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p class="green">обязательное поле</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Расширенный языковой интерфейс</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <input type="checkbox" name="" id="" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create_new_templates_box">
+                                <div class="input_create_new">
+                                    <div class="view_create_info">
+                                        <div class="view_create_info_p">
+                                            <p>Шаблон названия документа, которое отобразится после создания документа</p>
+                                        </div>
+                                        <div class="view_create_info_print">
+                                            <p class="green">обязательное поле</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="view_create_new_btn">
+                            <button class="red_btn">редактировать</button>
+                            <button class="blue_btn next_blue_btn">продолжить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
