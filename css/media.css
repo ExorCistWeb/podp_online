@@ -535,6 +535,9 @@
         .my_tarif_link {
             font-size: 14px;
         }
+        .lk_header nav {
+            margin-left: 0;
+        }
     }
     
     @media (max-width:440px) {

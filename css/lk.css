@@ -10,6 +10,10 @@
     gap: 15px;
 }
 
+.lk_header nav {
+    margin-left: 30px;
+}
+
 .lk_header_form input {
     height: 44px;
     padding: 0 12px;
