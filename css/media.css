@@ -272,7 +272,9 @@
         .next_blue_btn,
         .view_create_new_btn button,
         .template_introduction_btn a,
-        .input_box_tarif_form_btn_flex button {
+        .input_box_tarif_form_btn_flex button,
+        .agreemetn_lk_flex button,
+        .agreemetn_lk_flex_tarif a {
             font-size: 14px;
             height: 43px;
             width: 100%;
@@ -504,6 +506,34 @@
         .view_sidebar_cont {
             min-width: unset;
             width: 100%;
+        }
+        .agreemetn_lk_flex {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .tarif_link_dop {
+            font-size: 14px;
+        }
+        .link_tarif {
+            flex-direction: column;
+            font-size: 14px;
+        }
+        .acc_info_box_tarif_box {
+            padding: 0;
+            align-items: start;
+        }
+        .acc_info_box_tarif_box .acc_info_flex {
+            align-items: start;
+        }
+        .acc_info_box_tarif_box .acc_info_flex h3 {
+            width: auto;
+        }
+        .my_tarif_info {
+            flex-direction: column;
+            align-items: start;
+        }
+        .my_tarif_link {
+            font-size: 14px;
         }
     }
     

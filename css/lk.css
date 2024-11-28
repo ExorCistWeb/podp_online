@@ -2961,3 +2961,182 @@ table.voting_templ_table {
     gap: 5px;
     align-items: start;
 }
+
+.agreemetn_lk {
+    margin: 20px 0 50px;
+}
+
+.agreemetn_lk_flex {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+}
+
+.agreemetn_lk_flex button,
+.agreemetn_lk_flex a {
+    border-radius: 8px;
+    width: 100%;
+    max-width: 290px;
+    min-width: 290px;
+    height: 63px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFFFFF;
+    background: #235DCF;
+}
+
+.lk_title_upl_pay {
+    margin-top: 30px;
+}
+
+.blue_p {
+    color: #235DCF;
+    text-decoration: none;
+}
+
+.tarif_link_dop {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 113%;
+    /* identical to box height, or 23px */
+    text-decoration-line: underline;
+    color: #2D2D2D;
+}
+
+.acc_info_box_tarif {
+    margin-top: 20px;
+}
+
+.acc_info_box_tarif_box {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.acc_info_box_tarif_box span {
+    width: 262px;
+    height: 46px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    background: rgba(35, 93, 207, 0.06);
+    border: 1px solid rgba(79, 79, 79, 0.11);
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    color: #4F4F4F;
+}
+
+.acc_info_box_tarif_box h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.link_tarif {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 113%;
+    /* identical to box height, or 23px */
+    text-decoration-line: underline;
+    color: #2D2D2D;
+    margin-top: 60px;
+    display: flex;
+    gap: 5px;
+}
+
+.link_tarif a {
+    color: #235DCF;
+    text-decoration: none;
+}
+
+.agreemetn_lk_flex_tarif {
+    margin-top: 60px;
+    justify-content: start;
+}
+
+.my_tarif_box ul {
+    padding-left: 20px;
+}
+
+.my_tarif_box ul li {
+    list-style: disc;
+}
+
+.my_tarif_box {
+    width: 100%;
+    max-width: 630px;
+}
+
+.my_tarif_btn {
+    border-radius: 8px;
+    width: 100%;
+    max-width: 290px;
+    min-width: 290px;
+    height: 63px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFFFFF;
+    background: #235DCF;
+    margin-top: 30px;
+}
+
+.itog_my_tarif {
+    margin-top: 30px;
+}
+
+.my_tarif_link {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 113%;
+    /* identical to box height, or 23px */
+    text-decoration-line: underline;
+    color: #235DCF;
+}
+
+.my_tarif_info {
+    align-items: center;
+    display: flex;
+    gap: 40px;
+}
+
+.radio_tarif {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio_info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lk.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <div class="search_header">
+                            <button>Поиск </button>
+                            <a href=""><img src="../img/settings.png" alt=""></a>
+                        </div>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href="#"><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                    <div class="sidebar_mobile">
+                        <div class="top_sidebar">
+                            <a href="" class="active">Личный кабинет</a>
+                            <a href="">Загрузить</a>
+                            <a href="">Мои документы</a>
+                            <a href="">Шаблоны</a>
+                            <a href="">Настройки</a>
+                        </div>
+                        <div class="bottom_sidebar">
+                            <a href="">Заключить договор</a>
+                            <a href="">Мой тариф</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper">
+                    <div class="lk_title">
+                        <h1>Пакет услуг “ПОДПИШИ.ОНЛАЙН”</h1>
+                        <a href="" class="my_tarif_link">Дополнительный обьем по хранению</a>
+                        <h3>Дополнительный обьем хранения в облаке к пакету GOLD</h3>
+                        <form action="">
+                            <div class="my_tarif_info">
+                                <div class="my_tarif_box">
+                                    <p>Дополнительное место в облаке — расширьте свои возможности! Если ваше облачное хранилище заполнилось и вы не можете более загружать документы? То, теперь это не проблема! Мы предлагаем легко увеличить объем доступного
+                                        пространства для хранения ваших документов.</p>
+                                    <p>Что вы получаете?</p>
+                                    <ul>
+                                        <li>
+                                            <p>Дополнительное место к существующему объему.</p>
+                                        </li>
+                                        <li>
+                                            <p>Мгновенное расширение хранилища без прерывания работы.</p>
+                                        </li>
+                                        <li>
+                                            <p>Безопасное хранение данных с доступом из любого места.</p>
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        Как это сделать?<br> 1. Выберите подходящий обьем для увеличения места. <br> 2. Оплатите покупку — и ваше хранилище будет мгновенно расширено. <br> Не ограничивайте себя — расширяйте облако и продолжайте хранить
+                                        важные файлы без ограничений!
+                                    </p>
+                                </div>
+                                <div class="radio_tarif">
+                                    <div class="radio_info">
+                                        <input type="radio" name="tarif" id="10gb" value="10 000">
+                                        <label for="10gb">10 Гб</label>
+                                    </div>
+                                    <div class="radio_info">
+                                        <input type="radio" name="tarif" id="50gb" value="50 000">
+                                        <label for="50gb">50 Гб</label>
+                                    </div>
+                                    <div class="radio_info">
+                                        <input type="radio" name="tarif" id="100gb" value="100 000">
+                                        <label for="100gb">100 Гб</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="itog_my_tarif">
+                                <h3>Итого сумма: <span id="total_price">0</span> тенге</h3>
+                                <button class="blue_btn my_tarif_btn">Получить счет</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const radios = document.querySelectorAll('input[name="tarif"]');
+            const totalPriceElement = document.getElementById('total_price');
+
+            radios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    totalPriceElement.textContent = radio.value;
+                });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../js/modal.js"></script>
+        <script src="../js/main.js"></script>
+</body>
+
+</html>
