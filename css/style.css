@@ -2541,6 +2541,10 @@ thead tr th:last-child {
     margin: 0 auto;
 }
 
+.mobile_tarif {
+    display: none;
+}
+
 .package-table {
     min-width: 1920px;
     max-width: 1920px;
