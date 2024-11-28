@@ -2354,3 +2354,201 @@ p a {
     top: 20px;
     right: 20px;
 }
+
+.package-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.package-table th,
+.package-table td {
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 110%;
+    /* identical to box height, or 26px */
+    color: #4F4F4F;
+}
+
+.package-table th {}
+
+.name_line {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    /* or 32px */
+    text-align: center;
+    color: #235DCF;
+}
+
+thead tr {
+    background: #fff !important;
+}
+
+thead tr th {
+    position: relative;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    /* identical to box height, or 24px */
+    color: #4F4F4F;
+    text-align: center;
+}
+
+.hit {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* or 16px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FF626C;
+    transform: matrix(0.99, -0.1, 0.11, 0.99, 0, 0);
+    position: absolute;
+    width: 166.99px;
+    height: 41.46px;
+    background: #FFFFFF;
+    border: 1px solid #FF626C;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -25px;
+    left: 25px;
+}
+
+.free {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #FF626C;
+    border-radius: 12px;
+    transform: rotate(-6.2deg);
+    width: 206px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -25px;
+    left: 30px;
+}
+
+.package-table tr:nth-child(even) {
+    background: #fff;
+}
+
+.package-table tr {
+    background: rgba(35, 93, 207, 0.06);
+}
+
+tbody tr td:nth-child(1) {
+    text-align: start;
+    padding-left: 150px;
+}
+
+.package-table tr td:last-child {
+    padding-right: 150px;
+}
+
+thead tr th:last-child {
+    padding-right: 150px;
+}
+
+#tarif_price {
+    padding: 100px 0;
+}
+
+#tarif_price h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 135%;
+    /* or 32px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #4F4F4F;
+    margin-bottom: 60px;
+}
+
+.info_red {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 113%;
+    /* or 16px */
+    text-align: center;
+    color: #FF0707;
+}
+
+.price_text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 113%;
+    /* or 27px */
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.price_text span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 113%;
+    /* or 17px */
+    text-align: center;
+    color: #4F4F4F;
+    text-decoration: line-through;
+}
+
+.table_link {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 113%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    display: flex;
+    width: 153px;
+    height: 29px;
+    align-items: center;
+    justify-content: center;
+    background: #FF626C;
+    border-radius: 14.93px;
+    margin: 0 auto;
+}
+
+.package-table {
+    min-width: 1920px;
+    max-width: 1920px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.tarif_price {
+    overflow-x: scroll;
+    padding-top: 50px;
+}
