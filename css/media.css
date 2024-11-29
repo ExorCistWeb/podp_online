@@ -147,7 +147,7 @@
         }
         .lk_wrapper h1 {
             font-size: 20px;
-            line-height: 110%;
+            line-height: 130%;
         }
         .lk_content .wrapper {
             padding: 0 25px;
@@ -174,7 +174,7 @@
             justify-content: start;
         }
         .acc_info_box p {
-            text-align: start;
+            text-align: sta;
             margin-top: -5px;
             max-width: unset;
         }
@@ -870,6 +870,9 @@
             display: flex;
             flex-direction: column;
             align-items: start;
+        }
+        .acc_info_flex {
+            gap: 5px;
         }
     }
     
