@@ -674,6 +674,7 @@
             /* or 27px */
             text-align: center;
             color: #4F4F4F;
+            margin-bottom: 10px;
         }
         .mobile_tarif_footer_cont {
             display: flex;
