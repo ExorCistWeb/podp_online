@@ -102,18 +102,31 @@
                                 </div>
                                 <div class="radio_tarif">
                                     <div class="radio_info">
-                                        <input type="radio" name="tarif" id="10gb" value="10 000">
+                                        <input type="radio" name="tarif" id="10gb" value="10000">
                                         <label for="10gb">10 Гб</label>
                                     </div>
                                     <div class="radio_info">
-                                        <input type="radio" name="tarif" id="50gb" value="50 000">
+                                        <input type="radio" name="tarif" id="50gb" value="50000">
                                         <label for="50gb">50 Гб</label>
                                     </div>
                                     <div class="radio_info">
-                                        <input type="radio" name="tarif" id="100gb" value="100 000">
+                                        <input type="radio" name="tarif" id="100gb" value="100000">
                                         <label for="100gb">100 Гб</label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="my_tarif_box my_tarif_box_news">
+                                <h3 class="my_tarif_link">Расширение поддежки сервиса</h3>
+                                <p>Мы в "Подпиши Онлайн" знаем, как важна качественная и оперативная поддержка, особенно когда речь идёт о вашем бизнесе. Поэтому мы расширяем нашу службу поддержки, чтобы сделать использование сервиса ещё более комфортным
+                                    для вас.</p>
+
+                            </div>
+                            <div class="tarif_comfort">
+                                <p>Выберите комфортный для вас уровень поддержки</p>
+                                <select name="support_level" id="support_level">
+                                    <option value="0">Email, Мессенджеры</option>
+                                    <option value="50000">Email, Мессенджеры, Телефонная поддержка</option>
+                                </select>
                             </div>
 
                             <div class="itog_my_tarif">
@@ -129,13 +142,33 @@
         <script>
             const radios = document.querySelectorAll('input[name="tarif"]');
             const totalPriceElement = document.getElementById('total_price');
+            const supportLevelSelect = document.getElementById('support_level');
 
+            // Обновляем итоговую сумму
+            function updateTotalPrice() {
+                // Получаем выбранный тариф (10 000, 50 000 или 100 000)
+                const selectedTarif = document.querySelector('input[name="tarif"]:checked');
+                const tarifValue = selectedTarif ? parseInt(selectedTarif.value) : 0;
+
+                // Получаем выбранное значение поддержки (0 или 50 000)
+                const supportLevelValue = parseInt(supportLevelSelect.value);
+
+                // Суммируем тариф и уровень поддержки
+                const totalPrice = tarifValue + supportLevelValue;
+
+                // Обновляем элемент с итоговой суммой
+                totalPriceElement.textContent = totalPrice.toLocaleString() + ' тенге';
+            }
+
+            // Добавляем обработчики событий для радио-кнопок
             radios.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    totalPriceElement.textContent = radio.value;
-                });
+                radio.addEventListener('change', updateTotalPrice);
             });
+
+            // Добавляем обработчик событий для select
+            supportLevelSelect.addEventListener('change', updateTotalPrice);
         </script>
+
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="../js/modal.js"></script>
