@@ -39,6 +39,7 @@ header {
 
 .lk_header_form input::placeholder {
     color: rgba(79, 79, 79, 0.31);
+    font-size: 14px;
 }
 
 .lk_header_form button {
@@ -1977,7 +1978,7 @@ p {
     line-height: 113%;
     /* or 23px */
     color: #4F4F4F;
-    width: 18%;
+    width: 100%;
 }
 
 .ready_templates a.active {
@@ -2579,12 +2580,18 @@ table.voting_templ_table {
     height: 52px;
 }
 
-.ready_templates {
+
+/* .ready_templates {
     flex-wrap: wrap;
-}
+} */
 
 .ready_templates_settings {
     text-align: center;
+    flex-wrap: wrap;
+}
+
+.ready_templates_settings a {
+    width: 18%;
 }
 
 .lk_title_settings p a {
@@ -3422,10 +3429,6 @@ table.voting_templ_table {
     margin: 0;
 }
 
-.final_price_h3 {
-    margin-top: 20px;
-}
-
 .tarif_form select {
     width: 262px;
     height: 46px;
@@ -3513,8 +3516,13 @@ table.voting_templ_table {
     text-align: center;
     color: #FFFFFF;
     background: #235DCF;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 0;
+}
+
+.acc_info_box p a {
+    font-weight: 600;
+    color: #235DCF;
+    text-decoration: none;
 }
 
 .input_box_tarif_form h4 {
@@ -3607,6 +3615,7 @@ table.voting_templ_table {
     border: none;
     box-shadow: none;
     padding: 0;
+    margin-top: 30px A;
 }
 
 .acc_info_box_tarif_box span {
@@ -3642,8 +3651,7 @@ table.voting_templ_table {
     text-decoration-line: underline;
     color: #2D2D2D;
     margin-top: 60px;
-    display: flex;
-    gap: 5px;
+    display: inline-block;
 }
 
 .link_tarif a {
@@ -3765,4 +3773,11 @@ table.voting_templ_table {
     background: rgba(35, 93, 207, 0.06);
     border: 1px solid rgba(79, 79, 79, 0.11);
     border-radius: 6px;
+}
+
+.new_flex {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    gap: 30px;
 }
