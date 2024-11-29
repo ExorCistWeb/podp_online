@@ -895,6 +895,9 @@
         .acc_info_flex {
             gap: 5px;
         }
+        .wrapper {
+            padding: 0 20px;
+        }
     }
     
     @media (max-width:440px) {
@@ -948,7 +951,7 @@
             line-height: 22.6px;
         }
         .wrapper {
-            padding: 0 40px;
+            padding: 0 20px;
         }
         .about_info {
             gap: 22px;
