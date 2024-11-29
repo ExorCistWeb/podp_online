@@ -1392,7 +1392,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    margin: 0 25px 0 20px;
+    margin: 0 25px 0 14px;
 }
 
 .table_line_process a,
@@ -3916,4 +3916,9 @@ table.voting_templ_table {
     align-items: center !important;
     padding: 10px !important;
     cursor: pointer;
+}
+
+.table_flexes,
+.box_flexes {
+    display: flex;
 }

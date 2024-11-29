@@ -785,6 +785,15 @@
             align-items: center;
             justify-content: center;
         }
+        .table_flexes {
+            align-items: start;
+            width: 100%;
+            padding-right: 40px;
+            justify-content: space-between;
+        }
+        .box_flexes {
+            align-items: start;
+        }
         .lk_filter .filter_btn,
         .labels_btn {
             text-align: start;
@@ -798,7 +807,7 @@
         }
         .lk_filter {
             gap: 20px;
-            align-items: start;
+            align-items: center;
             margin-top: 30px;
         }
         .labels_checkbox {
