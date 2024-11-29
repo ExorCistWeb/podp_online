@@ -2557,3 +2557,14 @@ thead tr th:last-child {
     overflow-x: scroll;
     padding-top: 50px;
 }
+
+.new_text {
+    text-decoration: none !important;
+    font-family: 'Montserrat';
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 198%;
+    /* identical to box height, or 24px */
+    color: #4F4F4F !important;
+}

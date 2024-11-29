@@ -2887,6 +2887,10 @@ table.voting_templ_table {
     gap: 60px;
 }
 
+.company_employees_table {
+    margin-top: 20px;
+}
+
 .company_employees_table tr {
     text-align: center;
     font-family: 'Montserrat';
@@ -2898,8 +2902,14 @@ table.voting_templ_table {
     color: #4F4F4F;
 }
 
+.company_employees_table th {
+    padding: 0 !important;
+    text-align: center !important;
+}
+
 .company_employees_table td {
-    padding: 5px 0;
+    padding: 5px 0 !important;
+    text-align: center !important;
 }
 
 .export_data {
