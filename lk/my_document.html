@@ -223,6 +223,7 @@
                             <div class="my_table_line">
                                 <div class="select_input">
                                     <input type="checkbox" name="" id="">
+                                    <label for="">Выбрать</label>
                                 </div>
                                 <div class="table_line_process">
                                     <a href="">
@@ -398,6 +399,7 @@
                 // Показываем модальное окно
                 if (targetModal) {
                     targetModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
                 }
             });
         });
@@ -409,24 +411,29 @@
                 const modal = this.closest('.modal_my');
                 if (modal) {
                     modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
                 }
             });
         });
-        // Закрытие модального окна при клике на крестик
+
+        // Закрытие модального окна при клике на крестик (другой элемент)
         document.querySelectorAll('.no_next').forEach(closeButton => {
             closeButton.addEventListener('click', function(event) {
                 event.preventDefault();
                 const modal = this.closest('.modal_my');
                 if (modal) {
                     modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
                 }
             });
         });
+
         // Закрытие модального окна при клике на фон
         document.querySelectorAll('.modal_my').forEach(modal => {
             modal.addEventListener('click', function(event) {
                 if (event.target === this) {
                     this.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
                 }
             });
         });

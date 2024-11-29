@@ -763,6 +763,100 @@
             align-items: center;
             justify-content: center;
         }
+        .lk_filter .filter_btn,
+        .labels_btn {
+            text-align: start;
+            color: #235DCF;
+        }
+        .lk_filter .filter_btn svg path,
+        .labels_btn svg path {
+            fill: #235DCF;
+            /* Неактивное состояние иконки */
+            transition: fill 0.3s ease-in-out;
+        }
+        .lk_filter {
+            flex-direction: column;
+            gap: 20px;
+            align-items: start;
+            margin-top: 30px;
+        }
+        .labels_checkbox {
+            left: 0;
+            top: 75px;
+        }
+        .labels_input_content {
+            left: 0;
+            top: 0;
+        }
+        .labels_input_flex {
+            flex-wrap: wrap;
+            align-items: start;
+        }
+        .my_table_top,
+        .my_table_top_flex {
+            flex-direction: column;
+            align-items: start;
+            gap: 15px;
+        }
+        .my_table_top_flex button {
+            max-width: 197px;
+            width: 100%;
+        }
+        .my_table_top .select_input {
+            display: none;
+        }
+        .my_table_line .select_input {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-direction: row;
+        }
+        .my_table_line {
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 20px 10px;
+            gap: 20px;
+        }
+        .my_table_content .my_table_line {
+            background: rgba(35, 93, 207, 0.21);
+        }
+        .my_table_content .my_table_line:nth-child(even) {
+            background: rgba(255, 98, 108, 0.24);
+        }
+        .my_table_line .select_input label {
+            display: flex;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 113%;
+            /* identical to box height, or 14px */
+            color: #4F4F4F;
+        }
+        .my_table_line * {
+            font-size: 12px !important;
+        }
+        .my_table_line_info {
+            margin: 0;
+            gap: 10px;
+        }
+        .document_indo_table {
+            gap: 30px;
+        }
+        .table_line_process a svg {
+            height: 14px !important;
+            width: 14px !important;
+        }
+        .table_line_process button svg {
+            width: 14px !important;
+        }
+        .flex_error_btn {
+            flex-direction: column;
+            gap: 20px;
+        }
+        .modal_my .popup_time_error {
+            padding: 60px 20px;
+        }
     }
     
     @media (max-width:440px) {
