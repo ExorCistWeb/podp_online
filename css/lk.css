@@ -1267,38 +1267,54 @@ p {
     align-items: center;
     gap: 60px;
     margin: 20px 0;
+    position: relative;
 }
 
-.lk_filter button {
+.lk_filter .filter_btn,
+.labels_btn {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
-    /* identical to box height, or 18px */
-    color: #235DCF;
+    color: rgba(79, 79, 79, 0.39);
+    /* Неактивное состояние */
     background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.labels_btn {
-    transition: all .3s ease-in-out;
-    color: rgba(79, 79, 79, 0.39) !important;
-}
-
-.labels_btn:hover {
-    transition: all .3s ease-in-out;
-    color: #235DCF !important;
-}
-
-.labels_btn:hover svg path {
-    fill: #235DCF !important;
-}
-
+.lk_filter .filter_btn svg path,
 .labels_btn svg path {
-    transition: all .3s ease-in-out;
-    fill: rgba(79, 79, 79, 0.39) !important;
+    fill: rgba(79, 79, 79, 0.39);
+    /* Неактивное состояние иконки */
+    transition: fill 0.3s ease-in-out;
+}
+
+.lk_filter .filter_btn:hover,
+.labels_btn:hover {
+    color: #235DCF;
+}
+
+.lk_filter .filter_btn:hover svg path,
+.labels_btn:hover svg path {
+    fill: #235DCF;
+}
+
+
+/* Активное состояние */
+
+.lk_filter button.active,
+.labels_btn.active {
+    color: #235DCF;
+}
+
+.lk_filter button.active svg path,
+.labels_btn.active svg path {
+    fill: #235DCF;
 }
 
 .my_table_top {
@@ -1332,6 +1348,406 @@ p {
     border-radius: 3px;
 }
 
+.blue path {
+    fill: blue;
+}
+
+.red path {
+    fill: red;
+}
+
+.green path {
+    fill: green;
+}
+
+.yellow path {
+    fill: yellow;
+}
+
+.filter_cont_check_box.green {
+    color: #4F4F4F !important;
+}
+
+.my_table_top_flex button:disabled {
+    background: #A4A4A4;
+    cursor: not-allowed;
+}
+
+.my_table_top_flex button.active {
+    background: #235DCF;
+}
+
+.my_table_content {
+    margin-top: 25px;
+}
+
+.table_line_process {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0 25px 0 20px;
+}
+
+.table_line_process a,
+.table_line_process button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.my_table_line {
+    display: flex;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.members_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+}
+
+.col_vo {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+}
+
+.my_table_line_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+    gap: 5px;
+}
+
+.filter_doc,
+.labels_checkbox,
+.labels_input_content {
+    display: none;
+}
+
+.labels_input_content {
+    padding: 14px 18px 23px 20px;
+    position: absolute;
+    width: auto;
+    background: #EEF4FF;
+    box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.labels_input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.labels_input label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    line-height: 113%;
+    /* identical to box height, or 14px */
+    color: #4F4F4F;
+    margin-top: 5px;
+}
+
+.labels_input input,
+.labels_input select {
+    width: 254px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 113%;
+    /* identical to box height, or 14px */
+    color: rgba(79, 79, 79, 0.69);
+    padding: 0 10px;
+}
+
+.labels_input input:focus,
+.labels_input select:focus {
+    background: #fff;
+}
+
+.labels_input_flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.labels_input_flex .okay_btn,
+.labels_input_flex .no_btn {
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 17px;
+    background: rgba(79, 79, 79, 0.32);
+    border-radius: 3px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    margin: 0 !important;
+    line-height: 113%;
+    /* or 14px */
+    text-align: center;
+    color: rgba(79, 79, 79, 0.41);
+    transition: all ease .3s;
+}
+
+.labels_input_flex .okay_btn:hover,
+.labels_input_flex .no_btn:hover,
+.rename-buttons button:hover {
+    background: #235DCF;
+    color: #fff;
+    transition: all ease .3s;
+}
+
+.filter_doc {
+    padding: 32px 25px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    max-width: 328px;
+    background: #FFFFFF;
+    border: 1px solid rgba(35, 93, 207, 0.42);
+    box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.labels_checkbox {
+    padding: 32px 25px;
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    width: 100%;
+    max-width: 328px;
+    background: #FFFFFF;
+    border: 1px solid rgba(35, 93, 207, 0.42);
+    box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.filter_doc h3,
+.labels_checkbox button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+    margin-bottom: 15px;
+    background: none;
+}
+
+.filter_checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter_checkbox button {
+    margin: 0 !important;
+    align-items: center;
+}
+
+.filter_cont_check_box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter_cont_check_box input {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
+    cursor: pointer;
+}
+
+.filter_cont_check_box label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 113%;
+    cursor: pointer;
+    /* identical to box height, or 14px */
+    color: #4F4F4F;
+    word-break: break-all;
+}
+
+.filter_cont_check_box button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 113%;
+    padding: 0;
+    /* identical to box height, or 14px */
+    color: #4F4F4F !important;
+    word-break: break-all;
+    background: none !important;
+    outline: none;
+}
+
+.left_width {
+    width: 80px;
+}
+
+.document_indo_table {
+    display: flex;
+    gap: 50px;
+}
+
+.right_width {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.document_parametr {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.document_parametr span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    line-height: 113%;
+    /* or 11px */
+    color: rgba(79, 79, 79, 0.47);
+}
+
+.document_parametr_name {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.document_parametr_name h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* or 18px */
+    color: #4F4F4F;
+    text-align: start;
+}
+
+.left_width span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+}
+
+.right_width p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+}
+
+.document_parametr_podp {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+}
+
+.document_parametr_podp ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-left: 15px;
+}
+
+.document_parametr_podp ul li {
+    list-style: decimal;
+}
+
+.rename-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rename-buttons button {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 33px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 113%;
+    /* or 14px */
+    text-align: center;
+    color: rgba(79, 79, 79, 0.41);
+    background: rgba(79, 79, 79, 0.32);
+    border-radius: 3px;
+    text-transform: uppercase;
+    transition: all ease .3s;
+}
+
+.rename-input {
+    width: 100%;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+}
+
 .select_input {
     display: flex;
     flex-direction: column;
@@ -1343,6 +1759,133 @@ p {
     width: 21px;
     height: 21px;
     cursor: pointer;
+}
+
+.select_input span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 16px */
+    color: #4F4F4F;
+}
+
+.modal_my {
+    display: none;
+}
+
+.modal_my {
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    background: rgba(79, 79, 79, 0.69);
+}
+
+.popup_error .popup_time_error {
+    padding: 60px 50px !important;
+}
+
+.flex_error_btn {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.flex_error_btn button,
+.flex_error_btn a {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 113%;
+    /* identical to box height, or 18px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    height: 63px;
+    padding: 0 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #235DCF;
+    border-radius: 8px;
+}
+
+.popup_error .popup_time_error {
+    text-align: center !important;
+    align-items: center !important;
+}
+
+.popup_error .popup_time_error h3 {
+    color: #FF626C !important;
+    font-size: 24px !important;
+    text-align: center;
+}
+
+.popup_error .popup_time_error p {
+    text-align: center !important;
+}
+
+.modal_my .popup_time_error {
+    text-align: start;
+    align-items: start;
+    padding: 70px 100px;
+}
+
+.modal_my .popup_time_error h3 {
+    color: #235DCF;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 135%;
+    /* identical to box height, or 27px */
+}
+
+.modal_my .popup_time_error p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 135%;
+    /* identical to box height, or 22px */
+    color: #4F4F4F;
+    text-align: start;
+}
+
+.modal_my .popup_time_error a {
+    text-decoration: underline;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 135%;
+    /* identical to box height, or 22px */
+    color: #4F4F4F;
+    text-align: start;
+}
+
+.modal_my .popup_time_error h6 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 135%;
+    /* identical to box height, or 22px */
+    color: #4F4F4F;
+}
+
+.box_info_modal h6 {
+    margin-bottom: 8px;
 }
 
 .search_header {
