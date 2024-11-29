@@ -3539,6 +3539,7 @@ table.voting_templ_table {
     display: flex;
     align-items: center;
     gap: 20px;
+    margin-top: 30px;
 }
 
 .acc_info_box_view {
