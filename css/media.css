@@ -18,6 +18,16 @@
     @media (max-width:996px) {}
     
     @media (max-width:768px) {
+        .form_support {
+            flex-direction: column-reverse;
+        }
+        .support_form,
+        .note_section {
+            width: 100%;
+        }
+        .input_checkbox_qr p {
+            line-height: 130%;
+        }
         .modul_link_free {
             display: flex;
             flex-direction: column;
