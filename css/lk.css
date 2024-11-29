@@ -1496,6 +1496,25 @@ p {
     padding: 0 10px;
 }
 
+.signer_list {
+    width: 254px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 113%;
+    /* identical to box height, or 14px */
+    color: rgba(79, 79, 79, 0.69);
+    padding: 0 10px;
+    cursor: pointer;
+}
+
 .labels_input input:focus,
 .labels_input select:focus {
     background: #fff;

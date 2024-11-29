@@ -18,6 +18,10 @@
     @media (max-width:996px) {}
     
     @media (max-width:768px) {
+        .signer_list {
+            width: 100%;
+            max-width: 400px;
+        }
         .form_support {
             flex-direction: column-reverse;
         }
