@@ -3922,3 +3922,8 @@ table.voting_templ_table {
 .box_flexes {
     display: flex;
 }
+
+select {
+    appearance: none;
+    background: url(../img/arr.svg) 95% center no-repeat !important;
+}
