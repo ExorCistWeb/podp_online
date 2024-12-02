@@ -645,7 +645,7 @@ video.playing+.video-container::before {
     padding: 92px 0;
 }
 
-.free {
+#free .free {
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -654,7 +654,7 @@ video.playing+.video-container::before {
     gap: 22px;
 }
 
-.free h2 {
+#free .free h2 {
     /* попробуйте пакет GOLD 7 дней бесплатно */
     font-style: normal;
     font-weight: 600;
@@ -667,11 +667,11 @@ video.playing+.video-container::before {
     margin: 0;
 }
 
-.free h2 span b {
+#free .free h2 span b {
     color: #235DCF;
 }
 
-.free a {
+#free .free a {
     width: 301px;
     height: 63px;
     background: #FF626C;
@@ -687,7 +687,7 @@ video.playing+.video-container::before {
     color: #FFFFFF;
 }
 
-.free_span {
+#free .free_span {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
