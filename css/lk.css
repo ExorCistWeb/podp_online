@@ -1805,7 +1805,7 @@ p {
     top: 0;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     z-index: 9999;
@@ -2949,6 +2949,7 @@ table.voting_templ_table {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-top: 15px;
 }
 
 .export_data_flex input {

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lk.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <ol>
+                        <li><a href="">Особенности</a></li>
+                        <li><a href="">Тарифы</a></li>
+                        <li><a href="">API</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Попробовать</a></li>
+                        <li>
+                            <a class="header_exit_link" href=""><img src="../img/exit.svg" alt=""><span>Вход</span></a>
+                        </li>
+                    </ol>
+                    <div class="header_right">
+                        <a href="https://wa.me/message/XMV3IDTUD4DUA1">+7 708 812 98 76</a>
+                        <select name="language" id="language">
+                            <option selected>Русский</option>
+                            <option>Казакша</option>
+                            <option>English</option>
+                        </select>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+    <div class="modal_my" id="modal1">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+
+            <div class="modal_view_document">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal_my" id="modal2">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3 class="accept_blue">Вы успешное подписали <br> документ <span>№23485932</span></h3>
+
+
+
+        </div>
+    </div>
+    <section id="preview_info_mobile">
+        <div class="wrapper">
+            <h1>Страница для просмотра документа №34858934</h1>
+            <div class="preview_info">
+
+                <div class="head_prev_info">
+                    <p>Вы получили предложение ознакомиться и подписать документы </p>
+                    <p>
+                        от БИН/ИИН 234432345543<br> ФИО Мансуров Ерлан отправленый через сервис "Подпиши Онлайн". </p>
+
+                    <p> "Подпиши Онлайн" Это удобный и безопасный способ работы с документами в электронном формате.</p>
+                    <a class="open-modal" data-target="modal1">Посмотреть документ</a>
+                    <a href="">Загрузить архив с подписями</a>
+                </div>
+
+                <form class="preview_info_mobile_form" action="">
+                    <label for="">Введите код согласия:</label>
+                    <input type="text">
+
+                    <div class="btn_flex_prev_mob">
+                        <button class="open-modal" data-target="modal2">подписать документ</button>
+                        <button class="red_btn">отказ от документа</button>
+                    </div>
+                </form>
+                <div class="head_prev_info">
+                    <p>Информация о подписи документа <br> № 437382: <a style="text-decoration: none;" href="">название</a> </p>
+                    <p>Требуемое количество подписей: 2 шт., <span class="red_txt"> из них</span></p>
+
+                </div>
+                <div class="prev_info_box prev_info_box_red">
+                    <h6>Подписан No. 1</h6>
+                    <p>Данный документ не подписан вашим партнером КУНДАКБАЕВ ОЛЖАС БАЛХАШБАЕВИЧ </p>
+                </div>
+                <div class="prev_info_box prev_info_box_green">
+                    <h6>Подписан No. 2</h6>
+                    <p>Lorem ipsum dolor sit amet consectetur<br> adipisicing elit. Similique alias odio dolorem impedit accusamus facilis <br> <br> illo hic tempore. Dolore dolor quia sapiente<br> ratione laudantium quibusdam. Dignissimos nam eum possimus<br>                        veniam.
+                        <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, id rerum. At sit nam quae<br> quas, expedita assumenda officiis cupiditate, necessitatibus,<br> <br> voluptates esse hic optio praesentium illo suscipit. Officia,
+                        minus.
+                    </p>
+                </div>
+
+                <div class="footer_prev_info">
+                    <p>На основании вышеуказанной информации вы можете принять решение о дальнейшей работе с данным документом</p>
+                    <p><span class="red_txt">Внимание!</span> Информация об ЭЦП документа будет доступна к просмотру после подписания документов всеми сторонами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Открытие модального окна при клике на кнопку
+        document.querySelectorAll('.open-modal').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // предотвращаем действие по умолчанию (например, переход по ссылке)
+
+                const targetModalId = this.getAttribute('data-target'); // получаем ID целевого модального окна
+                const targetModal = document.getElementById(targetModalId);
+
+                // Показываем модальное окно
+                if (targetModal) {
+                    targetModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
+                }
+            });
+        });
+
+
+
+        // Закрытие модального окна при клике на фон
+        document.querySelectorAll('.modal_my').forEach(modal => {
+            modal.addEventListener('click', function(event) {
+                if (event.target === this) {
+                    this.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
