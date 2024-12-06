@@ -2695,13 +2695,14 @@ thead tr th:last-child {
 }
 
 .totable .totd {
-    padding: 15px 10px;
+    padding: 25px 15px;
 }
 
 .td_todt {
     display: flex;
     align-items: center;
     gap: 5px;
+    padding-left: 0;
 }
 
 .td_todt input {
