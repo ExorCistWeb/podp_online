@@ -149,6 +149,7 @@ function generateTableRow(data) {
                                         <span class="col_vo"><span class="signed"></span>/<span class="total"></span></span>
                                     </button>
                                 </div>
+                                  </div>
                                 <div class="my_table_line_info">
                                     <div class="document_indo_table">
                                         <div class="left_width">
@@ -188,7 +189,7 @@ function generateTableRow(data) {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                               
                                 
 `;
 tableContainer.appendChild(tableLine);
