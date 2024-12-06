@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/lk.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header">
+                <a href="index.html"><img src="../img/logo.svg" alt="Логотип"></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="nav">
+                    <form action="" class="lk_header_form">
+                        <input type="date" name="" id="">
+                        <input type="date" name="" id="">
+                        <input type="text" placeholder="Название документа">
+                        <input type="text" placeholder="БИН/ИИН подписанта">
+                        <button>Поиск <img src="../img/settings.png" alt=""></button>
+                    </form>
+                    <div class="lk_dropdown">
+                        <a href=""><span>ТОО Смартпей</span> <img src="../img/drop.png" alt=""></a>
+                        <div class="dropdown_box" style="display: none;">
+                            <p class="name">Кундакбаев Айжан Маратовна</p>
+                            <span class="iin_info">БИН/ИНН <span class="iin_number">098349820398</span></span>
+                            <hr>
+                            <a href="">Выход</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="modal_my" id="modal1">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Просмотр подписей</h3>
+            <p>Здесь показана информация о подписях</p>
+
+            <div class="box_info_modal">
+                <h6>Номер документа:</h6>
+                <p>34757834</p>
+            </div>
+            <div class="box_info_modal">
+                <h6>Название документа:</h6>
+                <a href="">Счет на оплату №637 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ... </a>
+            </div>
+            <div class="box_info_modal">
+                <h6>Требуемое количество подписей:</h6>
+                <p>2 шт.</p>
+            </div>
+            <div class="box_info_modal">
+                <h6>из них выполнено подписей:</h6>
+                <p>1 шт.</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal_my" id="modal2">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Уведемление по документу № 34757834 отправленно на БИН/ИИН 899844324543</h3>
+
+            <div class="box_info_modal">
+                <h6>Номер документа:</h6>
+                <p>34757834</p>
+            </div>
+            <div class="box_info_modal">
+                <h6>Название документа:</h6>
+                <a href="">Счет на оплату №637 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ... </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal_my popup_error" id="modal_error">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>У вас закончилось место в облаке</h3>
+            <p>Ваше свободное место для загрузки документов исчерпано. Пожалуйста, приобретите дополнительное место для продолжения работы.</p>
+            <div class="flex_error_btn">
+                <button class="no_next">Пропустить</button>
+                <a href="">Купить место</a>
+            </div>
+        </div>
+    </div>
+    <div class="lk_content">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <a href="" class="active">Личный кабинет</a>
+                    <a href="">Загрузить</a>
+                    <a href="">Мои документы</a>
+                    <a href="">Шаблоны</a>
+                    <a href="">Настройки</a>
+                </div>
+                <div class="bottom_sidebar">
+                    <a href="">Заключить договор</a>
+                    <a href="">Мой тариф</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="lk_wrapper ">
+                    <div class="lk_title lk_title_upl">
+                        <h1>Мои документы</h1>
+                        <p>На этой странице вы можете увидеть все ваши загруженные и подписанные документы. Удобный фильтр позволяет быстро находить нужные файлы и отслеживать их статус: активные, завершенные или ожидающие подписания. Вы также можете редактировать,
+                            удалять или отправлять документы на подпись прямо с этой страницы. Используйте фильтры и сортировку для упрощения навигации по вашим документам. </p>
+                    </div>
+                    <div class="lk_filter">
+                        <button class="filter_btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_1_1948)">
+                                <path d="M19.05 7.94118H1.95C1.69804 7.94118 1.45641 7.83892 1.27825 7.6569C1.10009 7.47488 1 7.228 1 6.97059C1 6.71317 1.10009 6.4663 1.27825 6.28428C1.45641 6.10226 1.69804 6 1.95 6H19.05C19.302 6 19.5436 6.10226 19.7218 6.28428C19.8999 6.4663 20 6.71317 20 6.97059C20 7.228 19.8999 7.47488 19.7218 7.6569C19.5436 7.83892 19.302 7.94118 19.05 7.94118ZM15.8833 12.4706H5.11667C4.86471 12.4706 4.62307 12.3683 4.44492 12.1863C4.26676 12.0043 4.16667 11.7574 4.16667 11.5C4.16667 11.2426 4.26676 10.9957 4.44492 10.8137C4.62307 10.6317 4.86471 10.5294 5.11667 10.5294H15.8833C16.1353 10.5294 16.3769 10.6317 16.5551 10.8137C16.7332 10.9957 16.8333 11.2426 16.8333 11.5C16.8333 11.7574 16.7332 12.0043 16.5551 12.1863C16.3769 12.3683 16.1353 12.4706 15.8833 12.4706ZM12.0833 17H8.91667C8.66471 17 8.42307 16.8977 8.24492 16.7157C8.06676 16.5337 7.96667 16.2868 7.96667 16.0294C7.96667 15.772 8.06676 15.5251 8.24492 15.3431C8.42307 15.1611 8.66471 15.0588 8.91667 15.0588H12.0833C12.3353 15.0588 12.5769 15.1611 12.7551 15.3431C12.9332 15.5251 13.0333 15.772 13.0333 16.0294C13.0333 16.2868 12.9332 16.5337 12.7551 16.7157C12.5769 16.8977 12.3353 17 12.0833 17Z" fill="#235DCF"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_1_1948">
+                                <rect width="20" height="20" fill="white"/>
+                                </clipPath>
+                                </defs>
+                            </svg>    
+                            <span>Фильтр</span>
+                        </button>
+                        <div class="filter_doc">
+                            <h3>Выберите</h3>
+                            <div class="filter_checkbox">
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="incoming" id="incoming">
+                                    <label for="incoming">Входящие</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="no_signatures" id="no_signatures">
+                                    <label for="no_signatures">Без подписей</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="signed_by_sender" id="signed_by_sender">
+                                    <label for="signed_by_sender">Подписан отправителем</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="signed_by_receiver" id="signed_by_receiver">
+                                    <label for="signed_by_receiver">Подписан получателем / партнером</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="signed_by_all" id="signed_by_all">
+                                    <label for="signed_by_all">Подписан всеми сторонами</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="deleted_documents" id="deleted_documents">
+                                    <label for="deleted_documents">Удаленные документы</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="refused_by_recipient" id="refused_by_recipient">
+                                    <label for="refused_by_recipient">Отказ получателя от подписания</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="partially_signed" id="partially_signed">
+                                    <label for="partially_signed">Частично подписаны</label>
+                                </div>
+                                <div class="filter_cont_check_box">
+                                    <input type="checkbox" name="view_and_read_only" id="view_and_read_only">
+                                    <label for="view_and_read_only">Только для просмотра и чтение</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="labels_btn" id="labelButton">
+                            <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.4688 8.38282H14.7821L11.6215 5.22227C11.4745 5.0747 11.2997 4.95769 11.1072 4.87798C10.9147 4.79827 10.7084 4.75743 10.5 4.75782H4.53125C4.11063 4.75782 3.70724 4.9249 3.40982 5.22233C3.1124 5.51975 2.94531 5.92314 2.94531 6.34375V22.7265C2.94561 23.1284 3.1054 23.5137 3.38958 23.7979C3.67377 24.0821 4.05912 24.2419 4.46102 24.2422H24.5696C24.9634 24.2419 25.3409 24.0853 25.6194 23.8069C25.8978 23.5284 26.0544 23.1509 26.0547 22.7571V9.96875C26.0547 9.54814 25.8876 9.14475 25.5902 8.84733C25.2928 8.5499 24.8894 8.38282 24.4688 8.38282ZM4.53125 6.11719H10.5C10.56 6.11744 10.6175 6.14148 10.6598 6.18403L12.8586 8.38282H4.30469V6.34375C4.30469 6.28366 4.32856 6.22604 4.37105 6.18355C4.41353 6.14106 4.47116 6.11719 4.53125 6.11719ZM24.6953 22.7571C24.6953 22.7904 24.6821 22.8224 24.6585 22.846C24.6349 22.8696 24.6029 22.8828 24.5696 22.8828H4.46102C4.41974 22.8822 4.38031 22.8656 4.35112 22.8364C4.32193 22.8072 4.30527 22.7678 4.30469 22.7265V9.74219H24.4688C24.5288 9.74219 24.5865 9.76606 24.629 9.80855C24.6714 9.85104 24.6953 9.90866 24.6953 9.96875V22.7571Z"/>
+                            </svg>
+                            <span>Ярлыки</span>
+                        </button>
+
+                        <!-- Окно для выбора ярлыков -->
+                        <div class="labels_checkbox" id="labelsCheckbox">
+                            <button id="chooseLabelBtn">Выберите +</button>
+                            <div class="filter_checkbox" id="filterCheckbox">
+                                <!-- Здесь будут отображаться ярлыки -->
+                            </div>
+                            <form class="labels_input_content" id="labelForm">
+                                <div class="labels_input">
+                                    <label for="">Введите название ярлыка</label>
+                                    <input type="text" id="labelInput">
+                                </div>
+                                <div class="labels_input">
+                                    <label for="">Выберите цвет ярлыка</label>
+                                    <div class="labels_input_flex">
+                                        <select id="colorSelect">
+                                            <option value="blue">Синий</option>
+                                            <option value="red">Красный</option>
+                                            <option value="green">Зеленый</option>
+                                            <option value="yellow">Желтый</option>
+                                        </select>
+                                        <button type="button" class="okay_btn" id="addLabel">ОК</button>
+                                        <button type="button" class="no_btn" id="cancelLabel">ОТМЕНА</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="my_document_table">
+                        <div class="my_table_top">
+                            <div class="select_input">
+                                <span>Выбрать</span>
+                                <input type="checkbox" name="" id="">
+                            </div>
+                            <div class="my_table_top_flex">
+                                <button class="open-modal" data-target="modal_error">Подписать</button>
+                                <button>Отправить на подпись</button>
+                                <button class="open-modal" data-target="modal2">Напомнить</button>
+                                <button>Удалить / Отказаться</button>
+                                <button>Назначить ярлыки</button>
+                            </div>
+                        </div>
+                        <div class="my_table_content" id="tableContainer">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Открытие модального окна при клике на кнопку
+        document.querySelectorAll('.open-modal').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // предотвращаем действие по умолчанию (например, переход по ссылке)
+
+                const targetModalId = this.getAttribute('data-target'); // получаем ID целевого модального окна
+                const targetModal = document.getElementById(targetModalId);
+
+                // Показываем модальное окно
+                if (targetModal) {
+                    targetModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
+                }
+            });
+        });
+
+        // Закрытие модального окна при клике на крестик
+        document.querySelectorAll('.close_popup_time_error').forEach(closeButton => {
+            closeButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                const modal = this.closest('.modal_my');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
+                }
+            });
+        });
+
+        // Закрытие модального окна при клике на крестик (другой элемент)
+        document.querySelectorAll('.no_next').forEach(closeButton => {
+            closeButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                const modal = this.closest('.modal_my');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
+                }
+            });
+        });
+
+        // Закрытие модального окна при клике на фон
+        document.querySelectorAll('.modal_my').forEach(modal => {
+            modal.addEventListener('click', function(event) {
+                if (event.target === this) {
+                    this.style.display = 'none';
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/my_document.js"></script>
+
+</body>
+
+</html>

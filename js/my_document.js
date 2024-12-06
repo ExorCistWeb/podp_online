@@ -1,3 +1,211 @@
+const data = [{
+        "id": 1,
+        "downloadLink": "#",
+        "viewLink": "#",
+        "documentDate": "20.08.2024",
+        "documentNumber": "1293232",
+        "documentLabel": "Нет",
+        "documentName": "Счет на оплату №637 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ...",
+        "signedBy": [
+            { "name": "КУНДАКБАЕВА ОЛЖАС БАЛХАШБАЕВИЧ ТОО “Подпиши Онлайн” ИИН 7777777777" },
+            { "name": "КУНДАКБАЕВА ОЛЖАС БАЛХАШБАЕВИЧ ТОО “Подпиши Онлайн” ИИН 7777777777" }
+        ],
+        "signedDetails": {
+            "signed": 2,
+            "total": 2
+        }
+    },
+    {
+        "id": 2,
+        "downloadLink": "#",
+        "viewLink": "#",
+        "documentDate": "15.07.2024",
+        "documentNumber": "1293233",
+        "documentLabel": "Да",
+        "documentName": "Счет на оплату №638 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ...",
+        "signedBy": [
+            { "name": "ИВАНОВ ИВАН ИВАНОВИЧ ИИН 7777777778" }
+        ],
+        "signedDetails": {
+            "signed": 1,
+            "total": 2
+        }
+    },
+    {
+        "id": 3,
+        "downloadLink": "#",
+        "viewLink": "#",
+        "documentDate": "15.07.2024",
+        "documentNumber": "1293233",
+        "documentLabel": "Да",
+        "documentName": "Счет на оплату №638 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ...",
+        "signedBy": [
+            { "name": "ИВАНОВ ИВАН ИВАНОВИЧ ИИН 7777777778" }
+        ],
+        "signedDetails": {
+            "signed": 2,
+            "total": 2
+        }
+    }
+];
+// Функция для обновления значений в кнопке
+function updateButtons(data) {
+    // Проходим по всем элементам с классом '.members_info'
+    const buttons = document.querySelectorAll('.members_info');
+
+    buttons.forEach((button, index) => {
+        const signedSpan = button.querySelector('.signed');
+        const totalSpan = button.querySelector('.total');
+
+        // Проверяем, чтобы индекс существовал в данных
+        if (data[index] && data[index].signedDetails) {
+            signedSpan.textContent = data[index].signedDetails.signed;
+            totalSpan.textContent = data[index].signedDetails.total;
+        }
+    });
+}
+
+
+function updateTable(data) {
+    // Проходим по всем строкам таблицы
+    const tableLines = document.querySelectorAll('.my_table_line_info');
+
+    tableLines.forEach((line, index) => {
+        if (data[index]) {
+            const documentDateSpan = line.querySelector('.document_indo_table .left_width span');
+            const documentNumberSpan = line.querySelector('.document_indo_table .right_width p span');
+            const documentLabelSpan = line.querySelector('.document_indo_table .document_parametr span:nth-child(2)');
+            const documentNameH5 = line.querySelector('.document_indo_table .document_parametr_name h5');
+            const signedList = line.querySelector('.document_indo_table .document_parametr_podp ul');
+
+            // Обновляем данные
+            documentDateSpan.textContent = data[index].documentDate;
+            documentNumberSpan.textContent = data[index].documentNumber;
+            documentLabelSpan.textContent = data[index].documentLabel;
+            documentNameH5.textContent = data[index].documentName;
+
+            // Обновляем список подписавших
+            signedList.innerHTML = ''; // Очищаем текущие элементы
+            data[index].signedBy.forEach(signer => {
+                const li = document.createElement('li');
+                const p = document.createElement('p');
+                p.textContent = signer.name;
+                li.appendChild(p);
+                signedList.appendChild(li);
+            });
+        }
+    });
+}
+// Функция для генерации строки таблицы
+function generateTableRow(data) {
+    const tableContainer = document.getElementById('tableContainer'); // Контейнер для таблицы
+
+    data.forEach(item => {
+                const tableLine = document.createElement('div');
+                tableLine.classList.add('my_table_line');
+
+                // Преобразуем список подписантов в строку
+                const signedByList = item.signedBy.map(signer => `<p>${signer.name}</p>`).join('');
+
+                tableLine.innerHTML = `
+                            <div class="table_flexes">
+                                <div class="box_flexes">
+                                    <div class="select_input">
+                                        <input type="checkbox" id="checkbox${item.id}" data-id="${item.id}">
+                                        <label for="">Выбрать</label>
+                                    </div>
+                                    <div class="table_line_process">
+                                        <a href="">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11.375 2.625V11.0128L14.4375 7.95025L15.6747 9.1875L10.5 14.3622L5.32525 9.1875L6.5625 7.95025L9.625 11.0128V2.625H11.375ZM3.9375 12.25V16.625H17.0625V12.25H18.8125V18.375H2.1875V12.25H3.9375Z" fill="#4F4F4F"/>
+                                                </svg> Скачать
+                                        </a>
+                                        <a href=""><svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.9546 11.5059C18.208 11.9496 18.3346 12.1725 18.3346 12.5007C18.3346 12.8298 18.208 13.0517 17.9546 13.4954C16.8163 15.4913 13.9088 19.7923 10.0013 19.7923C6.09297 19.7923 3.1863 15.4902 2.04797 13.4954C1.79464 13.0517 1.66797 12.8288 1.66797 12.5007C1.66797 12.1715 1.79464 11.9496 2.04797 11.5059C3.1863 9.51003 6.0938 5.20898 10.0013 5.20898C13.9096 5.20898 16.8163 9.51107 17.9546 11.5059Z" stroke="#4F4F4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M12.5 12.5C12.5 11.6712 12.2366 10.8763 11.7678 10.2903C11.2989 9.70424 10.663 9.375 10 9.375C9.33696 9.375 8.70107 9.70424 8.23223 10.2903C7.76339 10.8763 7.5 11.6712 7.5 12.5C7.5 13.3288 7.76339 14.1237 8.23223 14.7097C8.70107 15.2958 9.33696 15.625 10 15.625C10.663 15.625 11.2989 15.2958 11.7678 14.7097C12.2366 14.1237 12.5 13.3288 12.5 12.5Z" stroke="#4F4F4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            Посмотреть
+                                            </a>
+                                        <button class="rename-button">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 2.625H3.375C2.91087 2.625 2.46575 2.80937 2.13756 3.13756C1.80937 3.46575 1.625 3.91087 1.625 4.375V16.625C1.625 17.0891 1.80937 17.5342 2.13756 17.8624C2.46575 18.1906 2.91087 18.375 3.375 18.375H15.625C16.0891 18.375 16.5342 18.1906 16.8624 17.8624C17.1906 17.5342 17.375 17.0891 17.375 16.625V10.5" stroke="#4F4F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M15.0777 2.29756C15.4258 1.94946 15.8979 1.75391 16.3902 1.75391C16.8825 1.75391 17.3546 1.94946 17.7027 2.29756C18.0508 2.64566 18.2464 3.11778 18.2464 3.61006C18.2464 4.10234 18.0508 4.57446 17.7027 4.92256L9.81634 12.8098C9.60857 13.0174 9.3519 13.1694 9.06997 13.2517L6.55609 13.9867C6.4808 14.0086 6.40099 14.01 6.32501 13.9905C6.24904 13.971 6.17969 13.9315 6.12423 13.876C6.06878 13.8206 6.02925 13.7512 6.00978 13.6753C5.99032 13.5993 5.99163 13.5195 6.01359 13.4442L6.74859 10.9303C6.8313 10.6486 6.98356 10.3922 7.19134 10.1848L15.0777 2.29756Z" stroke="#4F4F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                Переименовать
+                                            </button>
+                                    </div>
+                                    <button class="members_info open-modal" data-target="modal1">
+                                        <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_1_2425)">
+                                                <path id="path1" d="M8.71307 16.7228C10.8965 16.7099 12.7871 14.7261 12.772 12.1787C12.7571 9.65534 10.8318 7.79982 8.66043 7.81265C6.47762 7.82555 4.56324 9.7506 4.59001 12.2511C4.60492 14.7744 6.51826 16.7357 8.71365 16.7228M2.2261 27.3613L11.1471 27.3086C9.91606 25.5433 11.3858 21.9659 13.8983 20.0025C12.5903 19.1416 10.9071 18.5058 8.71226 18.5188C3.41806 18.5495 0.130922 22.4776 0.150134 25.7295C0.156379 26.7866 0.746693 27.37 2.2261 27.3613Z" fill="#FF0E0E"/>
+                                                <path id="path2" d="M23.8769 9.64438C23.0463 8.75823 21.8907 8.27435 20.6184 8.28187C19.3393 8.28943 18.1857 8.78397 17.3694 9.67435C16.5443 10.5745 16.1469 11.7937 16.2497 13.107C16.4533 15.6979 18.4382 17.7949 20.6745 17.7817C22.9108 17.7685 24.8674 15.6487 25.0434 13.0559C25.132 11.7533 24.7177 10.5415 23.8769 9.64438ZM28.1948 27.2374L13.2665 27.3256C13.0711 27.3293 12.8774 27.2894 12.6993 27.2088C12.5213 27.1282 12.3635 27.0089 12.2374 26.8597C11.9598 26.5318 11.846 26.0825 11.9256 25.6269C12.2718 23.6392 13.379 21.9646 15.1279 20.7833C16.6816 19.7346 18.6541 19.1508 20.6825 19.1388C22.711 19.1268 24.6903 19.6877 26.2562 20.7175C28.0189 21.8777 29.1459 23.5391 29.5155 25.5226C29.6005 25.9772 29.492 26.4278 29.2183 26.7589C29.094 26.9098 28.9376 27.031 28.7606 27.1137C28.5835 27.1965 28.3902 27.2388 28.1948 27.2374Z" fill="#FF0E0E"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_1_2425">
+                                                    <rect width="32" height="32" fill="white" transform="translate(0 0.189453) rotate(-0.338488)"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="col_vo"><span class="signed"></span>/<span class="total"></span></span>
+                                    </button>
+                                </div>
+                                <div class="my_table_line_info">
+                                    <div class="document_indo_table">
+                                        <div class="left_width">
+                                            <span>${item.documentDate}</span>
+                                        </div>
+                                        <div class="right_width">
+                                            <p>Номер: <span>${item.documentNumber}</span></p>
+                                            <div class="document_parametr">
+                                                <span>Ярлык</span>
+                                                <span>${item.documentLabel}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="document_indo_table">
+                                        <div class="left_width">
+                                            <span>Документ:</span>
+                                        </div>
+                                        <div class="right_width">
+                                            <div class="document_parametr_name">
+                                                <h5>${item.documentName}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="document_indo_table">
+                                        <div class="left_width">
+                                            <span>Подписан: </span>
+                                        </div>
+                                        <div class="right_width">
+                                            <div class="document_parametr_podp">
+                                                <ul>
+                                                    ${item.signedBy.map(signer => `
+                                                        <li>
+                                                            <p>${signer.name}</p>
+                                                        </li>
+                                                    `).join('')}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+`;
+tableContainer.appendChild(tableLine);
+    
+});
+
+
+}
+
+
+generateTableRow(data);
+updateButtons(data);
+updateTable(data);
+
+
+
+
 // Функция для обновления цветов SVG на основе подписей
 function updateIcons() {
     const icons = document.querySelectorAll('.members_info'); // Все элементы с классом members_info
