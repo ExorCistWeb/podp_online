@@ -2693,3 +2693,18 @@ thead tr th:last-child {
 #extrernal {
     padding-bottom: 100px;
 }
+
+.totable .totd {
+    padding: 15px 10px;
+}
+
+.td_todt {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.td_todt input {
+    width: 15px;
+    height: 15px;
+}
