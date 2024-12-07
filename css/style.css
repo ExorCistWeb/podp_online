@@ -2765,3 +2765,13 @@ thead tr th:last-child {
     max-height: 16px;
     margin-top: 3px;
 }
+
+.document_card_bottom label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 112%;
+    /* or 13px */
+    color: #4F4F4F;
+}
