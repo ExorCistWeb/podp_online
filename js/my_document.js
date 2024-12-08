@@ -13,6 +13,8 @@ function updateButtons(data) {
     });
 }
 
+
+
 // Функция для обновления данных в таблице
 function updateTable(data) {
     const tableLines = document.querySelectorAll('.my_table_line_info');
@@ -89,9 +91,10 @@ function generateTableRow(data) {
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        <span class="col_vo"><span class="signed"></span>/<span class="total"></span></span>
+                                        <span class="col_vo"><span class="signed">${item.totalsigned}</span>/<span class="total">${item.totalsign}</span></span>
                                     </button>
                                 </div>
+                                
                                   </div>
                                 <div class="my_table_line_info">
                                     <div class="document_indo_table">
@@ -142,30 +145,57 @@ tableContainer.appendChild(tableLine);
 updateIcons();
 
 }
-
-
-// Загрузка данных из файла JSON
-function loadDataFromFile() {
-    fetch('../js/data.json') // Укажите путь к вашему JSON-файлу
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ошибка загрузки данных');
-            }
-            return response.json();
-        })
-        .then(data => {
-            generateTableRow(data);
-            updateButtons(data);
-            updateTable(data);
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-        });
+function decodeBase64ToJson(base64Str) {
+    const jsonString = atob(base64Str); // Преобразуем base64 в строку
+    const jsonData = JSON.parse(jsonString); // Преобразуем строку в объект JSON
+    console.log(jsonData); // Логируем результат, чтобы понять, что за данные мы получаем
+    return jsonData;
 }
 
-// Запуск функции загрузки данных
-loadDataFromFile();
+// Загрузка данных из строки base64
+function loadDataFromBase64(base64Str) {
+    try {
+        const data = decodeBase64ToJson(base64Str);
+        if (Array.isArray(data)) {
+            const formattedData = data.map(doc => {
+                // Объявление переменных
+                var pp1 = doc[0]; 
+                var num = doc[1]; 
+                var crtime = doc[2]; 
+                var docname = doc[3];
+                var signs = doc[4]; 
+                var type_work = doc[5]; 
+                var issigned = doc[6]; 
+                var totalsign = doc[7]; 
+                var totalsigned = doc[8]; 
+                var labelid = doc[9];
+                
+                // Возвращаем объект
+                return {
+                    hash: pp1, // Использование переменной Хэш_документа
+                    documentNumber: num, // Использование переменной num
+                    documentDate: crtime, // Использование переменной crtime
+                    documentName: docname, // Использование переменной docname
+                    documentLabel: labelid, // Использование переменной labelid
+                    totalsigned: totalsigned, // Использование переменной labelid
+                    totalsign: totalsign, // Использование переменной labelid
+                    signedBy: signs.map(signer => ({ name: signer })), // Использование переменной signs
+                };
+            });
+            generateTableRow(formattedData);
+        } else {
+            console.error("Данные не массив");
+        }
+    } catch (error) {
+        console.error('Ошибка обработки данных:', error);
+    }
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+// Пример строки Base64
+const base64Data = 'W1siMTAwODA4Nl81ZTcxYTY4ODYxZDg5YzViNTdjMWFlZDBmZWUxYzcwYSIsNTIxMzIwLCIwNC4xMS4yMDI0IiwiXHUwNDFhXHUwNDNlXHUwNDNjX1x1MDQzZlx1MDQ0MFx1MDQzNVx1MDQzNF9cdTA0MWZcdTA0M2VcdTA0MzRcdTA0M2ZcdTA0MzhcdTA0NDhcdTA0MzhfXHUwNDNlXHUwNDNkXHUwNDNiXHUwNDMwXHUwNDM4XHUwMzA2XHUwNDNkX1x1MDQyMVx1MDQzZVx1MDQzYlx1MDQzMlx1MDQzMC5kb2N4ICgxKS5wZGYiLFtbIjgwMDIyODMwMDE1NiIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDFhXHUwNDIzXHUwNDFkXHUwNDE0XHUwNDEwXHUwNDFhXHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyIFx1MDQxZVx1MDQxYlx1MDQxNlx1MDQxMFx1MDQyMSBcdTA0MTFcdTA0MTBcdTA0MWJcdTA0MjVcdTA0MTBcdTA0MjhcdTA0MTFcdTA0MTBcdTA0MTVcdTA0MTJcdTA0MThcdTA0MjciXSxbIjE3MDc0MDAxMTU4OSIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDIyXHUwNDFlXHUwNDFlIFwiXHUwNDFmXHUwNDNlXHUwNDM0XHUwNDNmXHUwNDM4XHUwNDQ4XHUwNDM4IFx1MDQxZVx1MDQzZFx1MDQzYlx1MDQzMFx1MDQzOVx1MDQzZFwiIl1dLDIsMSwyLDIsMF0sWyIxMDA4MDgxXzBjYWI4MTRkYWVhOGM1NWUxZjIwNzdiNzU3NDQzM2Y0Iiw1MjEzMTYsIjA0LjExLjIwMjQiLCI1MTkxMTIucGRmIixbXSwxLDAsMSwwLDFdLFsiMTAwODA4MF9kM2MzM2M4MGZkMDhlOTNjMmU0NTFlOWU0ZWVjMGU5YyIsNTIxMzE1LCIwNC4xMS4yMDI0IiwiNTE5MTEyLS0ucGRmIixbXSwxLDAsMSwwLDFdLFsiMTAwODA3MF9mYzM1ZWM5OTQ4Yzk0ZDkwOTFiZjVmYzEzMGIzMGNjNyIsNTIxMzEwLCIwNC4xMS4yMDI0IiwiXHUwNDE4XHUwNDFmIFx1MDQzMFx1MDQ0ZFx1MDQzYlx1MDQzOFx1MDQ0Mlx1MDQzMC5wZGYiLFtbIjgwMDIyODMwMDE1NiIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDFhXHUwNDIzXHUwNDFkXHUwNDE0XHUwNDEwXHUwNDFhXHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyIFx1MDQxZVx1MDQxYlx1MDQxNlx1MDQxMFx1MDQyMSBcdTA0MTFcdTA0MTBcdTA0MWJcdTA0MjVcdTA0MTBcdTA0MjhcdTA0MTFcdTA0MTBcdTA0MTVcdTA0MTJcdTA0MThcdTA0MjciXV0sMiwwLDIsMSwwXSxbIjEwMDc5NzBfMDJiZmEyMzVkMTA1MGNjYTY4ZGFkZTQ0MjdiOTQzNTUiLDUyMTI3NSwiMDQuMTEuMjAyNCIsIjUxOTExMi5wZGYiLFtbIjE3MDc0MDAxMTU4OSIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDIyXHUwNDFlXHUwNDFlIFwiXHUwNDFmXHUwNDNlXHUwNDM0XHUwNDNmXHUwNDM4XHUwNDQ4XHUwNDM4IFx1MDQxZVx1MDQzZFx1MDQzYlx1MDQzMFx1MDQzOVx1MDQzZFwiIl1dLDEsMSwxLDEsNF1d'; 
+loadDataFromBase64(base64Data);
+});
 
 
 
@@ -511,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target && event.target.classList.contains('rename-button')) {
             const button = event.target;
             const tableLine = button.closest('.my_table_line');
-            
+
             if (tableLine && tableLine.dataset.renaming === 'true') return; // Проверка на флаг
 
             tableLine.dataset.renaming = 'true'; // Устанавливаем флаг для текущей строки
@@ -522,7 +552,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const h5 = documentParametr.querySelector('h5');
             if (!h5) return;
 
-            const currentText = h5.textContent;
+            const currentText = h5.textContent.trim();
+            const pp1 = tableLine.dataset.hash; // Хэш документа из атрибута data-hash
             const input = document.createElement('input');
             input.type = 'text';
             input.value = currentText;
@@ -545,23 +576,53 @@ document.addEventListener('DOMContentLoaded', () => {
             documentParametr.appendChild(input);
             documentParametr.appendChild(buttonsDiv);
 
-            okButton.addEventListener('click', function () {
+            // Обработчик кнопки "Ок"
+            okButton.addEventListener('click', async function () {
                 const newName = input.value.trim();
-                if (newName) {
-                    h5.textContent = newName;
+                if (newName && newName !== currentText) {
+                    try {
+                        const response = await fetch('/your-server-endpoint', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: `move=46&pp1=${encodeURIComponent(pp1)}&new=${encodeURIComponent(newName)}`,
+                        });
+
+                        const result = await response.text();
+                        if (result === '1') {
+                            h5.textContent = newName; // Обновление имени документа
+                            updateDocumentInArray(pp1, newName); // Функция для обновления в массиве
+                        } else {
+                            alert('Ошибка сохранения нового имени!');
+                        }
+                    } catch (error) {
+                        console.error('Ошибка запроса:', error);
+                        alert('Ошибка при подключении к серверу!');
+                    }
                 }
+
                 h5.style.display = 'block';
                 input.remove();
                 buttonsDiv.remove();
                 tableLine.dataset.renaming = 'false'; // Сбрасываем флаг
             });
 
+            // Обработчик кнопки "Отмена"
             cancelButton.addEventListener('click', function () {
                 h5.style.display = 'block';
                 input.remove();
                 buttonsDiv.remove();
                 tableLine.dataset.renaming = 'false'; // Сбрасываем флаг
             });
+        }
+    }
+
+    // Функция обновления имени в массиве
+    function updateDocumentInArray(pp1, newName) {
+        const document = formattedData.find(doc => doc.id === pp1);
+        if (document) {
+            document.documentName = newName;
         }
     }
 
