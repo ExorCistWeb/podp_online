@@ -1695,6 +1695,7 @@ p {
     /* or 18px */
     color: #4F4F4F;
     text-align: start;
+    word-break: break-all;
 }
 
 .left_width span {
