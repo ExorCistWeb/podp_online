@@ -1,63 +1,11 @@
-const data = [{
-        "id": 1,
-        "downloadLink": "#",
-        "viewLink": "#",
-        "documentDate": "20.08.2024",
-        "documentNumber": "1293232",
-        "documentLabel": "Нет",
-        "documentName": "Счет на оплату №637 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ...",
-        "signedBy": [
-            { "name": "КУНДАКБАЕВА ОЛЖАС БАЛХАШБАЕВИЧ ТОО “Подпиши Онлайн” ИИН 7777777777" },
-            { "name": "КУНДАКБАЕВА ОЛЖАС БАЛХАШБАЕВИЧ ТОО “Подпиши Онлайн” ИИН 7777777777" }
-        ],
-        "signedDetails": {
-            "signed": 2,
-            "total": 2
-        }
-    },
-    {
-        "id": 2,
-        "downloadLink": "#",
-        "viewLink": "#",
-        "documentDate": "15.07.2024",
-        "documentNumber": "1293233",
-        "documentLabel": "Да",
-        "documentName": "Счет на оплату №638 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ...",
-        "signedBy": [
-            { "name": "ИВАНОВ ИВАН ИВАНОВИЧ ИИН 7777777778" }
-        ],
-        "signedDetails": {
-            "signed": 1,
-            "total": 2
-        }
-    },
-    {
-        "id": 3,
-        "downloadLink": "#",
-        "viewLink": "#",
-        "documentDate": "15.07.2024",
-        "documentNumber": "1293233",
-        "documentLabel": "Да",
-        "documentName": "Счет на оплату №638 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ...",
-        "signedBy": [
-            { "name": "ИВАНОВ ИВАН ИВАНОВИЧ ИИН 7777777778" }
-        ],
-        "signedDetails": {
-            "signed": 2,
-            "total": 2
-        }
-    }
-];
 // Функция для обновления значений в кнопке
 function updateButtons(data) {
-    // Проходим по всем элементам с классом '.members_info'
     const buttons = document.querySelectorAll('.members_info');
 
     buttons.forEach((button, index) => {
         const signedSpan = button.querySelector('.signed');
         const totalSpan = button.querySelector('.total');
 
-        // Проверяем, чтобы индекс существовал в данных
         if (data[index] && data[index].signedDetails) {
             signedSpan.textContent = data[index].signedDetails.signed;
             totalSpan.textContent = data[index].signedDetails.total;
@@ -65,9 +13,8 @@ function updateButtons(data) {
     });
 }
 
-
+// Функция для обновления данных в таблице
 function updateTable(data) {
-    // Проходим по всем строкам таблицы
     const tableLines = document.querySelectorAll('.my_table_line_info');
 
     tableLines.forEach((line, index) => {
@@ -78,14 +25,12 @@ function updateTable(data) {
             const documentNameH5 = line.querySelector('.document_indo_table .document_parametr_name h5');
             const signedList = line.querySelector('.document_indo_table .document_parametr_podp ul');
 
-            // Обновляем данные
             documentDateSpan.textContent = data[index].documentDate;
             documentNumberSpan.textContent = data[index].documentNumber;
             documentLabelSpan.textContent = data[index].documentLabel;
             documentNameH5.textContent = data[index].documentName;
 
-            // Обновляем список подписавших
-            signedList.innerHTML = ''; // Очищаем текущие элементы
+            signedList.innerHTML = '';
             data[index].signedBy.forEach(signer => {
                 const li = document.createElement('li');
                 const p = document.createElement('p');
@@ -96,19 +41,17 @@ function updateTable(data) {
         }
     });
 }
-// Функция для генерации строки таблицы
+
+// Функция для генерации строк таблицы
 function generateTableRow(data) {
-    const tableContainer = document.getElementById('tableContainer'); // Контейнер для таблицы
+    const tableContainer = document.getElementById('tableContainer');
 
     data.forEach(item => {
                 const tableLine = document.createElement('div');
                 tableLine.classList.add('my_table_line');
 
-                // Преобразуем список подписантов в строку
-                const signedByList = item.signedBy.map(signer => `<p>${signer.name}</p>`).join('');
-
                 tableLine.innerHTML = `
-                            <div class="table_flexes">
+                 <div class="table_flexes">
                                 <div class="box_flexes">
                                     <div class="select_input">
                                         <input type="checkbox" id="checkbox${item.id}" data-id="${item.id}">
@@ -196,43 +139,94 @@ tableContainer.appendChild(tableLine);
     
 });
 
+updateIcons();
 
 }
 
 
-generateTableRow(data);
-updateButtons(data);
-updateTable(data);
+// Загрузка данных из файла JSON
+function loadDataFromFile() {
+    fetch('../js/data.json') // Укажите путь к вашему JSON-файлу
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка загрузки данных');
+            }
+            return response.json();
+        })
+        .then(data => {
+            generateTableRow(data);
+            updateButtons(data);
+            updateTable(data);
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
+}
+
+// Запуск функции загрузки данных
+loadDataFromFile();
 
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Ожидание загрузки страницы и данных
+    checkAndUpdateIcons();
+});
+
+function checkAndUpdateIcons() {
+    // Используем MutationObserver, чтобы отслеживать изменения DOM
+    const observer = new MutationObserver(() => {
+        updateIcons(); // Обновляем иконки при изменении DOM
+    });
+
+    const container = document.body; // Контейнер, за которым будем следить
+    observer.observe(container, { childList: true, subtree: true }); // Следим за изменениями элементов
+
+    // Первоначальный вызов функции
+    updateIcons();
+}
 
 // Функция для обновления цветов SVG на основе подписей
 function updateIcons() {
-    const icons = document.querySelectorAll('.members_info'); // Все элементы с классом members_info
+    const icons = document.querySelectorAll('.members_info'); 
 
     icons.forEach(icon => {
-        const signed = parseInt(icon.querySelector('.signed').textContent.trim()); // Количество подписавшихся
-        const total = parseInt(icon.querySelector('.total').textContent.trim()); // Общее количество подписей
+        const signedElement = icon.querySelector('.signed');
+        const totalElement = icon.querySelector('.total');
 
-        const paths = icon.querySelectorAll('path'); // Все пути внутри SVG (не по классу .icon-paths)
+        // Проверяем наличие элементов
+        if (!signedElement || !totalElement) {
+            console.warn('Элементы .signed или .total не найдены:', icon);
+            return;
+        }
 
-        // Логика изменения цвета в зависимости от подписей
+        // Получаем значения подписей
+        const signed = parseInt(signedElement.textContent.trim()) || 0;
+        const total = parseInt(totalElement.textContent.trim()) || 0;
+
+        // Проверяем наличие путей SVG
+        const paths = icon.querySelectorAll('path');
+        if (paths.length < 2) {
+            console.warn('Недостаточно путей (path) в иконке:', icon);
+            return;
+        }
+
+        // Логика изменения цвета
         if (signed === 0) {
             paths[0].setAttribute('fill', '#FF0E0E'); // Первый путь красный
             paths[1].setAttribute('fill', '#FF0E0E'); // Второй путь красный
         } else if (signed > 0 && signed < total) {
-            paths[0].setAttribute('fill', '#439E23'); // Первый путь зеленый
+            paths[0].setAttribute('fill', '#439E23'); // Первый путь зелёный
             paths[1].setAttribute('fill', '#FF0E0E'); // Второй путь красный
         } else if (signed === total) {
-            paths[0].setAttribute('fill', '#439E23'); // Первый путь зеленый
-            paths[1].setAttribute('fill', '#439E23'); // Второй путь зеленый
+            paths[0].setAttribute('fill', '#439E23'); // Первый путь зелёный
+            paths[1].setAttribute('fill', '#439E23'); // Второй путь зелёный
         }
     });
 }
 
-// Вызов функции при загрузке страницы
-document.addEventListener('DOMContentLoaded', updateIcons);
+
 
 
 
@@ -300,20 +294,15 @@ document.addEventListener('DOMContentLoaded', () => {
     labelsCheckbox.addEventListener('click', (event) => event.stopPropagation());
     labelsInputContent.addEventListener('click', (event) => event.stopPropagation());
 });
-
 // ЧЕКБОКСЫ И АКТИВНЫЕ КНОПКИ
 document.addEventListener('DOMContentLoaded', () => {
-    // Находим чекбокс в my_table_top
-    const masterCheckbox = document.querySelector('.my_table_top .select_input input[type="checkbox"]');
-    // Находим все чекбоксы в строках таблицы
-    const rowCheckboxes = document.querySelectorAll('.my_table_content .select_input input[type="checkbox"]');
-    // Находим кнопки в my_table_top_flex
-    const buttons = document.querySelectorAll('.my_table_top_flex button');
-    // Находим строки таблицы
-    const tableLines = document.querySelectorAll('.my_table_content .my_table_line');
-
     // Функция для обновления состояния кнопок
     function updateButtonsState() {
+        const masterCheckbox = document.querySelector('.my_table_top .select_input input[type="checkbox"]');
+        const rowCheckboxes = document.querySelectorAll('.my_table_content .select_input input[type="checkbox"]');
+        const buttons = document.querySelectorAll('.my_table_top_flex button');
+        const tableLines = document.querySelectorAll('.my_table_content .my_table_line');
+
         // Проверяем, есть ли хотя бы один выбранный чекбокс в строках
         const isAnyCheckboxChecked = Array.from(rowCheckboxes).some(checkbox => checkbox.checked);
 
@@ -335,26 +324,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Добавляем обработчик события на главный чекбокс (masterCheckbox)
-    masterCheckbox.addEventListener('change', () => {
-        const isChecked = masterCheckbox.checked; // Проверяем, активен ли главный чекбокс
+    document.body.addEventListener('change', function(event) {
+        // Проверяем, если клик был по главному чекбоксу
+        if (event.target.matches('.my_table_top .select_input input[type="checkbox"]')) {
+            const masterCheckbox = event.target;
+            const rowCheckboxes = document.querySelectorAll('.my_table_content .select_input input[type="checkbox"]');
+            const isChecked = masterCheckbox.checked; // Проверяем, активен ли главный чекбокс
 
-        // Перебираем все чекбоксы в строках и устанавливаем их значение, как у главного
-        rowCheckboxes.forEach(checkbox => {
-            checkbox.checked = isChecked;
-        });
+            // Перебираем все чекбоксы в строках и устанавливаем их значение, как у главного
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
 
-        // Обновляем состояние кнопок после изменения главного чекбокса
-        updateButtonsState();
+            // Обновляем состояние кнопок после изменения главного чекбокса
+            updateButtonsState();
+        }
     });
 
     // Добавляем обработчик событий для каждого чекбокса в строках
-    rowCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateButtonsState);
+    document.body.addEventListener('change', function(event) {
+        if (event.target.matches('.my_table_content .select_input input[type="checkbox"]')) {
+            updateButtonsState();
+        }
     });
 
     // Начальная проверка при загрузке страницы
     updateButtonsState();
+
+    // Наблюдатель для динамически добавленных элементов
+    const observer = new MutationObserver(() => {
+        updateButtonsState();
+    });
+
+    // Настроим наблюдатель на изменения в body (или другом родительском элементе)
+    observer.observe(document.body, {
+        childList: true,       // Отслеживаем добавление и удаление элементов
+        subtree: true          // Отслеживаем все дочерние элементы
+    });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("labelForm");
@@ -472,66 +480,6 @@ document.addEventListener("DOMContentLoaded", function() {
     displayLabelsFromDictionary(list_labels, list_docs);
 });
 
-// Получаем все кнопки "Переименовать"
-document.querySelectorAll('.rename-button').forEach(button => {
-    let isRenaming = false; // Флаг для отслеживания состояния кнопки
-
-    button.addEventListener('click', function() {
-        if (isRenaming) return; // Если уже идет процесс переименования, выходим
-
-        // Устанавливаем флаг в true, чтобы предотвратить повторные клики
-        isRenaming = true;
-
-        // Ищем ближайший элемент с классом "document_parametr_name"
-        const documentParametr = this.closest('.my_table_line').querySelector('.document_parametr_name');
-
-        // Получаем h5 и создаем инпут
-        const h5 = documentParametr.querySelector('h5');
-        const currentText = h5.textContent;
-
-        // Создаем input и кнопки
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = currentText;
-        input.classList.add('rename-input');
-
-        const okButton = document.createElement('button');
-        okButton.textContent = 'Ок';
-        okButton.classList.add('rename-ok');
-
-        const cancelButton = document.createElement('button');
-        cancelButton.textContent = 'Отмена';
-        cancelButton.classList.add('rename-cancel');
-
-        const buttonsDiv = document.createElement('div');
-        buttonsDiv.classList.add('rename-buttons');
-        buttonsDiv.appendChild(okButton);
-        buttonsDiv.appendChild(cancelButton);
-
-        // Скрываем h5, показываем input и кнопки
-        h5.style.display = 'none';
-        documentParametr.appendChild(input);
-        documentParametr.appendChild(buttonsDiv);
-
-        // При нажатии "Ок" сохраняем изменения
-        okButton.addEventListener('click', function() {
-            h5.textContent = input.value; // Сохраняем новый текст в h5
-            h5.style.display = 'block'; // Показываем h5
-            input.remove(); // Убираем input
-            buttonsDiv.remove(); // Убираем кнопки
-            isRenaming = false; // Сбрасываем флаг
-        });
-
-        // При нажатии "Отмена" отменяем изменения
-        cancelButton.addEventListener('click', function() {
-            h5.textContent = currentText; // Восстанавливаем старый текст
-            h5.style.display = 'block'; // Показываем h5
-            input.remove(); // Убираем input
-            buttonsDiv.remove(); // Убираем кнопки
-            isRenaming = false; // Сбрасываем флаг
-        });
-    });
-});
 // Функция для обновления текста на кнопке в зависимости от выбранного чекбокса
 function updateFilterText() {
     const checkedCheckbox = document.querySelector('.filter_checkbox input:checked');
@@ -556,5 +504,108 @@ document.querySelectorAll('.filter_checkbox input').forEach(checkbox => {
             });
         }
         updateFilterText(); // Обновить текст кнопки
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    function attachRenameHandlers(event) {
+        if (event.target && event.target.classList.contains('rename-button')) {
+            const button = event.target;
+            const tableLine = button.closest('.my_table_line');
+            
+            if (tableLine && tableLine.dataset.renaming === 'true') return; // Проверка на флаг
+
+            tableLine.dataset.renaming = 'true'; // Устанавливаем флаг для текущей строки
+
+            const documentParametr = tableLine.querySelector('.document_parametr_name');
+            if (!documentParametr) return;
+
+            const h5 = documentParametr.querySelector('h5');
+            if (!h5) return;
+
+            const currentText = h5.textContent;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentText;
+            input.classList.add('rename-input');
+
+            const okButton = document.createElement('button');
+            okButton.textContent = 'Ок';
+            okButton.classList.add('rename-ok');
+
+            const cancelButton = document.createElement('button');
+            cancelButton.textContent = 'Отмена';
+            cancelButton.classList.add('rename-cancel');
+
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.classList.add('rename-buttons');
+            buttonsDiv.appendChild(okButton);
+            buttonsDiv.appendChild(cancelButton);
+
+            h5.style.display = 'none';
+            documentParametr.appendChild(input);
+            documentParametr.appendChild(buttonsDiv);
+
+            okButton.addEventListener('click', function () {
+                const newName = input.value.trim();
+                if (newName) {
+                    h5.textContent = newName;
+                }
+                h5.style.display = 'block';
+                input.remove();
+                buttonsDiv.remove();
+                tableLine.dataset.renaming = 'false'; // Сбрасываем флаг
+            });
+
+            cancelButton.addEventListener('click', function () {
+                h5.style.display = 'block';
+                input.remove();
+                buttonsDiv.remove();
+                tableLine.dataset.renaming = 'false'; // Сбрасываем флаг
+            });
+        }
+    }
+
+    document.body.addEventListener('click', attachRenameHandlers);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', () => {
+        const tableContainer = document.getElementById('tableContainer');
+
+        // Обработчик кликов на элементы внутри tableContainer
+        tableContainer.addEventListener('click', function(event) {
+            // Проверка, был ли клик по кнопке с классом open-modal
+            if (event.target.closest('.open-modal')) {
+                event.preventDefault(); // предотвращаем действие по умолчанию
+
+                const targetModalId = event.target.closest('.open-modal').getAttribute('data-target'); // получаем ID целевого модального окна
+                const targetModal = document.getElementById(targetModalId);
+
+                // Показываем модальное окно
+                if (targetModal) {
+                    targetModal.style.display = 'flex'; // Отображаем модальное окно
+                    document.body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
+                }
+            }
+        });
+
+        // Закрытие модального окна
+        document.body.addEventListener('click', function(event) {
+            // Закрытие модального окна при клике на крестик
+            if (event.target.matches('.close_popup_time_error')) {
+                event.preventDefault();
+                const modal = event.target.closest('.modal_my');
+                if (modal) {
+                    modal.style.display = 'none'; // Скрываем модальное окно
+                    document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
+                }
+            }
+
+            // Закрытие модального окна при клике на фон
+            if (event.target.matches('.modal_my')) {
+                event.target.style.display = 'none'; // Скрываем модальное окно
+                document.body.style.overflow = ''; // Восстанавливаем прокрутку страницы
+            }
+        });
     });
 });
