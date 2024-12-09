@@ -1,3 +1,57 @@
+function decodeBase64ToJson(base64Str) {
+    const jsonString = atob(base64Str); // Преобразуем base64 в строку
+    const jsonData = JSON.parse(jsonString); // Преобразуем строку в объект JSON
+    console.log(jsonData); // Логируем результат, чтобы понять, что за данные мы получаем
+    return jsonData;
+}
+
+// Загрузка данных из строки base64
+function loadDataFromBase64(base64Str) {
+    try {
+        const data = decodeBase64ToJson(base64Str);
+        if (Array.isArray(data)) {
+            const formattedData = data.map(doc => {
+                // Объявление переменных
+                var pp1 = doc[0];
+                var num = doc[1];
+                var crtime = doc[2];
+                var docname = doc[3];
+                var signs = doc[4];
+                var type_work = doc[5];
+                var issigned = doc[6];
+                var totalsign = doc[7];
+                var totalsigned = doc[8];
+                var labelid = doc[9];
+
+                // Возвращаем объект
+                return {
+                    hash: pp1, // Использование переменной Хэш_документа
+                    documentNumber: num, // Использование переменной num
+                    documentDate: crtime, // Использование переменной crtime
+                    documentName: docname, // Использование переменной docname
+                    documentLabel: labelid, // Использование переменной labelid
+                    totalsigned: totalsigned, // Использование переменной labelid
+                    totalsign: totalsign, // Использование переменной labelid
+                    signedBy: signs.map(signer => ({ name: signer })), // Использование переменной signs
+                };
+            });
+            generateTableRow(formattedData);
+        } else {
+            console.error("Данные не массив");
+        }
+    } catch (error) {
+        console.error('Ошибка обработки данных:', error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Пример строки Base64
+    const base64Data = 'W1siMTAwODA4Nl81ZTcxYTY4ODYxZDg5YzViNTdjMWFlZDBmZWUxYzcwYSIsNTIxMzIwLCIwNC4xMS4yMDI0IiwiXHUwNDFhXHUwNDNlXHUwNDNjX1x1MDQzZlx1MDQ0MFx1MDQzNVx1MDQzNF9cdTA0MWZcdTA0M2VcdTA0MzRcdTA0M2ZcdTA0MzhcdTA0NDhcdTA0MzhfXHUwNDNlXHUwNDNkXHUwNDNiXHUwNDMwXHUwNDM4XHUwMzA2XHUwNDNkX1x1MDQyMVx1MDQzZVx1MDQzYlx1MDQzMlx1MDQzMC5kb2N4ICgxKS5wZGYiLFtbIjgwMDIyODMwMDE1NiIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDFhXHUwNDIzXHUwNDFkXHUwNDE0XHUwNDEwXHUwNDFhXHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyIFx1MDQxZVx1MDQxYlx1MDQxNlx1MDQxMFx1MDQyMSBcdTA0MTFcdTA0MTBcdTA0MWJcdTA0MjVcdTA0MTBcdTA0MjhcdTA0MTFcdTA0MTBcdTA0MTVcdTA0MTJcdTA0MThcdTA0MjciXSxbIjE3MDc0MDAxMTU4OSIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDIyXHUwNDFlXHUwNDFlIFwiXHUwNDFmXHUwNDNlXHUwNDM0XHUwNDNmXHUwNDM4XHUwNDQ4XHUwNDM4IFx1MDQxZVx1MDQzZFx1MDQzYlx1MDQzMFx1MDQzOVx1MDQzZFwiIl1dLDIsMSwyLDIsMF0sWyIxMDA4MDgxXzBjYWI4MTRkYWVhOGM1NWUxZjIwNzdiNzU3NDQzM2Y0Iiw1MjEzMTYsIjA0LjExLjIwMjQiLCI1MTkxMTIucGRmIixbXSwxLDAsMSwwLDFdLFsiMTAwODA4MF9kM2MzM2M4MGZkMDhlOTNjMmU0NTFlOWU0ZWVjMGU5YyIsNTIxMzE1LCIwNC4xMS4yMDI0IiwiNTE5MTEyLS0ucGRmIixbXSwxLDAsMSwwLDFdLFsiMTAwODA3MF9mYzM1ZWM5OTQ4Yzk0ZDkwOTFiZjVmYzEzMGIzMGNjNyIsNTIxMzEwLCIwNC4xMS4yMDI0IiwiXHUwNDE4XHUwNDFmIFx1MDQzMFx1MDQ0ZFx1MDQzYlx1MDQzOFx1MDQ0Mlx1MDQzMC5wZGYiLFtbIjgwMDIyODMwMDE1NiIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDFhXHUwNDIzXHUwNDFkXHUwNDE0XHUwNDEwXHUwNDFhXHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyIFx1MDQxZVx1MDQxYlx1MDQxNlx1MDQxMFx1MDQyMSBcdTA0MTFcdTA0MTBcdTA0MWJcdTA0MjVcdTA0MTBcdTA0MjhcdTA0MTFcdTA0MTBcdTA0MTVcdTA0MTJcdTA0MThcdTA0MjciXV0sMiwwLDIsMSwwXSxbIjEwMDc5NzBfMDJiZmEyMzVkMTA1MGNjYTY4ZGFkZTQ0MjdiOTQzNTUiLDUyMTI3NSwiMDQuMTEuMjAyNCIsIjUxOTExMi5wZGYiLFtbIjE3MDc0MDAxMTU4OSIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDIyXHUwNDFlXHUwNDFlIFwiXHUwNDFmXHUwNDNlXHUwNDM0XHUwNDNmXHUwNDM4XHUwNDQ4XHUwNDM4IFx1MDQxZVx1MDQzZFx1MDQzYlx1MDQzMFx1MDQzOVx1MDQzZFwiIl1dLDEsMSwxLDEsNF1d';
+    loadDataFromBase64(base64Data);
+});
+
+
+
 // Функция для обновления значений в кнопке
 function updateButtons(data) {
     const buttons = document.querySelectorAll('.members_info');
@@ -145,57 +199,7 @@ tableContainer.appendChild(tableLine);
 updateIcons();
 
 }
-function decodeBase64ToJson(base64Str) {
-    const jsonString = atob(base64Str); // Преобразуем base64 в строку
-    const jsonData = JSON.parse(jsonString); // Преобразуем строку в объект JSON
-    console.log(jsonData); // Логируем результат, чтобы понять, что за данные мы получаем
-    return jsonData;
-}
 
-// Загрузка данных из строки base64
-function loadDataFromBase64(base64Str) {
-    try {
-        const data = decodeBase64ToJson(base64Str);
-        if (Array.isArray(data)) {
-            const formattedData = data.map(doc => {
-                // Объявление переменных
-                var pp1 = doc[0]; 
-                var num = doc[1]; 
-                var crtime = doc[2]; 
-                var docname = doc[3];
-                var signs = doc[4]; 
-                var type_work = doc[5]; 
-                var issigned = doc[6]; 
-                var totalsign = doc[7]; 
-                var totalsigned = doc[8]; 
-                var labelid = doc[9];
-                
-                // Возвращаем объект
-                return {
-                    hash: pp1, // Использование переменной Хэш_документа
-                    documentNumber: num, // Использование переменной num
-                    documentDate: crtime, // Использование переменной crtime
-                    documentName: docname, // Использование переменной docname
-                    documentLabel: labelid, // Использование переменной labelid
-                    totalsigned: totalsigned, // Использование переменной labelid
-                    totalsign: totalsign, // Использование переменной labelid
-                    signedBy: signs.map(signer => ({ name: signer })), // Использование переменной signs
-                };
-            });
-            generateTableRow(formattedData);
-        } else {
-            console.error("Данные не массив");
-        }
-    } catch (error) {
-        console.error('Ошибка обработки данных:', error);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-// Пример строки Base64
-const base64Data = 'W1siMTAwODA4Nl81ZTcxYTY4ODYxZDg5YzViNTdjMWFlZDBmZWUxYzcwYSIsNTIxMzIwLCIwNC4xMS4yMDI0IiwiXHUwNDFhXHUwNDNlXHUwNDNjX1x1MDQzZlx1MDQ0MFx1MDQzNVx1MDQzNF9cdTA0MWZcdTA0M2VcdTA0MzRcdTA0M2ZcdTA0MzhcdTA0NDhcdTA0MzhfXHUwNDNlXHUwNDNkXHUwNDNiXHUwNDMwXHUwNDM4XHUwMzA2XHUwNDNkX1x1MDQyMVx1MDQzZVx1MDQzYlx1MDQzMlx1MDQzMC5kb2N4ICgxKS5wZGYiLFtbIjgwMDIyODMwMDE1NiIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDFhXHUwNDIzXHUwNDFkXHUwNDE0XHUwNDEwXHUwNDFhXHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyIFx1MDQxZVx1MDQxYlx1MDQxNlx1MDQxMFx1MDQyMSBcdTA0MTFcdTA0MTBcdTA0MWJcdTA0MjVcdTA0MTBcdTA0MjhcdTA0MTFcdTA0MTBcdTA0MTVcdTA0MTJcdTA0MThcdTA0MjciXSxbIjE3MDc0MDAxMTU4OSIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDIyXHUwNDFlXHUwNDFlIFwiXHUwNDFmXHUwNDNlXHUwNDM0XHUwNDNmXHUwNDM4XHUwNDQ4XHUwNDM4IFx1MDQxZVx1MDQzZFx1MDQzYlx1MDQzMFx1MDQzOVx1MDQzZFwiIl1dLDIsMSwyLDIsMF0sWyIxMDA4MDgxXzBjYWI4MTRkYWVhOGM1NWUxZjIwNzdiNzU3NDQzM2Y0Iiw1MjEzMTYsIjA0LjExLjIwMjQiLCI1MTkxMTIucGRmIixbXSwxLDAsMSwwLDFdLFsiMTAwODA4MF9kM2MzM2M4MGZkMDhlOTNjMmU0NTFlOWU0ZWVjMGU5YyIsNTIxMzE1LCIwNC4xMS4yMDI0IiwiNTE5MTEyLS0ucGRmIixbXSwxLDAsMSwwLDFdLFsiMTAwODA3MF9mYzM1ZWM5OTQ4Yzk0ZDkwOTFiZjVmYzEzMGIzMGNjNyIsNTIxMzEwLCIwNC4xMS4yMDI0IiwiXHUwNDE4XHUwNDFmIFx1MDQzMFx1MDQ0ZFx1MDQzYlx1MDQzOFx1MDQ0Mlx1MDQzMC5wZGYiLFtbIjgwMDIyODMwMDE1NiIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDFhXHUwNDIzXHUwNDFkXHUwNDE0XHUwNDEwXHUwNDFhXHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyIFx1MDQxZVx1MDQxYlx1MDQxNlx1MDQxMFx1MDQyMSBcdTA0MTFcdTA0MTBcdTA0MWJcdTA0MjVcdTA0MTBcdTA0MjhcdTA0MTFcdTA0MTBcdTA0MTVcdTA0MTJcdTA0MThcdTA0MjciXV0sMiwwLDIsMSwwXSxbIjEwMDc5NzBfMDJiZmEyMzVkMTA1MGNjYTY4ZGFkZTQ0MjdiOTQzNTUiLDUyMTI3NSwiMDQuMTEuMjAyNCIsIjUxOTExMi5wZGYiLFtbIjE3MDc0MDAxMTU4OSIsIlx1MDQxYVx1MDQyM1x1MDQxZFx1MDQxNFx1MDQxMFx1MDQxYVx1MDQxMVx1MDQxMFx1MDQxNVx1MDQxMiBcdTA0MWVcdTA0MWJcdTA0MTZcdTA0MTBcdTA0MjEgXHUwNDExXHUwNDEwXHUwNDFiXHUwNDI1XHUwNDEwXHUwNDI4XHUwNDExXHUwNDEwXHUwNDE1XHUwNDEyXHUwNDE4XHUwNDI3IiwiXHUwNDIyXHUwNDFlXHUwNDFlIFwiXHUwNDFmXHUwNDNlXHUwNDM0XHUwNDNmXHUwNDM4XHUwNDQ4XHUwNDM4IFx1MDQxZVx1MDQzZFx1MDQzYlx1MDQzMFx1MDQzOVx1MDQzZFwiIl1dLDEsMSwxLDEsNF1d'; 
-loadDataFromBase64(base64Data);
-});
 
 
 
@@ -465,49 +469,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Функция для отображения ярлыков из справочника
-    function displayLabelsFromDictionary(list_labels, list_docs) {
-        const labelsContainer = document.getElementById("labelsContainer");
-
-        // Проходим по документам
-        list_docs.forEach(doc => {
-            let docLabel = null;
-
-            // Ищем ярлык для текущего документа
-            list_labels.forEach(label => {
-                if (doc[0] === label[0]) {
-                    docLabel = label;
-                }
-            });
-
-            // Если ярлык найден
-            const labelElement = document.createElement("div");
-            const svgIcon = document.createElement("span");
-            svgIcon.textContent = "♛"; // Иконка шахматного ферзя
-
-            if (docLabel) {
-                const color = docLabel[2]; // Цвет ярлыка
-                svgIcon.style.color = `#${color}`; // Применяем цвет
-            } else {
-                svgIcon.style.color = "#D3D3D3"; // Если нет ярлыка, серый
-            }
-
-            labelElement.appendChild(svgIcon);
-
-            const labelText = document.createElement("span");
-            labelText.textContent = doc[3]; // Название документа
-            labelElement.appendChild(labelText);
-
-            labelsContainer.appendChild(labelElement);
-        });
-    }
-
-    // Пример вызова функции для отображения ярлыков
-    const list_labels = JSON.parse('{"1":[1,"1_kmfnkdjlsfhiur83rjJShs738wms","\u0441\u0447\u0435\u0442\u0430 \043d\u0430 \u043e\u043f\u043b\u0430\u0442\u0443","1BE31E"],"4":[4,"4_dsfsdfsdf","\u0410\u043a\u0442\u044b \u0410\u0412\u0420","E18E28"]}');
-    const list_docs = JSON.parse('[["1008086_5e71a68861d89c5b57c1aed0fee1c70a",521320,"04.11.2024","Договора поставки.pdf"]]');
-
-    // Вызов функции
-    displayLabelsFromDictionary(list_labels, list_docs);
+    
 });
 
 // Функция для обновления текста на кнопке в зависимости от выбранного чекбокса
