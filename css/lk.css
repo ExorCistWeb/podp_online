@@ -237,7 +237,7 @@ p {
     align-items: center;
 }
 
-.acc_info_box .acc_info_flex h3 {
+.acc_info_box .acc_info_flex h3 * {
     max-width: 390px;
     width: 100%;
     display: flex;

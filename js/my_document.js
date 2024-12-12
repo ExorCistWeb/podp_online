@@ -136,22 +136,7 @@ function generateTableRow(data) {
         </div>
     </div>
 
-<div class="modal_my" id="modal2">
-        <div class="popup_time_error">
-            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
-            <h3>Уведемление по документу № 34757834 отправленно на БИН/ИИН 899844324543</h3>
 
-            <div class="box_info_modal">
-                <h6>Номер документа:</h6>
-                <p>34757834</p>
-            </div>
-            <div class="box_info_modal">
-                <h6>Название документа:</h6>
-                <a href="">Счет на оплату №637 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ... </a>
-            </div>
-
-        </div>
-    </div>
 
                  <div class="table_flexes">
                                 <div class="box_flexes">
