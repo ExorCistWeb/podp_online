@@ -110,6 +110,49 @@ function generateTableRow(data) {
                 tableLine.classList.add('my_table_line');
 
                 tableLine.innerHTML = `
+
+<div class="modal_my" id="modal${item.documentNumber}">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Просмотр подписей</h3>
+            <p>Здесь показана информация о подписях</p>
+
+            <div class="box_info_modal">
+                <h6>Номер документа:</h6>
+                <p>${item.documentNumber}</p>
+            </div>
+            <div class="box_info_modal">
+                <h6>Название документа:</h6>
+                <a href="">${item.documentName} </a>
+            </div>
+            <div class="box_info_modal">
+                <h6>Требуемое количество подписей:</h6>
+                <p>${item.totalsign} шт.</p>
+            </div>
+            <div class="box_info_modal">
+                <h6>из них выполнено подписей:</h6>
+                <p>${item.totalsigned} шт.</p>
+            </div>
+        </div>
+    </div>
+
+<div class="modal_my" id="modal2">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Уведемление по документу № 34757834 отправленно на БИН/ИИН 899844324543</h3>
+
+            <div class="box_info_modal">
+                <h6>Номер документа:</h6>
+                <p>34757834</p>
+            </div>
+            <div class="box_info_modal">
+                <h6>Название документа:</h6>
+                <a href="">Счет на оплату №637 от 22.08.2024 ТОО “Подпиши Онлайн” - КУНДАКБАЕВ ОЛЖАС ... </a>
+            </div>
+
+        </div>
+    </div>
+
                  <div class="table_flexes">
                                 <div class="box_flexes">
                                     <div class="select_input">
@@ -136,7 +179,7 @@ function generateTableRow(data) {
                                                 Переименовать
                                             </button>
                                     </div>
-                                    <button class="members_info open-modal" data-target="modal1">
+                                    <button class="members_info open-modal" data-target="modal${item.documentNumber}">
                                         <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_1_2425)">
                                                 <path id="path1" d="M8.71307 16.7228C10.8965 16.7099 12.7871 14.7261 12.772 12.1787C12.7571 9.65534 10.8318 7.79982 8.66043 7.81265C6.47762 7.82555 4.56324 9.7506 4.59001 12.2511C4.60492 14.7744 6.51826 16.7357 8.71365 16.7228M2.2261 27.3613L11.1471 27.3086C9.91606 25.5433 11.3858 21.9659 13.8983 20.0025C12.5903 19.1416 10.9071 18.5058 8.71226 18.5188C3.41806 18.5495 0.130922 22.4776 0.150134 25.7295C0.156379 26.7866 0.746693 27.37 2.2261 27.3613Z" fill="#FF0E0E"/>
