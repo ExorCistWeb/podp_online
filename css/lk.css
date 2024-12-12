@@ -237,11 +237,21 @@ p {
     align-items: center;
 }
 
-.acc_info_box .acc_info_flex h3 * {
+.acc_info_box .acc_info_flex h3 {
     max-width: 390px;
     width: 100%;
     display: flex;
     align-items: center;
+}
+
+.acc_info_flex h3 * {
+    text-align: start;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 113%;
+    color: #4F4F4F;
 }
 
 .acc_info_box .acc_info_flex span {
