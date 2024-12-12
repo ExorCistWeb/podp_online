@@ -248,9 +248,9 @@ p {
     text-align: start;
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 113%;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 113% !important;
     color: #4F4F4F;
 }
 
