@@ -156,11 +156,22 @@ function updateTable(data) {
 function generateTableRow(data) {
     const tableContainer = document.getElementById('tableContainer');
 
+    // Проверка, что контейнер для таблицы существует
+    if (!tableContainer) {
+        console.error('Контейнер для таблицы не найден');
+        return;
+    }
+
+    // Очистка контейнера перед добавлением новых строк
+    tableContainer.innerHTML = '';
+
     // Пройдем по каждому элементу в data и создадим строку
     data.forEach(item => {
+                // Создаем строку таблицы
                 const tableLine = document.createElement('div');
                 tableLine.classList.add('my_table_line');
 
+                // Формируем HTML контент для строки таблицы
                 tableLine.innerHTML = `
 
                 <div class="modal_my" id="modal${item.documentNumber}">
