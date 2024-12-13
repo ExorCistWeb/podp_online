@@ -134,7 +134,7 @@ function generateTableRow(data) {
             <h3>Просмотр подписей</h3>
             <p>Здесь показана информация о подписях</p>
 
-               <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
+               <iframe id="iframe-${item.documentNumber}" src="?move=35&pp1=${item.hash}" frameborder="0" width="100%" height="400"></iframe>
         </div>
     </div>
 
