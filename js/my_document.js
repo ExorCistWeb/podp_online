@@ -16,7 +16,7 @@ function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
-            // Если данные — это массив, то их можно обрабатывать
+            // Если данные — это массив, обрабатываем его
             const formattedData = data.map(doc => {
                 // Объявление переменных из элементов массива
                 var pp1 = doc[0];
@@ -29,29 +29,30 @@ function loadDataFromBase64(base64Str) {
                 var totalsign = doc[7];
                 var totalsigned = doc[8];
                 var labelid = doc[9];
+                var to_request = '/ZERO_view9.php';
+                var to_request_qr = '/qr.php';
 
-                // Генерация ссылок
-                const to_request = '/download'; // Базовый путь для полной версии
-                const to_request_qr = '/view'; // Базовый путь для просмотра
-
-                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания
-                const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра
+                // Генерация ссылок на основе глобальных переменных
+                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
+                const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра документа
 
                 // Возвращаем объект с отформатированными данными и ссылками
                 return {
-                    hash: pp1, // Хэш документа
-                    documentNumber: num, // Номер документа
-                    documentDate: crtime, // Дата документа
-                    documentName: docname, // Название документа
-                    documentLabel: labelid, // Метка документа
-                    totalsigned: totalsigned, // Всего подписано
-                    totalsign: totalsign, // Всего подписей
+                    hash: pp1,
+                    documentNumber: num,
+                    documentDate: crtime,
+                    documentName: docname,
+                    documentLabel: labelid,
+                    totalsigned: totalsigned,
+                    totalsign: totalsign,
                     signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
-                    downloadLink: link_dl_full, // Ссылка для скачивания полной версии
-                    viewLink: link_view, // Ссылка для просмотра документа
+                    downloadLink: link_dl_full,
+                    viewLink: link_view,
                 };
             });
-            generateTableRow(formattedData); // Генерируем строки таблицы с отформатированными данными
+
+            // Генерируем строки таблицы с данными
+            generateTableRow(formattedData);
         } else {
             console.error("Данные не массив");
         }
@@ -110,6 +111,28 @@ function updateTable(data) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Добавляем обработчик на все кнопки с классом members_info
+    document.querySelectorAll('.members_info').forEach(button => {
+        button.addEventListener('click', event => {
+            // Получаем значение pp1 из атрибута data-pp1
+            const pp1 = event.target.dataset.pp1;
+            const targetModalId = event.target.dataset.target;
+
+            // Формируем ссылку для фрейма
+            const iframeSrc = `/your_endpoint?move=35&pp1=${pp1}`;
+
+
+
+            // Устанавливаем ссылку в iframe
+            iframe.src = iframeSrc;
+
+        });
+    });
+
+
+});
+
 // Функция для генерации строк таблицы
 function generateTableRow(data) {
     const tableContainer = document.getElementById('tableContainer');
@@ -127,22 +150,7 @@ function generateTableRow(data) {
             <h3>Просмотр подписей</h3>
             <p>Здесь показана информация о подписях</p>
 
-            <div class="box_info_modal">
-                <h6>Номер документа:</h6>
-                <p>${item.documentNumber}</p>
-            </div>
-            <div class="box_info_modal">
-                <h6>Название документа:</h6>
-                <a href="">${item.documentName} </a>
-            </div>
-            <div class="box_info_modal">
-                <h6>Требуемое количество подписей:</h6>
-                <p>${item.totalsign} шт.</p>
-            </div>
-            <div class="box_info_modal">
-                <h6>из них выполнено подписей:</h6>
-                <p>${item.totalsigned} шт.</p>
-            </div>
+               <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
         </div>
     </div>
 
@@ -155,12 +163,12 @@ function generateTableRow(data) {
                                         <label for="">Выбрать</label>
                                     </div>
                                     <div class="table_line_process">
-                                        <a href="${item.link_dl_full}" >
+                                        <a href="${item.downloadLink}"  target="_blank">
                                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M11.375 2.625V11.0128L14.4375 7.95025L15.6747 9.1875L10.5 14.3622L5.32525 9.1875L6.5625 7.95025L9.625 11.0128V2.625H11.375ZM3.9375 12.25V16.625H17.0625V12.25H18.8125V18.375H2.1875V12.25H3.9375Z" fill="#4F4F4F"/>
                                                 </svg> Скачать
                                         </a>
-                                        <a href="${item.downloadLink}" ><svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <a href="${item.viewLink}"  target="_blank" ><svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.9546 11.5059C18.208 11.9496 18.3346 12.1725 18.3346 12.5007C18.3346 12.8298 18.208 13.0517 17.9546 13.4954C16.8163 15.4913 13.9088 19.7923 10.0013 19.7923C6.09297 19.7923 3.1863 15.4902 2.04797 13.4954C1.79464 13.0517 1.66797 12.8288 1.66797 12.5007C1.66797 12.1715 1.79464 11.9496 2.04797 11.5059C3.1863 9.51003 6.0938 5.20898 10.0013 5.20898C13.9096 5.20898 16.8163 9.51107 17.9546 11.5059Z" stroke="#4F4F4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M12.5 12.5C12.5 11.6712 12.2366 10.8763 11.7678 10.2903C11.2989 9.70424 10.663 9.375 10 9.375C9.33696 9.375 8.70107 9.70424 8.23223 10.2903C7.76339 10.8763 7.5 11.6712 7.5 12.5C7.5 13.3288 7.76339 14.1237 8.23223 14.7097C8.70107 15.2958 9.33696 15.625 10 15.625C10.663 15.625 11.2989 15.2958 11.7678 14.7097C12.2366 14.1237 12.5 13.3288 12.5 12.5Z" stroke="#4F4F4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
