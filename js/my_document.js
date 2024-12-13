@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let globalFormattedData = []; // глобальная переменная для хранения данных
 
+// Функция для обработки данных из base64
 function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
             globalFormattedData = data.map(doc => {
-                var pp1 = doc[0];
+                var pp1 = doc[0]; // Хэш документа
                 var num = doc[1];
                 var crtime = doc[2];
                 var docname = doc[3];
@@ -48,8 +49,6 @@ function loadDataFromBase64(base64Str) {
                 };
             });
 
-           
-            generateTableRow(globalFormattedData);
         } else {
             console.error("Данные не массив");
         }
@@ -58,24 +57,35 @@ function loadDataFromBase64(base64Str) {
     }
 }
 
+// Обработчик событий для клика по кнопке
 document.addEventListener('DOMContentLoaded', () => {
+    // Проверка на наличие данных
+    if (globalFormattedData.length === 0) {
+        console.error("Данные не загружены");
+        return;
+    }
+
+    // Привязываем обработчик кликов к кнопкам
     document.querySelectorAll('.members_info').forEach(button => {
         button.addEventListener('click', event => {
             // Получаем значение pp1 из атрибута data-pp1
             const pp1 = event.target.dataset.pp1;
 
+            if (!pp1) {
+                console.error("Не удалось получить значение pp1");
+                return;
+            }
 
             // Формируем ссылку для фрейма
             const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
 
-            // Находим iframe по id, который соответствует документу
-            const iframe = document.querySelector(`#iframe-${pp1}`); // id iframe должен совпадать с pp1
-
+            // Находим iframe по id, который соответствует хэшу документа
+            const iframe = document.querySelector(`#iframe-${pp1}`);
             if (iframe) {
                 // Устанавливаем ссылку в iframe
                 iframe.src = iframeSrc;
             } else {
-                console.error("Iframe с данным id не найден");
+                console.error(`Iframe с id #iframe-${pp1} не найден`);
             }
 
             // Открытие модального окна
@@ -84,11 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modal) {
                 modal.style.display = 'flex'; // Отображаем модальное окно
             } else {
-                console.error("Модальное окно не найдено");
+                console.error(`Модальное окно с id #${modalId} не найдено`);
             }
         });
     });
 });
+
 
 
 
@@ -160,9 +171,11 @@ function generateTableRow(data) {
         <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
         <h3>Просмотр подписей</h3>
         <p>Здесь показана информация о подписях</p>
-        <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
+        <iframe id="iframe-${item.hash}" src="" frameborder="0" width="100%" height="400"></iframe>
     </div>
 </div>
+
+
 
 
 
