@@ -30,7 +30,14 @@ function loadDataFromBase64(base64Str) {
                 var totalsigned = doc[8];
                 var labelid = doc[9];
 
-                // Возвращаем объект с отформатированными данными
+                // Генерация ссылок
+                const to_request = '/download'; // Базовый путь для полной версии
+                const to_request_qr = '/view'; // Базовый путь для просмотра
+
+                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания
+                const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра
+
+                // Возвращаем объект с отформатированными данными и ссылками
                 return {
                     hash: pp1, // Хэш документа
                     documentNumber: num, // Номер документа
@@ -40,6 +47,8 @@ function loadDataFromBase64(base64Str) {
                     totalsigned: totalsigned, // Всего подписано
                     totalsign: totalsign, // Всего подписей
                     signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
+                    downloadLink: link_dl_full, // Ссылка для скачивания полной версии
+                    viewLink: link_view, // Ссылка для просмотра документа
                 };
             });
             generateTableRow(formattedData); // Генерируем строки таблицы с отформатированными данными
@@ -50,6 +59,7 @@ function loadDataFromBase64(base64Str) {
         console.error('Ошибка обработки данных:', error);
     }
 }
+
 
 
 
@@ -145,12 +155,12 @@ function generateTableRow(data) {
                                         <label for="">Выбрать</label>
                                     </div>
                                     <div class="table_line_process">
-                                        <a href="?move=35&pp1=${item.hash}&printme=1&zipme=1" download>
+                                        <a href="${item.link_dl_full}" >
                                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M11.375 2.625V11.0128L14.4375 7.95025L15.6747 9.1875L10.5 14.3622L5.32525 9.1875L6.5625 7.95025L9.625 11.0128V2.625H11.375ZM3.9375 12.25V16.625H17.0625V12.25H18.8125V18.375H2.1875V12.25H3.9375Z" fill="#4F4F4F"/>
                                                 </svg> Скачать
                                         </a>
-                                        <a href="?move=37&pp1=${item.hash}&viewme=1" download><svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <a href="${item.downloadLink}" ><svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.9546 11.5059C18.208 11.9496 18.3346 12.1725 18.3346 12.5007C18.3346 12.8298 18.208 13.0517 17.9546 13.4954C16.8163 15.4913 13.9088 19.7923 10.0013 19.7923C6.09297 19.7923 3.1863 15.4902 2.04797 13.4954C1.79464 13.0517 1.66797 12.8288 1.66797 12.5007C1.66797 12.1715 1.79464 11.9496 2.04797 11.5059C3.1863 9.51003 6.0938 5.20898 10.0013 5.20898C13.9096 5.20898 16.8163 9.51107 17.9546 11.5059Z" stroke="#4F4F4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M12.5 12.5C12.5 11.6712 12.2366 10.8763 11.7678 10.2903C11.2989 9.70424 10.663 9.375 10 9.375C9.33696 9.375 8.70107 9.70424 8.23223 10.2903C7.76339 10.8763 7.5 11.6712 7.5 12.5C7.5 13.3288 7.76339 14.1237 8.23223 14.7097C8.70107 15.2958 9.33696 15.625 10 15.625C10.663 15.625 11.2989 15.2958 11.7678 14.7097C12.2366 14.1237 12.5 13.3288 12.5 12.5Z" stroke="#4F4F4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
