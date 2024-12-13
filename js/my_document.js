@@ -57,8 +57,8 @@ function loadDataFromBase64(base64Str) {
             // Add click event listeners for members info
             document.querySelectorAll('.members_info').forEach(button => {
                 button.addEventListener('click', event => {
-                    const pp1 = event.target.dataset.pp1;
-                    const iframeSrc = to_request_qr + '?move=35&pp1=' + pp1;
+                    const pp21 = event.target.dataset.pp1;
+                    const iframeSrc = to_request_qr + '?move=35&pp1=' + pp21;
 
                     const iframe = document.querySelector('iframe');
                     if (iframe) {
