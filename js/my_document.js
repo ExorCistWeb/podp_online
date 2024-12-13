@@ -57,19 +57,33 @@ function loadDataFromBase64(base64Str) {
             document.querySelectorAll('.members_info').forEach(button => {
                 button.addEventListener('click', event => {
                     // Получаем значение pp1 из атрибута data-pp1
-                    const pp1 = event.target.dataset.pp1; // Это должен быть hash
+                    const pp1 = event.target.dataset.pp1;
 
-                    // Формируем ссылку для фрейма с использованием pp1
-                    const iframeSrc = to_request_qr + '?move=35&pp1=' + pp1;
+                    // Проверяем, что pp1 существует и не является undefined
+                    if (pp1) {
+                        // Формируем ссылку для фрейма
+                        const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
 
-                    // Находим первый iframe на странице (можно заменить на конкретный id или класс)
-                    const iframe = document.querySelector('iframe'); // если iframe с конкретным id, например, 'myIframe', то можно использовать document.querySelector('#myIframe');
+                        // Находим первый iframe на странице (если у вас несколько iframe, используйте ID или класс)
+                        const iframe = document.querySelector('iframe'); // замените на ваш iframe, например: document.querySelector('#myIframe');
 
-                    if (iframe) {
-                        // Устанавливаем ссылку в iframe
-                        iframe.src = iframeSrc;
+                        if (iframe) {
+                            // Устанавливаем ссылку в iframe
+                            iframe.src = iframeSrc;
+                        } else {
+                            console.error("Iframe не найден на странице");
+                        }
+
+                        // Открытие модального окна (если необходимо)
+                        const modalId = event.target.dataset.target;
+                        const modal = document.getElementById(modalId);
+                        if (modal) {
+                            modal.classList.add('show'); // Добавляем класс для отображения модального окна (по вашему стилю)
+                        } else {
+                            console.error("Модальное окно не найдено");
+                        }
                     } else {
-                        console.error("Iframe не найден на странице");
+                        console.error("Не удалось получить значение pp1.");
                     }
                 });
             });
@@ -185,7 +199,7 @@ function generateTableRow(data) {
                                                 Переименовать
                                             </button>
                                     </div>
-                                    <button class="members_info open-modal" data-target="modal${item.documentNumber}">
+                                    <button class="members_info open-modal" data-target="modal${item.documentNumber}" data-pp1="${item.hash}">
                                         <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_1_2425)">
                                                 <path id="path1" d="M8.71307 16.7228C10.8965 16.7099 12.7871 14.7261 12.772 12.1787C12.7571 9.65534 10.8318 7.79982 8.66043 7.81265C6.47762 7.82555 4.56324 9.7506 4.59001 12.2511C4.60492 14.7744 6.51826 16.7357 8.71365 16.7228M2.2261 27.3613L11.1471 27.3086C9.91606 25.5433 11.3858 21.9659 13.8983 20.0025C12.5903 19.1416 10.9071 18.5058 8.71226 18.5188C3.41806 18.5495 0.130922 22.4776 0.150134 25.7295C0.156379 26.7866 0.746693 27.37 2.2261 27.3613Z" fill="#FF0E0E"/>
