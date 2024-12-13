@@ -52,6 +52,28 @@ function loadDataFromBase64(base64Str) {
 
             // Генерируем строки таблицы с данными
             generateTableRow(formattedData);
+
+            // После того как данные загружены, добавляем обработчик кликов
+            document.querySelectorAll('.members_info').forEach(button => {
+                button.addEventListener('click', event => {
+                    // Получаем значение pp1 из атрибута data-pp1
+                    const pp1 = event.target.dataset.pp1;
+
+                    // Формируем ссылку для фрейма
+                    const iframeSrc = to_request_qr + '?move=35&pp1=' + pp1;
+
+                    // Находим первый iframe на странице (можно заменить на конкретный id или класс)
+                    const iframe = document.querySelector('iframe'); // если iframe с конкретным id, например, 'myIframe', то можно использовать document.querySelector('#myIframe');
+
+                    if (iframe) {
+                        // Устанавливаем ссылку в iframe
+                        iframe.src = iframeSrc;
+                    } else {
+                        console.error("Iframe не найден на странице");
+                    }
+                });
+            });
+
         } else {
             console.error("Данные не массив");
         }
@@ -59,6 +81,7 @@ function loadDataFromBase64(base64Str) {
         console.error('Ошибка обработки данных:', error);
     }
 }
+
 
 
 
@@ -111,28 +134,6 @@ function updateTable(data) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Добавляем обработчик на все кнопки с классом members_info
-    document.querySelectorAll('.members_info').forEach(button => {
-        button.addEventListener('click', event => {
-            // Получаем значение pp1 из атрибута data-pp1
-            const pp1 = event.target.dataset.pp1;
-
-            // Формируем ссылку для фрейма
-            const iframeSrc = to_request_qr + '?move=35&pp1=' + pp1;
-
-            // Находим первый iframe на странице (можно заменить на конкретный id или класс)
-            const iframe = document.querySelector('iframe'); // если iframe с конкретным id, например, 'myIframe', то можно использовать document.querySelector('#myIframe');
-
-            if (iframe) {
-                // Устанавливаем ссылку в iframe
-                iframe.src = iframeSrc;
-            } else {
-                console.error("Iframe не найден на странице");
-            }
-        });
-    });
-});
 
 
 // Функция для генерации строк таблицы
