@@ -61,23 +61,34 @@ function loadDataFromBase64(base64Str) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Делегирование события на родительский элемент, например, на body или контейнер
-    document.body.addEventListener('click', event => {
-        if (event.target.classList.contains('members_info')) {
+    document.querySelectorAll('.members_info').forEach(button => {
+        button.addEventListener('click', event => {
+            // Получаем значение pp1 из атрибута data-pp1
             const pp1 = event.target.dataset.pp1;
-            console.log('data-pp1:', pp1); // Проверяем, что получаем
-            if (pp1) {
-                const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
-                const iframe = document.querySelector('iframe');
-                if (iframe) {
-                    iframe.src = iframeSrc;
-                } else {
-                    console.error("Iframe не найден на странице");
-                }
+            const documentNumber = event.target.dataset.documentNumber; // Читаем номер документа (если нужно)
+
+            // Формируем ссылку для фрейма
+            const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
+
+            // Находим iframe по id, который соответствует документу
+            const iframe = document.querySelector(`#iframe-${pp1}`); // id iframe должен совпадать с pp1
+
+            if (iframe) {
+                // Устанавливаем ссылку в iframe
+                iframe.src = iframeSrc;
             } else {
-                console.error("Не удалось получить значение pp1.");
+                console.error("Iframe с данным id не найден");
             }
-        }
+
+            // Открытие модального окна
+            const modalId = event.target.dataset.target;
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex'; // Отображаем модальное окно
+            } else {
+                console.error("Модальное окно не найдено");
+            }
+        });
     });
 });
 
@@ -147,14 +158,14 @@ function generateTableRow(data) {
                 tableLine.innerHTML = `
 
 <div class="modal_my" id="modal${item.documentNumber}">
-        <div class="popup_time_error">
-            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
-            <h3>Просмотр подписей</h3>
-            <p>Здесь показана информация о подписях</p>
-
-               <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
-        </div>
+    <div class="popup_time_error">
+        <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+        <h3>Просмотр подписей</h3>
+        <p>Здесь показана информация о подписях</p>
+        <iframe id="iframe-${item.hash}" src="" frameborder="0" width="100%" height="400"></iframe>
     </div>
+</div>
+
 
 
 
