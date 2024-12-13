@@ -20,7 +20,7 @@ function loadDataFromBase64(base64Str) {
             // Если данные — это массив, обрабатываем их
             const formattedData = data.map(doc => {
                 // Извлечение значений из массива
-                var pp1 = doc[0];
+                var pp1 = doc[0]; // Это хэш документа
                 var num = doc[1];
                 var crtime = doc[2];
                 var docname = doc[3];
@@ -37,7 +37,7 @@ function loadDataFromBase64(base64Str) {
 
                 // Возвращаем объект с отформатированными данными и ссылками
                 return {
-                    hash: pp1,
+                    hash: pp1, // Хэш документа
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
@@ -57,9 +57,9 @@ function loadDataFromBase64(base64Str) {
             document.querySelectorAll('.members_info').forEach(button => {
                 button.addEventListener('click', event => {
                     // Получаем значение pp1 из атрибута data-pp1
-                    const pp1 = event.target.dataset.pp1;
+                    const pp1 = event.target.dataset.pp1; // Это должен быть hash
 
-                    // Формируем ссылку для фрейма
+                    // Формируем ссылку для фрейма с использованием pp1
                     const iframeSrc = to_request_qr + '?move=35&pp1=' + pp1;
 
                     // Находим первый iframe на странице (можно заменить на конкретный id или класс)
