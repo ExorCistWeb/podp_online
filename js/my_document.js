@@ -6,18 +6,27 @@ function decodeBase64ToJson(base64Str) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Пример строки Base64
 
     loadDataFromBase64(base64Data);
 
 });
-// Загрузка данных из строки base64
+// Проверка на глобальные переменные
+if (typeof to_request === "undefined") {
+    var to_request = '/ZERO_view9.php'; // Путь для скачивания полной версии
+}
+
+if (typeof to_request_qr === "undefined") {
+    var to_request_qr = '/qr.php'; // Путь для просмотра QR
+}
+
 function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
-            // Если данные — это массив, обрабатываем его
+            // Если данные — это массив, обрабатываем их
             const formattedData = data.map(doc => {
-                // Объявление переменных из элементов массива
+                // Извлечение значений из массива
                 var pp1 = doc[0];
                 var num = doc[1];
                 var crtime = doc[2];
@@ -28,8 +37,6 @@ function loadDataFromBase64(base64Str) {
                 var totalsign = doc[7];
                 var totalsigned = doc[8];
                 var labelid = doc[9];
-                var to_request = '/ZERO_view9.php';
-                var to_request_qr = '/qr.php';
 
                 // Генерация ссылок на основе глобальных переменных
                 const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
@@ -59,6 +66,7 @@ function loadDataFromBase64(base64Str) {
         console.error('Ошибка обработки данных:', error);
     }
 }
+
 
 
 
@@ -117,20 +125,22 @@ document.addEventListener('DOMContentLoaded', () => {
             // Получаем значение pp1 из атрибута data-pp1
             const pp1 = event.target.dataset.pp1;
 
-
             // Формируем ссылку для фрейма
             const iframeSrc = to_request_qr + '?move=35&pp1=' + pp1;
 
+            // Находим первый iframe на странице (можно заменить на конкретный id или класс)
+            const iframe = document.querySelector('iframe'); // если iframe с конкретным id, например, 'myIframe', то можно использовать document.querySelector('#myIframe');
 
-
-            // Устанавливаем ссылку в iframe
-            iframe.src = iframeSrc;
-
+            if (iframe) {
+                // Устанавливаем ссылку в iframe
+                iframe.src = iframeSrc;
+            } else {
+                console.error("Iframe не найден на странице");
+            }
         });
     });
-
-
 });
+
 
 // Функция для генерации строк таблицы
 function generateTableRow(data) {
