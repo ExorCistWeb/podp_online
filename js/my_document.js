@@ -48,9 +48,7 @@ function loadDataFromBase64(base64Str) {
                 };
             });
 
-            // Логируем данные сразу после их обработки
-            console.log('Global Formatted Data:', globalFormattedData);
-
+           
             generateTableRow(globalFormattedData);
         } else {
             console.error("Данные не массив");
