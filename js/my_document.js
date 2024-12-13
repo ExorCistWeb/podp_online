@@ -13,46 +13,66 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
 function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
+            // Если данные — это массив, обрабатываем их
             const formattedData = data.map(doc => {
-                const hash = doc[0];
-                const num = doc[1];
-                const crtime = doc[2];
-                const docname = doc[3];
-                const signs = doc[4];
-                const labelid = doc[9];
+                // Извлечение значений из массива
+                var pp1 = doc[0];
+                var num = doc[1];
+                var crtime = doc[2];
+                var docname = doc[3];
+                var signs = doc[4];
+                var type_work = doc[5];
+                var issigned = doc[6];
+                var totalsign = doc[7];
+                var totalsigned = doc[8];
+                var labelid = doc[9];
 
-                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${hash}`;
-                const link_view = `${to_request_qr}?move=35&pp1=${hash}`;
+                // Генерация ссылок на основе глобальных переменных
+                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
+                const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра документа
 
+                // Возвращаем объект с отформатированными данными и ссылками
                 return {
-                    hash,
+                    hash: pp1,
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
                     documentLabel: labelid,
-                    signedBy: signs.map(signer => ({ name: signer })),
+                    totalsigned: totalsigned,
+                    totalsign: totalsign,
+                    signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
                     downloadLink: link_dl_full,
                     viewLink: link_view,
                 };
             });
 
+            // Генерируем строки таблицы с данными
             generateTableRow(formattedData);
 
-            document.querySelectorAll('.members_info').forEach(button => {
-                button.addEventListener('click', event => {
-                    const hash = event.target.dataset.hash;
-                    const iframeSrc = `${to_request_qr}?move=35&pp1=${hash}`;
-
-                    const iframe = document.querySelector('iframe');
-                    if (iframe) {
-                        iframe.src = iframeSrc;
+            // Добавляем обработчики для открытия модальных окон
+            document.querySelectorAll(".open-modal").forEach(button => {
+                button.addEventListener("click", event => {
+                    const targetId = event.target.dataset.target; // Получаем id целевого модального окна
+                    const modal = document.getElementById(targetId);
+                    if (modal) {
+                        const documentNumber = targetId.replace("modal", ""); // Извлекаем номер документа
+                        const item = formattedData.find(doc => doc.documentNumber == documentNumber);
+                        if (item) {
+                            const iframe = modal.querySelector(`iframe`);
+                            if (iframe) {
+                                iframe.src = `?move=35&pp1=${item.hash}`;
+                            } else {
+                                console.error(`Iframe в модальном окне ${targetId} не найден`);
+                            }
+                        } else {
+                            console.error(`Документ с номером ${documentNumber} не найден`);
+                        }
                     } else {
-                        console.error("Iframe не найден на странице");
+                        console.error(`Модальное окно с id ${targetId} не найдено`);
                     }
                 });
             });
@@ -63,6 +83,8 @@ function loadDataFromBase64(base64Str) {
         console.error("Ошибка обработки данных:", error);
     }
 }
+
+
 
 
 
