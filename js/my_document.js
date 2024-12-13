@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', event => {
             // Получаем значение pp1 из атрибута data-pp1
             const pp1 = event.target.dataset.pp1;
-            const targetModalId = event.target.dataset.target;
+
 
             // Формируем ссылку для фрейма
             const iframeSrc = `/your_endpoint?move=35&pp1=${pp1}`;
