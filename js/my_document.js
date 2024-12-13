@@ -33,7 +33,7 @@ function loadDataFromBase64(base64Str) {
                 // Генерация ссылок на основе глобальных переменных
                 const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
                 const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра документа
-
+                const link_view_simple = `${to_request}?move=35&pp1=${pp1}`;
                 // Возвращаем объект с отформатированными данными и ссылками
                 return {
                     hash: pp1,
@@ -46,6 +46,7 @@ function loadDataFromBase64(base64Str) {
                     signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
                     downloadLink: link_dl_full,
                     viewLink: link_view,
+                    simpleViewLink: link_view_simple, // Третий вариант ссылки
                 };
             });
 
@@ -134,7 +135,7 @@ function generateTableRow(data) {
             <h3>Просмотр подписей</h3>
             <p>Здесь показана информация о подписях</p>
 
-               <iframe id="iframe-${item.documentNumber}" src="?move=35&pp1=${item.hash}" frameborder="0" width="100%" height="400"></iframe>
+               <iframe id="iframe-${item.documentNumber}" src="?move=35&pp1=${item.simpleViewLink}" frameborder="0" width="100%" height="400"></iframe>
         </div>
     </div>
 
