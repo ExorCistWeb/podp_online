@@ -52,34 +52,6 @@ function loadDataFromBase64(base64Str) {
             // Генерируем строки таблицы с данными
             generateTableRow(formattedData);
 
-            // Добавляем обработчики для открытия модальных окон
-            document.querySelectorAll(".open-modal").forEach(button => {
-                button.addEventListener("click", event => {
-                    const targetId = event.target.dataset.target; // Получаем id модального окна
-                    if (!targetId) {
-                        console.error("Атрибут data-target у кнопки отсутствует");
-                        return;
-                    }
-
-                    const modal = document.getElementById(targetId);
-                    if (modal) {
-                        const documentNumber = targetId.replace("modal", ""); // Извлекаем номер документа
-                        const item = formattedData.find(doc => doc.documentNumber == documentNumber);
-                        if (item) {
-                            const iframe = modal.querySelector(`iframe`);
-                            if (iframe) {
-                                iframe.src = `?move=35&pp1=${item.hash}`;
-                            } else {
-                                console.error(`Iframe в модальном окне ${targetId} не найден`);
-                            }
-                        } else {
-                            console.error(`Документ с номером ${documentNumber} не найден`);
-                        }
-                    } else {
-                        console.error(`Модальное окно с id ${targetId} не найдено`);
-                    }
-                });
-            });
 
         } else {
             console.error("Данные не массив");
@@ -260,7 +232,41 @@ updateIcons();
 
 }
 
+// Добавляем обработчики событий для кнопок после создания модальных окон
+document.addEventListener("DOMContentLoaded", () => {
+    // Проверяем наличие кнопок с классом open-modal
+    const modalButtons = document.querySelectorAll(".open-modal");
 
+    if (modalButtons.length === 0) {
+        console.error("Кнопки с классом open-modal не найдены");
+        return;
+    }
+
+    modalButtons.forEach(button => {
+        button.addEventListener("click", event => {
+            const targetId = event.target.dataset.target; // Получаем id модального окна
+
+            if (!targetId) {
+                console.error("Атрибут data-target у кнопки отсутствует");
+                return;
+            }
+
+            const modal = document.getElementById(targetId);
+            if (modal) {
+                const documentNumber = targetId.replace("modal", ""); // Извлекаем номер документа
+                const iframe = modal.querySelector("iframe");
+
+                if (iframe) {
+                    iframe.src = `?move=35&pp1=${documentNumber}`; // Устанавливаем ссылку в iframe
+                    modal.style.display = "block"; // Открываем модальное окно (можно заменить на нужный механизм показа)
+                } else {
+                    console.error(`Iframe в модальном окне ${targetId} не найден`);
+                }
+            } else {
+                console.error(`Модальное окно с id ${targetId} не найдено`);
+            }
+        });
+    });
 
 
 document.addEventListener('DOMContentLoaded', () => {
