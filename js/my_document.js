@@ -11,14 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDataFromBase64(base64Data);
 
 });
-// Проверка на глобальные переменные
-if (typeof to_request === "undefined") {
-    var to_request = '/ZERO_view9.php'; // Путь для скачивания полной версии
-}
 
-if (typeof to_request_qr === "undefined") {
-    var to_request_qr = '/qr.php'; // Путь для просмотра QR
-}
 
 function loadDataFromBase64(base64Str) {
     try {
