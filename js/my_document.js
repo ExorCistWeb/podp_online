@@ -322,7 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const labelInput = document.getElementById('labelInput');
     const colorSelect = document.getElementById('colorSelect');
     const filterCheckbox = document.getElementById('filterCheckbox');
-    const labelForm = document.getElementById('labelForm');
 
     // Функция для переключения отображения блоков
     const toggleDisplay = (button, element) => {
@@ -352,58 +351,105 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleDisplay(labelsBtn, labelsCheckbox);
     });
 
-    // Открытие формы для добавления нового ярлыка
+    // Открытие labels_input_content
     selectBtn.addEventListener('click', (event) => {
         event.stopPropagation();
         labelsInputContent.style.display = 'flex';
-        selectBtn.style.display = 'none';
     });
 
-    // Закрытие формы добавления ярлыка при клике на "ОТМЕНА"
+    // Закрытие labels_input_content при клике на кнопку "ОТМЕНА"
     noBtn.addEventListener('click', (event) => {
         event.preventDefault(); // Отключение действия по умолчанию
         event.stopPropagation();
         labelsInputContent.style.display = 'none';
-        selectBtn.style.display = 'block';
     });
 
     // Добавление нового ярлыка
     addLabelBtn.addEventListener('click', () => {
-        const labelName = labelInput.value;
+        const labelName = labelInput.value.trim();
         const labelColor = colorSelect.value;
 
-        // Создание нового ярлыка
-        if (labelName.trim() !== '') {
-            const newLabel = document.createElement('div');
-            newLabel.className = 'label-item';
-            newLabel.textContent = labelName;
-            newLabel.style.backgroundColor = labelColor;
+        // Отправка нового ярлыка на сервер
+        if (labelName !== '') {
+            const data = new URLSearchParams();
+            data.append('move', '2556');
+            data.append('step', '2');
+            data.append('newlabel', labelName);
+            data.append('color', labelColor);
 
-            // Добавление ярлыка в список
-            filterCheckbox.appendChild(newLabel);
+            fetch('/your-endpoint', {  // Поменяй на реальный путь API или обработчик
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: data
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.err === 0) {
+                    // Обновляем справочник ярлыков, добавляем новый элемент
+                    const newLabel = document.createElement('div');
+                    newLabel.className = 'label-item';
+                    newLabel.textContent = labelName;
+                    newLabel.style.backgroundColor = labelColor;
+                    newLabel.dataset.labelhash = data.labelhash; // Добавляем хэш ярлыка
 
-            // Сброс формы
-            labelInput.value = '';
-            colorSelect.value = 'blue';
+                    // Добавление ярлыка в список
+                    filterCheckbox.appendChild(newLabel);
 
-            // Закрытие формы
-            labelsInputContent.style.display = 'none';
-            selectBtn.style.display = 'block';
+                    // Сброс формы
+                    labelInput.value = '';
+                    colorSelect.value = 'blue';
+
+                    // Закрытие формы
+                    labelsInputContent.style.display = 'none';
+                } else {
+                    alert('Ошибка при добавлении ярлыка');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при добавлении ярлыка');
+            });
         }
     });
 
-    // Закрытие всех блоков при клике за их пределами
-    document.addEventListener('click', () => {
-        filterDoc.style.display = 'none';
-        labelsCheckbox.style.display = 'none';
-        filterBtn.classList.remove('active');
-        labelsBtn.classList.remove('active');
-    });
+    // Назначение ярлыка документу
+    function assignLabelToDocument(labelHash, docHash) {
+        const data = new URLSearchParams();
+        data.append('move', '2556');
+        data.append('step', '1');
+        data.append('label', labelHash);
+        data.append('pp1', docHash);
 
-    // Предотвращение закрытия при клике внутри блоков
-    filterDoc.addEventListener('click', (event) => event.stopPropagation());
-    labelsCheckbox.addEventListener('click', (event) => event.stopPropagation());
-    labelsInputContent.addEventListener('click', (event) => event.stopPropagation());
+        fetch('/your-endpoint', {  // Поменяй на реальный путь API или обработчик
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.err === 0) {
+                // Если все прошло успешно, обновляем документ
+                alert(`Ярлык назначен. Новый номер ярлыка: ${data.newlabel}`);
+            } else {
+                alert('Ошибка при назначении ярлыка');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при назначении ярлыка');
+        });
+    }
+
+    // Добавление события для назначения ярлыка документу (пример)
+    filterCheckbox.addEventListener('click', (event) => {
+        const label = event.target;
+        if (label.classList.contains('label-item')) {
+            const labelHash = label.dataset.labelhash;
+            const docHash = 'example_doc_hash'; // Заменить на реальный хэш документа
+
+            assignLabelToDocument(labelHash, docHash);
+        }
+    });
 });
 
 
