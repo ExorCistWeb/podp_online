@@ -40,13 +40,13 @@ function loadDataFromBase64(base64Str) {
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
-                    documentLabel: labelid,
+                    documentLabel: labelid || "", // Если ярлык отсутствует, передаем пустое значение
                     totalsigned: totalsigned,
                     totalsign: totalsign,
-                    signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
+                    signedBy: signs.map(signer => ({ name: signer })),
                     downloadLink: link_dl_full,
                     viewLink: link_view,
-                    simpleViewLink: link_view_simple, // Третий вариант ссылки
+                    simpleViewLink: link_view_simple,
                 };
             });
 
@@ -194,6 +194,7 @@ function generateTableRow(data) {
                                             <div class="document_parametr">
                                                 <span>Ярлык</span>
                                                 <span>${item.documentLabel}</span>
+                                                <span class="queen-symbol" style="display: none;">♛</span>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +233,21 @@ tableContainer.appendChild(tableLine);
 updateIcons();
 
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Проходим по всем элементам документа
+    document.querySelectorAll('.document_parametr').forEach(item => {
+        const label = item.querySelector('span:nth-child(2)');
+        const queenSymbol = item.querySelector('.queen-symbol');
+        
+        if (!label.textContent) {
+            // Если ярлык отсутствует, показываем символ ферзя
+            queenSymbol.style.display = 'inline';
+        } else {
+            // Если ярлык есть, скрываем символ ферзя
+            queenSymbol.style.display = 'none';
+        }
+    });
+});
 document.addEventListener('DOMContentLoaded', () => {
     // Ожидание загрузки страницы и данных
     checkAndUpdateIcons();
@@ -294,7 +309,7 @@ function updateIcons() {
 
 
 
-// ОТКЫТИЕ ФИЛЬТРОВ И ЯРЛЫКОВ
+// ОТКРЫТИЕ ФИЛЬТРОВ И ЯРЛЫКОВ
 document.addEventListener('DOMContentLoaded', () => {
     const filterBtn = document.querySelector('.filter_btn');
     const labelsBtn = document.querySelector('.labels_btn');
@@ -303,6 +318,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const labelsInputContent = document.querySelector('.labels_input_content');
     const selectBtn = labelsCheckbox.querySelector('button');
     const noBtn = document.querySelector('.no_btn');
+    const addLabelBtn = document.getElementById('addLabel');
+    const labelInput = document.getElementById('labelInput');
+    const colorSelect = document.getElementById('colorSelect');
+    const filterCheckbox = document.getElementById('filterCheckbox');
+    const labelForm = document.getElementById('labelForm');
 
     // Функция для переключения отображения блоков
     const toggleDisplay = (button, element) => {
@@ -332,17 +352,44 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleDisplay(labelsBtn, labelsCheckbox);
     });
 
-    // Открытие labels_input_content
+    // Открытие формы для добавления нового ярлыка
     selectBtn.addEventListener('click', (event) => {
         event.stopPropagation();
         labelsInputContent.style.display = 'flex';
+        selectBtn.style.display = 'none';
     });
 
-    // Закрытие labels_input_content при клике на кнопку "ОТМЕНА"
+    // Закрытие формы добавления ярлыка при клике на "ОТМЕНА"
     noBtn.addEventListener('click', (event) => {
         event.preventDefault(); // Отключение действия по умолчанию
         event.stopPropagation();
         labelsInputContent.style.display = 'none';
+        selectBtn.style.display = 'block';
+    });
+
+    // Добавление нового ярлыка
+    addLabelBtn.addEventListener('click', () => {
+        const labelName = labelInput.value;
+        const labelColor = colorSelect.value;
+
+        // Создание нового ярлыка
+        if (labelName.trim() !== '') {
+            const newLabel = document.createElement('div');
+            newLabel.className = 'label-item';
+            newLabel.textContent = labelName;
+            newLabel.style.backgroundColor = labelColor;
+
+            // Добавление ярлыка в список
+            filterCheckbox.appendChild(newLabel);
+
+            // Сброс формы
+            labelInput.value = '';
+            colorSelect.value = 'blue';
+
+            // Закрытие формы
+            labelsInputContent.style.display = 'none';
+            selectBtn.style.display = 'block';
+        }
     });
 
     // Закрытие всех блоков при клике за их пределами
@@ -358,6 +405,9 @@ document.addEventListener('DOMContentLoaded', () => {
     labelsCheckbox.addEventListener('click', (event) => event.stopPropagation());
     labelsInputContent.addEventListener('click', (event) => event.stopPropagation());
 });
+
+
+
 // ЧЕКБОКСЫ И АКТИВНЫЕ КНОПКИ
 document.addEventListener('DOMContentLoaded', () => {
     // Функция для обновления состояния кнопок
