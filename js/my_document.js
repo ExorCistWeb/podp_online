@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 let globalFormattedData = []; // глобальная переменная для хранения данных
 
 // Функция для обработки данных из base64
@@ -48,7 +47,7 @@ function loadDataFromBase64(base64Str) {
                     viewLink: link_view,
                 };
             });
-
+            console.log("Данные загружены:", globalFormattedData); // Логируем данные
         } else {
             console.error("Данные не массив");
         }
@@ -68,13 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Привязываем обработчик кликов к кнопкам
     document.querySelectorAll('.members_info').forEach(button => {
         button.addEventListener('click', event => {
-            // Получаем значение pp1 из атрибута data-pp1
             const pp1 = event.target.dataset.pp1;
+            const modalId = event.target.dataset.target;
 
             if (!pp1) {
                 console.error("Не удалось получить значение pp1");
                 return;
             }
+
+            console.log(`Клик по кнопке с pp1: ${pp1}`); // Логируем pp1
 
             // Формируем ссылку для фрейма
             const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
@@ -84,26 +85,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (iframe) {
                 // Устанавливаем ссылку в iframe
                 iframe.src = iframeSrc;
+                console.log(`Ссылка для iframe установлена: ${iframeSrc}`); // Логируем ссылку
             } else {
                 console.error(`Iframe с id #iframe-${pp1} не найден`);
             }
 
             // Открытие модального окна
-            const modalId = event.target.dataset.target;
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'flex'; // Отображаем модальное окно
+                console.log(`Модальное окно с id #${modalId} открыто`); // Логируем открытие
             } else {
                 console.error(`Модальное окно с id #${modalId} не найдено`);
             }
         });
     });
 });
-
-
-
-
-
 
 
 
@@ -166,20 +163,14 @@ function generateTableRow(data) {
 
                 tableLine.innerHTML = `
 
-<div class="modal_my" id="modal${item.documentNumber}">
-    <div class="popup_time_error">
-        <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
-        <h3>Просмотр подписей</h3>
-        <p>Здесь показана информация о подписях</p>
-        <iframe id="iframe-${item.hash}" src="" frameborder="0" width="100%" height="400"></iframe>
-    </div>
-</div>
-
-
-
-
-
-
+                <div class="modal_my" id="modal${item.documentNumber}">
+                    <div class="popup_time_error">
+                        <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+                        <h3>Просмотр подписей</h3>
+                        <p>Здесь показана информация о подписях</p>
+                        <iframe id="iframe-${item.hash}" src="" frameborder="0" width="100%" height="400"></iframe>
+                    </div>
+                </div>
                  <div class="table_flexes">
                                 <div class="box_flexes">
                                     <div class="select_input">
