@@ -14,56 +14,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Function to load and process the data from Base64 string
+
 function loadDataFromBase64(base64Str) {
     try {
-        const data = decodeBase64ToJson(base64Str); // Decode the Base64 string to JSON data
+        const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
-            // If data is an array, process it
             const formattedData = data.map(doc => {
-                // Extract values from the array
-                var pp1 = doc[0];
-                var num = doc[1];
-                var crtime = doc[2];
-                var docname = doc[3];
-                var signs = doc[4];
-                var type_work = doc[5];
-                var issigned = doc[6];
-                var totalsign = doc[7];
-                var totalsigned = doc[8];
-                var labelid = doc[9];
+                const hash = doc[0];
+                const num = doc[1];
+                const crtime = doc[2];
+                const docname = doc[3];
+                const signs = doc[4];
+                const labelid = doc[9];
 
-                // Generate links based on global variables
-                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`;
-                const link_view = `${to_request_qr}?pp1=${pp1}`;
+                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${hash}`;
+                const link_view = `${to_request_qr}?move=35&pp1=${hash}`;
 
-                // Return formatted data with links
                 return {
-                    hash: pp1,
+                    hash,
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
                     documentLabel: labelid,
-                    totalsigned: totalsigned,
-                    totalsign: totalsign,
                     signedBy: signs.map(signer => ({ name: signer })),
                     downloadLink: link_dl_full,
                     viewLink: link_view,
                 };
             });
 
-            // Generate table rows with the formatted data
             generateTableRow(formattedData);
 
-            // Add click event listeners for members info
             document.querySelectorAll('.members_info').forEach(button => {
                 button.addEventListener('click', event => {
-                    // Получаем значение hash из атрибута data-hash
                     const hash = event.target.dataset.hash;
+                    const iframeSrc = `${to_request_qr}?move=35&pp1=${hash}`;
 
-                    // Формируем ссылку для фрейма
-                    const iframeSrc = to_request_qr + '?move=35&pp1=' + hash;
-
-                    // Находим iframe и устанавливаем ссылку
                     const iframe = document.querySelector('iframe');
                     if (iframe) {
                         iframe.src = iframeSrc;
@@ -72,12 +57,11 @@ function loadDataFromBase64(base64Str) {
                     }
                 });
             });
-
         } else {
-            console.error("Data is not an array");
+            console.error("Данные не массив");
         }
     } catch (error) {
-        console.error('Error processing data:', error);
+        console.error("Ошибка обработки данных:", error);
     }
 }
 
