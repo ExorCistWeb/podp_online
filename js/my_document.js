@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     // Ожидание загрузки страницы и данных
