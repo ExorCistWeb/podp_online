@@ -18,6 +18,7 @@ function loadDataFromBase64(base64Str) {
         if (Array.isArray(data)) {
             // Если данные — это массив, обрабатываем их
             const formattedData = data.map(doc => {
+                // Извлечение значений из массива
                 var pp1 = doc[0];
                 var num = doc[1];
                 var crtime = doc[2];
@@ -29,9 +30,11 @@ function loadDataFromBase64(base64Str) {
                 var totalsigned = doc[8];
                 var labelid = doc[9];
 
-                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`;
-                const link_view = `${to_request_qr}?pp1=${pp1}`;
+                // Генерация ссылок на основе глобальных переменных
+                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
+                const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра документа
 
+                // Возвращаем объект с отформатированными данными и ссылками
                 return {
                     hash: pp1,
                     documentNumber: num,
@@ -40,47 +43,16 @@ function loadDataFromBase64(base64Str) {
                     documentLabel: labelid,
                     totalsigned: totalsigned,
                     totalsign: totalsign,
-                    signedBy: signs.map(signer => ({ name: signer })),
+                    signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
                     downloadLink: link_dl_full,
                     viewLink: link_view,
                 };
             });
 
-            // Генерируем строки таблицы и модальные окна
-            formattedData.forEach(item => {
-                // Генерация модального окна
-                const modalHTML = `
-                    <div class="modal_my" id="modal${item.documentNumber}" style="display: none;">
-                        <div class="popup_time_error">
-                            <a class="close_popup_time_error" href="#"><img src="../img/oui_cross.svg" alt=""></a>
-                            <h3>Просмотр подписей</h3>
-                            <p>Здесь показана информация о подписях</p>
-                            <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
-                        </div>
-                    </div>
-                `;
-                document.body.insertAdjacentHTML("beforeend", modalHTML);
+            // Генерируем строки таблицы с данными
+            generateTableRow(formattedData);
 
-                // Привязка обработчиков к кнопкам и модальным окнам
-                const button = document.querySelector(`.open-modal[data-id="${item.documentNumber}"]`);
-                const modal = document.getElementById(`modal${item.documentNumber}`);
-                const iframe = document.getElementById(`iframe-${item.documentNumber}`);
 
-                if (button && modal && iframe) {
-                    button.addEventListener("click", () => {
-                        iframe.src = `?move=35&pp1=${item.hash}`;
-                        modal.style.display = "block"; // Открыть модальное окно
-                    });
-
-                    const closeButton = modal.querySelector(".close_popup_time_error");
-                    closeButton.addEventListener("click", event => {
-                        event.preventDefault();
-                        modal.style.display = "none"; // Закрыть модальное окно
-                    });
-                } else {
-                    console.error(`Элемент для модального окна или кнопки с documentNumber=${item.documentNumber} не найден`);
-                }
-            });
         } else {
             console.error("Данные не массив");
         }
@@ -88,7 +60,6 @@ function loadDataFromBase64(base64Str) {
         console.error("Ошибка обработки данных:", error);
     }
 }
-
 
 
 
@@ -157,7 +128,15 @@ function generateTableRow(data) {
 
                 tableLine.innerHTML = `
 
+<div class="modal_my" id="modal${item.documentNumber}">
+        <div class="popup_time_error">
+            <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
+            <h3>Просмотр подписей</h3>
+            <p>Здесь показана информация о подписях</p>
 
+               <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
+        </div>
+    </div>
 
 
 
