@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
@@ -89,6 +88,7 @@ function loadDataFromBase64(base64Str) {
         console.error("Ошибка обработки данных:", error);
     }
 }
+
 
 
 
