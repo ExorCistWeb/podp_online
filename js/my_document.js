@@ -50,44 +50,44 @@ function loadDataFromBase64(base64Str) {
                 };
             });
 
+            // Выводим данные для отладки
+            console.log('Formatted Data:', formattedData);
+
             // Генерируем строки таблицы с данными
             generateTableRow(formattedData);
 
             // После того как данные загружены, добавляем обработчик кликов
             document.querySelectorAll('.members_info').forEach(button => {
                 button.addEventListener('click', event => {
-                    // Выводим в консоль значение data-pp1 для диагностики
+                    // Получаем значение pp1 из атрибута data-pp1
                     const pp1 = event.target.dataset.pp1;
-                    console.log('data-pp1:', pp1); // Диагностика
 
-                    // Проверка, что pp1 существует
-                    if (!pp1) {
-                        console.error('Не удалось получить значение pp1.');
-                        return;
-                    }
+                    // Проверяем, что pp1 существует и не является undefined
+                    if (pp1) {
+                        // Формируем ссылку для фрейма
+                        const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
 
-                    // Формируем ссылку для фрейма
-                    const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
+                        // Находим первый iframe на странице (если у вас несколько iframe, используйте ID или класс)
+                        const iframe = document.querySelector('iframe');
+                        if (iframe) {
+                            iframe.src = iframeSrc;
+                        } else {
+                            console.error("Iframe не найден на странице");
+                        }
 
-                    // Находим iframe
-                    const iframe = document.querySelector('iframe');
-                    if (iframe) {
-                        iframe.src = iframeSrc;
+                        // Открытие модального окна
+                        const modalId = event.target.dataset.target;
+                        const modal = document.getElementById(modalId);
+                        if (modal) {
+                            modal.classList.add('show');
+                        } else {
+                            console.error("Модальное окно не найдено");
+                        }
                     } else {
-                        console.error("Iframe не найден на странице");
-                    }
-
-                    // Открытие модального окна
-                    const modalId = event.target.dataset.target;
-                    const modal = document.getElementById(modalId);
-                    if (modal) {
-                        modal.classList.add('show');
-                    } else {
-                        console.error("Модальное окно не найдено");
+                        console.error("Не удалось получить значение pp1.");
                     }
                 });
             });
-
 
         } else {
             console.error("Данные не массив");
@@ -96,6 +96,7 @@ function loadDataFromBase64(base64Str) {
         console.error('Ошибка обработки данных:', error);
     }
 }
+
 
 
 
