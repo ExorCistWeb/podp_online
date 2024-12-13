@@ -40,13 +40,13 @@ function loadDataFromBase64(base64Str) {
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
-                    documentLabel: labelid,
+                    documentLabel: labelid || "", // Ensure label is empty if not assigned
                     totalsigned: totalsigned,
                     totalsign: totalsign,
-                    signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
+                    signedBy: signs.map(signer => ({ name: signer })),
                     downloadLink: link_dl_full,
                     viewLink: link_view,
-                    simpleViewLink: link_view_simple, // Третий вариант ссылки
+                    simpleViewLink: link_view_simple,
                 };
             });
 
@@ -194,6 +194,7 @@ function generateTableRow(data) {
                                             <div class="document_parametr">
                                                 <span>Ярлык</span>
                                                 <span>${item.documentLabel}</span>
+                                                  <span class="queen-symbol" style="display: none;">♛</span>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +233,21 @@ tableContainer.appendChild(tableLine);
 updateIcons();
 
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Loop through each document element
+    document.querySelectorAll('.document_parametr').forEach(item => {
+        const label = item.querySelector('span:nth-child(2)');
+        const queenSymbol = item.querySelector('.queen-symbol');
+        
+        if (!label.textContent) {
+            // If no label, display the queen symbol
+            queenSymbol.style.display = 'inline';
+        } else {
+            // Hide queen symbol if there is a label
+            queenSymbol.style.display = 'none';
+        }
+    });
+});
 document.addEventListener('DOMContentLoaded', () => {
     // Ожидание загрузки страницы и данных
     checkAndUpdateIcons();
@@ -357,6 +372,82 @@ document.addEventListener('DOMContentLoaded', () => {
     filterDoc.addEventListener('click', (event) => event.stopPropagation());
     labelsCheckbox.addEventListener('click', (event) => event.stopPropagation());
     labelsInputContent.addEventListener('click', (event) => event.stopPropagation());
+});
+
+
+
+// Open label modal when clicking on the label
+document.querySelector('.document_parametr span:nth-child(2)').addEventListener('click', () => {
+    const modal = document.querySelector('.label-modal');
+    modal.style.display = 'block';
+
+    // Populate the modal with existing labels
+    const labelList = modal.querySelector('.label-list');
+    labelList.innerHTML = ''; // Clear previous list
+
+    // Assuming `labels` is an array of available labels
+    labels.forEach(label => {
+        const option = document.createElement('option');
+        option.value = label.hash;
+        option.textContent = label.name;
+        labelList.appendChild(option);
+    });
+});
+
+// Handle creating a new label
+document.querySelector('.create-label-btn').addEventListener('click', () => {
+    const newLabelName = document.querySelector('.new-label-name').value;
+    const newLabelColor = document.querySelector('.new-label-color').value;
+
+    // Send POST request to create a new label
+    fetch('/create_label', {
+        method: 'POST',
+        body: JSON.stringify({
+            move: 2556,
+            step: 2,
+            newlabel: newLabelName,
+            color: newLabelColor,
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then(response => response.json())
+    .then(data => {
+        if (data.err === 0) {
+            // Update the label list with the new label
+            labels.push({ hash: data.labelhash, name: newLabelName });
+            updateLabelList();
+        } else {
+            alert('Error creating label');
+        }
+    });
+});
+
+// Handle assigning a label to a document
+document.querySelector('.assign-label-btn').addEventListener('click', () => {
+    const selectedLabel = document.querySelector('.label-list').value;
+    const documentHash = document.querySelector('.document-hash').value;
+
+    fetch('/assign_label', {
+        method: 'POST',
+        body: JSON.stringify({
+            move: 2556,
+            step: 1,
+            label: selectedLabel,
+            pp1: documentHash,
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then(response => response.json())
+    .then(data => {
+        if (data.err === 0) {
+            // Update document with new label
+            document.querySelector('.document-label').textContent = data.newlabel;
+        } else {
+            alert('Error assigning label');
+        }
+    });
 });
 // ЧЕКБОКСЫ И АКТИВНЫЕ КНОПКИ
 document.addEventListener('DOMContentLoaded', () => {
