@@ -56,7 +56,12 @@ function loadDataFromBase64(base64Str) {
             // Добавляем обработчики для открытия модальных окон
             document.querySelectorAll(".open-modal").forEach(button => {
                 button.addEventListener("click", event => {
-                    const targetId = event.target.dataset.target; // Получаем id целевого модального окна
+                    const targetId = event.target.dataset.target; // Получаем id модального окна
+                    if (!targetId) {
+                        console.error("Атрибут data-target у кнопки отсутствует");
+                        return;
+                    }
+
                     const modal = document.getElementById(targetId);
                     if (modal) {
                         const documentNumber = targetId.replace("modal", ""); // Извлекаем номер документа
@@ -76,6 +81,7 @@ function loadDataFromBase64(base64Str) {
                     }
                 });
             });
+
         } else {
             console.error("Данные не массив");
         }
