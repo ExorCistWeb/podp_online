@@ -13,13 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+let globalFormattedData = []; // глобальная переменная для хранения данных
+
 function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
-            const formattedData = data.map(doc => {
-                // Извлечение значений из массива
-                var pp1 = doc[0]; // Это хэш документа
+            globalFormattedData = data.map(doc => {
+                var pp1 = doc[0];
                 var num = doc[1];
                 var crtime = doc[2];
                 var docname = doc[3];
@@ -30,7 +31,6 @@ function loadDataFromBase64(base64Str) {
                 var totalsigned = doc[8];
                 var labelid = doc[9];
 
-                // Генерация ссылок на основе глобальных переменных
                 const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`;
                 const link_view = `${to_request_qr}?pp1=${pp1}`;
 
@@ -48,10 +48,10 @@ function loadDataFromBase64(base64Str) {
                 };
             });
 
-            // Выводим данные для отладки
-            console.log('Formatted Data:', formattedData);
+            // Логируем данные сразу после их обработки
+            console.log('Global Formatted Data:', globalFormattedData);
 
-            generateTableRow(formattedData);
+            generateTableRow(globalFormattedData);
         } else {
             console.error("Данные не массив");
         }
@@ -59,6 +59,7 @@ function loadDataFromBase64(base64Str) {
         console.error('Ошибка обработки данных:', error);
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     // Делегирование события на родительский элемент, например, на body или контейнер
     document.body.addEventListener('click', event => {
