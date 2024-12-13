@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', event => {
             // Получаем значение pp1 из атрибута data-pp1
             const pp1 = event.target.dataset.pp1;
-            const documentNumber = event.target.dataset.documentNumber; // Читаем номер документа (если нужно)
+
 
             // Формируем ссылку для фрейма
             const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
@@ -162,7 +162,7 @@ function generateTableRow(data) {
         <a class="close_popup_time_error" href=""><img src="../img/oui_cross.svg" alt=""></a>
         <h3>Просмотр подписей</h3>
         <p>Здесь показана информация о подписях</p>
-        <iframe id="iframe-${item.hash}" src="" frameborder="0" width="100%" height="400"></iframe>
+        <iframe id="iframe-${item.documentNumber}" src="" frameborder="0" width="100%" height="400"></iframe>
     </div>
 </div>
 
