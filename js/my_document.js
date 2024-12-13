@@ -17,7 +17,6 @@ function loadDataFromBase64(base64Str) {
     try {
         const data = decodeBase64ToJson(base64Str);
         if (Array.isArray(data)) {
-            // Если данные — это массив, обрабатываем их
             const formattedData = data.map(doc => {
                 // Извлечение значений из массива
                 var pp1 = doc[0]; // Это хэш документа
@@ -32,19 +31,18 @@ function loadDataFromBase64(base64Str) {
                 var labelid = doc[9];
 
                 // Генерация ссылок на основе глобальных переменных
-                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
-                const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра документа
+                const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`;
+                const link_view = `${to_request_qr}?pp1=${pp1}`;
 
-                // Возвращаем объект с отформатированными данными и ссылками
                 return {
-                    hash: pp1, // Хэш документа
+                    hash: pp1,
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
                     documentLabel: labelid,
                     totalsigned: totalsigned,
                     totalsign: totalsign,
-                    signedBy: signs.map(signer => ({ name: signer })), // Список подписавших
+                    signedBy: signs.map(signer => ({ name: signer })),
                     downloadLink: link_dl_full,
                     viewLink: link_view,
                 };
@@ -53,42 +51,7 @@ function loadDataFromBase64(base64Str) {
             // Выводим данные для отладки
             console.log('Formatted Data:', formattedData);
 
-            // Генерируем строки таблицы с данными
             generateTableRow(formattedData);
-
-            // После того как данные загружены, добавляем обработчик кликов
-            document.querySelectorAll('.members_info').forEach(button => {
-                button.addEventListener('click', event => {
-                    // Получаем значение pp1 из атрибута data-pp1
-                    const pp1 = event.target.dataset.pp1;
-
-                    // Проверяем, что pp1 существует и не является undefined
-                    if (pp1) {
-                        // Формируем ссылку для фрейма
-                        const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
-
-                        // Находим первый iframe на странице (если у вас несколько iframe, используйте ID или класс)
-                        const iframe = document.querySelector('iframe');
-                        if (iframe) {
-                            iframe.src = iframeSrc;
-                        } else {
-                            console.error("Iframe не найден на странице");
-                        }
-
-                        // Открытие модального окна
-                        const modalId = event.target.dataset.target;
-                        const modal = document.getElementById(modalId);
-                        if (modal) {
-                            modal.classList.add('show');
-                        } else {
-                            console.error("Модальное окно не найдено");
-                        }
-                    } else {
-                        console.error("Не удалось получить значение pp1.");
-                    }
-                });
-            });
-
         } else {
             console.error("Данные не массив");
         }
@@ -96,7 +59,26 @@ function loadDataFromBase64(base64Str) {
         console.error('Ошибка обработки данных:', error);
     }
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Делегирование события на родительский элемент, например, на body или контейнер
+    document.body.addEventListener('click', event => {
+        if (event.target.classList.contains('members_info')) {
+            const pp1 = event.target.dataset.pp1;
+            console.log('data-pp1:', pp1); // Проверяем, что получаем
+            if (pp1) {
+                const iframeSrc = `${to_request_qr}?move=35&pp1=${pp1}`;
+                const iframe = document.querySelector('iframe');
+                if (iframe) {
+                    iframe.src = iframeSrc;
+                } else {
+                    console.error("Iframe не найден на странице");
+                }
+            } else {
+                console.error("Не удалось получить значение pp1.");
+            }
+        }
+    });
+});
 
 
 
