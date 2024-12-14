@@ -1,48 +1,57 @@
+// Функция для декодирования Base64 в JSON
 function decodeBase64ToJson(base64Str) {
-    const jsonString = atob(base64Str); // Преобразуем base64 в строку
-    const jsonData = JSON.parse(jsonString); // Преобразуем строку в объект JSON
-    console.log(jsonData); // Логируем результат, чтобы понять, что за данные мы получаем
-    return jsonData;
+    try {
+        const jsonString = atob(base64Str); // Преобразуем base64 в строку
+        const jsonData = JSON.parse(jsonString); // Преобразуем строку в объект JSON
+        console.log(jsonData); // Логируем результат для проверки
+        return jsonData;
+    } catch (error) {
+        console.error("Ошибка декодирования Base64:", error);
+        return null; // Возвращаем null при ошибке
+    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Пример строки Base64
+// Функция для обработки справочника ярлыков
+function parseLabels(base64Labels) {
+    const labels = decodeBase64ToJson(base64Labels); // Декодируем Base64 строку
+    if (!labels) return {}; // Если произошла ошибка, возвращаем пустой объект
 
-    loadDataFromBase64(base64Data);
+    const labelMap = {};
+    Object.values(labels).forEach(([id, hash, name, color]) => {
+        labelMap[id] = { hash, name, color }; // Формируем объект с данными ярлыков
+    });
+    return labelMap;
+}
 
-});
-
-function loadDataFromBase64(base64Str) {
+// Функция для загрузки и обработки данных документов
+function loadDataFromBase64(base64Str, base64Labels) {
     try {
-        const data = decodeBase64ToJson(base64Str);
-        if (Array.isArray(data)) {
-            // Если данные — это массив, обрабатываем их
-            const formattedData = data.map(doc => {
-                // Извлечение значений из массива
-                var pp1 = doc[0];
-                var num = doc[1];
-                var crtime = doc[2];
-                var docname = doc[3];
-                var signs = doc[4];
-                var type_work = doc[5];
-                var issigned = doc[6];
-                var totalsign = doc[7];
-                var totalsigned = doc[8];
-                var labelid = doc[9];
+        const data = decodeBase64ToJson(base64Str); // Декодируем данные документов
+        const labelMap = parseLabels(base64Labels); // Декодируем справочник ярлыков
 
-                // Генерация ссылок на основе глобальных переменных
+        if (Array.isArray(data)) {
+            // Обрабатываем каждый документ
+            const formattedData = data.map(doc => {
+                const [pp1, num, crtime, docname, signs, type_work, issigned, totalsign, totalsigned, labelid] = doc;
+
+                // Обработка ярлыков
+                const label = labelMap[labelid] ?
+                    `<span style="color: #${labelMap[labelid].color}">&#9819; ${labelMap[labelid].name}</span>` :
+                    `<span style="color: #C0C0C0">&#9819; Нет ярлыка</span>`;
+
+                // Генерация ссылок
                 const link_dl_full = `${to_request}?move=35&printme=1&zipme=1&pp1=${pp1}`; // Ссылка для скачивания полной версии
                 const link_view = `${to_request_qr}?pp1=${pp1}`; // Ссылка для просмотра документа
                 const link_view_simple = `${to_request}?move=35&pp1=${pp1}`;
-                // Возвращаем объект с отформатированными данными и ссылками
+
                 return {
                     hash: pp1,
                     documentNumber: num,
                     documentDate: crtime,
                     documentName: docname,
-                    documentLabel: labelid || "", // Если ярлык отсутствует, передаем пустое значение
-                    totalsigned: totalsigned,
-                    totalsign: totalsign,
+                    documentLabel: label,
+                    totalsigned,
+                    totalsign,
                     signedBy: signs.map(signer => ({ name: signer })),
                     downloadLink: link_dl_full,
                     viewLink: link_view,
@@ -50,10 +59,8 @@ function loadDataFromBase64(base64Str) {
                 };
             });
 
-            // Генерируем строки таблицы с данными
+            // Генерация строк таблицы
             generateTableRow(formattedData);
-
-
         } else {
             console.error("Данные не массив");
         }
@@ -61,6 +68,7 @@ function loadDataFromBase64(base64Str) {
         console.error("Ошибка обработки данных:", error);
     }
 }
+
 
 
 
@@ -198,8 +206,8 @@ function generateTableRow(data) {
                                             <p>Номер: <span>${item.documentNumber}</span></p>
                                             <div class="document_parametr">
                                                 <span>Ярлык</span>
-                                                ${labelIcon}
-                                                <span>${item.documentLabel || "Без ярлыка"}</span>
+                                                
+                                                <span>    ${item.documentLabel}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -256,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Ожидание загрузки страницы и данных
     checkAndUpdateIcons();
+    loadDataFromBase64(base64Data, base64Datalabels); // Загрузка данных
 });
 
 function checkAndUpdateIcons() {
