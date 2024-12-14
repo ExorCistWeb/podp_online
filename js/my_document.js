@@ -378,6 +378,14 @@ document.addEventListener('DOMContentLoaded', () => {
         labelsInputContent.style.display = 'none';
     });
 
+    // Закрытие формы labelsCheckbox при клике на фон
+    document.addEventListener('click', (event) => {
+        if (!labelsCheckbox.contains(event.target) && !labelsBtn.contains(event.target)) {
+            labelsCheckbox.style.display = 'none';
+            labelsBtn.classList.remove('active');
+        }
+    });
+
     // Добавление нового ярлыка
     addLabelBtn.addEventListener('click', () => {
         const labelName = labelInput.value.trim();
@@ -465,6 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
 
