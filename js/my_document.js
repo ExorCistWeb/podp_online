@@ -324,6 +324,7 @@ function updateIcons() {
 
 
 // ОТКРЫТИЕ ФИЛЬТРОВ И ЯРЛЫКОВ
+// ОТКРЫТИЕ ФИЛЬТРОВ И ЯРЛЫКОВ
 document.addEventListener('DOMContentLoaded', () => {
     const filterBtn = document.querySelector('.filter_btn');
     const labelsBtn = document.querySelector('.labels_btn');
@@ -472,6 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
             assignLabelToDocument(labelHash, docHash);
         }
     });
+
 });
 
 
