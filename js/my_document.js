@@ -205,7 +205,7 @@ function generateTableRow(data) {
                                         <div class="right_width">
                                             <p>Номер: <span>${item.documentNumber}</span></p>
                                             <div class="document_parametr">
-                                                <span>Ярлык</span>
+                                              
                                                 
                                                 <span>    ${item.documentLabel}</span>
                                             </div>
