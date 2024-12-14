@@ -127,6 +127,11 @@ function generateTableRow(data) {
                 const tableLine = document.createElement('div');
                 tableLine.classList.add('my_table_line');
 
+                // Проверяем, есть ли ярлык, если нет, ставим серый ферзь
+                const labelIcon = item.documentLabel ?
+                    `<span class="queen-symbol" style="color: #${item.documentLabel.color};">♛</span>` :
+                    `<span class="queen-symbol" style="color: gray;">♛</span>`;
+
                 tableLine.innerHTML = `
 
 <div class="modal_my" id="modal${item.documentNumber}">
@@ -193,8 +198,8 @@ function generateTableRow(data) {
                                             <p>Номер: <span>${item.documentNumber}</span></p>
                                             <div class="document_parametr">
                                                 <span>Ярлык</span>
-                                                <span>${item.documentLabel}</span>
-                                                <span class="queen-symbol" style="display: none;">♛</span>
+                                                ${labelIcon}
+                                                <span>${item.documentLabel || "Без ярлыка"}</span>
                                             </div>
                                         </div>
                                     </div>
