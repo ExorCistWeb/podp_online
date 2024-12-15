@@ -11,6 +11,7 @@ function decodeBase64ToJson(base64Str) {
     }
 }
 
+
 // Функция для обработки справочника ярлыков
 function parseLabels(base64Labels) {
     const labels = decodeBase64ToJson(base64Labels); // Декодируем Base64 строку
@@ -22,6 +23,34 @@ function parseLabels(base64Labels) {
     });
     return labelMap;
 }
+
+// Функция для отображения ярлыков в контейнере
+function displayLabels(labelMap) {
+    const filterCheckbox = document.getElementById('filterCheckbox'); // Контейнер для ярлыков
+    filterCheckbox.innerHTML = ''; // Очищаем содержимое перед вставкой новых данных
+
+    Object.values(labelMap).forEach(label => {
+        const labelElement = document.createElement('div');
+        labelElement.className = 'label-item'; // Класс для стилей
+        labelElement.textContent = label.name; // Название ярлыка
+        labelElement.style.backgroundColor = `#${label.color}`; // Цвет ярлыка
+        labelElement.dataset.labelhash = label.hash; // Добавляем хэш ярлыка как data-атрибут
+        filterCheckbox.appendChild(labelElement); // Вставляем ярлык в контейнер
+    });
+}
+
+// Пример вызова
+document.addEventListener('DOMContentLoaded', () => {
+    const base64Labels = 'BASE64_СТРОКА_С_ЯРЛЫКАМИ'; // Замените на вашу строку Base64
+    const labelMap = parseLabels(base64Labels);
+
+    // Отобразить ярлыки, если данные были успешно загружены
+    if (Object.keys(labelMap).length > 0) {
+        displayLabels(labelMap);
+    } else {
+        console.error('Справочник ярлыков пуст или произошла ошибка');
+    }
+});
 
 // Функция для загрузки и обработки данных документов
 function loadDataFromBase64(base64Str, base64Labels) {
@@ -74,19 +103,6 @@ function loadDataFromBase64(base64Str, base64Labels) {
 
 
 
-function displayLabels(labelMap) {
-    const filterCheckbox = document.getElementById('filterCheckbox'); // Контейнер для ярлыков
-    filterCheckbox.innerHTML = ''; // Очищаем содержимое перед вставкой новых данных
-
-    Object.values(labelMap).forEach(label => {
-        const labelElement = document.createElement('div');
-        labelElement.className = 'label-item'; // Класс для стилей
-        labelElement.textContent = label.name; // Название ярлыка
-        labelElement.style.backgroundColor = `#${label.color}`; // Цвет ярлыка
-        labelElement.dataset.labelhash = label.hash; // Добавляем хэш ярлыка как data-атрибут
-        filterCheckbox.appendChild(labelElement); // Вставляем ярлык в контейнер
-    });
-}
 
 
 
