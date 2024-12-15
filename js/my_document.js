@@ -41,7 +41,7 @@ function displayLabels(labelMap) {
 
 // Пример вызова
 document.addEventListener('DOMContentLoaded', () => {
-    const base64Labels = 'BASE64_СТРОКА_С_ЯРЛЫКАМИ'; // Замените на вашу строку Base64
+    
     const labelMap = parseLabels(base64Labels);
 
     // Отобразить ярлыки, если данные были успешно загружены
