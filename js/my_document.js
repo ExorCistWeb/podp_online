@@ -71,115 +71,58 @@ function loadDataFromBase64(base64Str, base64Labels) {
 
 
 
+// Обработка кнопки "Ярлыки"
+document.querySelectorAll('#labelButton').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const parent = event.target.closest('.document_parametr');
+        const docHash = parent.dataset.docHash;
+        const currentLabelHash = parent.querySelector('.document-label').dataset.labelHash;
 
-
-
-// Функция для обновления ярлыков в document_parametr
-
-document.addEventListener('DOMContentLoaded', () => {
-    const documentParametr = document.querySelector('.document_parametr');
-
-    // Функция для создания и отображения выпадающего списка
-    function createLabelSelector(currentLabel, labelList, callback) {
-        const selectorContainer = document.createElement('div');
-        selectorContainer.classList.add('label-selector');
-
-        // Генерация SELECT с опциями
-        const selectElement = document.createElement('select');
-        labelList.forEach(label => {
-            const option = document.createElement('option');
-            option.value = label.hash;
-            option.textContent = label.name;
-            option.style.backgroundColor = label.color;
-            selectElement.appendChild(option);
-        });
-
-        // Добавление кнопки подтверждения
-        const confirmButton = document.createElement('button');
-        confirmButton.textContent = 'Обновить';
-
-        // Обработчик выбора ярлыка
-        confirmButton.addEventListener('click', () => {
-            const selectedValue = selectElement.value;
-            callback(selectedValue);
-            document.body.removeChild(selectorContainer);
-        });
-
-        // Добавление элементов в контейнер
-        selectorContainer.appendChild(selectElement);
-        selectorContainer.appendChild(confirmButton);
-
-        // Стилизация контейнера (опционально)
-        selectorContainer.style.position = 'absolute';
-        selectorContainer.style.top = `${currentLabel.offsetTop + currentLabel.offsetHeight}px`;
-        selectorContainer.style.left = `${currentLabel.offsetLeft}px`;
-        selectorContainer.style.backgroundColor = '#fff';
-        selectorContainer.style.border = '1px solid #ccc';
-        selectorContainer.style.padding = '10px';
-        selectorContainer.style.zIndex = '1000';
-
-        document.body.appendChild(selectorContainer);
-    }
-
-    // Функция для обновления ярлыка через POST-запрос
-    function updateLabel(docHash, newLabelHash) {
-        const data = new URLSearchParams();
-        data.append('move', '2556');
-        data.append('step', '1');
-        data.append('label', newLabelHash);
-        data.append('pp1', docHash);
-
-        fetch('/your-endpoint', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: data
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.err === 0) {
-                    // Обновить интерфейс: заменить текст и цвет ярлыка
-                    const labelElement = document.querySelector('.document_parametr span');
-                    labelElement.textContent = data.newLabelName;
-                    labelElement.style.backgroundColor = data.newLabelColor;
-                } else {
-                    alert('Ошибка при обновлении ярлыка');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка при обновлении ярлыка');
-            });
-    }
-
-    // Функция для загрузки ярлыков и их отображения
-    function getLabelsFromBase64(base64Labels) {
-        const labels = parseLabels(base64Labels);
-        return Object.values(labels).map(label => ({
-            hash: label.hash,
-            name: label.name,
-            color: `#${label.color}`
-        }));
-    }
-
-    // Клик по элементу ярлыка
-    documentParametr.addEventListener('click', (event) => {
-        const labelElement = event.target.closest('span');
-        if (labelElement) {
-            const docHash = labelElement.dataset.docHash; // Используйте реальный хэш документа
-            const currentLabelHash = labelElement.dataset.labelHash; // Текущий хэш ярлыка
-
-
-            const labelList = getLabelsFromBase64(base64Labels);
-
-            // Открытие селектора
-            createLabelSelector(labelElement, labelList, (newLabelHash) => {
-                if (newLabelHash !== currentLabelHash) {
-                    updateLabel(docHash, newLabelHash);
-                }
-            });
-        }
+        // Загрузка ярлыков для отображения
+        const spisokLabels = Object.values(parseLabels(base64Datalabels));
+        openLabelSelector(parent.querySelector('.document-label'), spisokLabels, currentLabelHash, docHash);
     });
 });
+
+// Открытие окна выбора ярлыков
+function openLabelSelector(labelElement, spisokLabels, currentLabelHash, docHash) {
+    const labelCheckbox = labelElement.closest('.document_parametr').querySelector('#labelsCheckbox');
+    const filterCheckbox = labelCheckbox.querySelector('#filterCheckbox');
+    filterCheckbox.innerHTML = ''; // Очистка старых ярлыков
+
+    spisokLabels.forEach(label => {
+        const labelItem = document.createElement('div');
+        labelItem.textContent = label.name;
+        labelItem.style.color = label.color;
+        labelItem.addEventListener('click', () => {
+            updateLabel(docHash, label.hash, labelElement);
+            labelCheckbox.style.display = 'none';
+        });
+        filterCheckbox.appendChild(labelItem);
+    });
+
+    labelCheckbox.style.display = 'block'; // Показываем модальное окно
+}
+
+// Функция обновления ярлыка
+function updateLabel(docHash, newLabelHash, labelElement) {
+    fetch('/update-label', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ docHash, newLabelHash })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                labelElement.textContent = data.newLabelName;
+                labelElement.style.color = data.newLabelColor;
+            } else {
+                alert('Ошибка обновления ярлыка');
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+}
+
 
 
 
@@ -310,10 +253,44 @@ function generateTableRow(data) {
                                         </div>
                                         <div class="right_width">
                                             <p>Номер: <span>${item.documentNumber}</span></p>
-                                            <div class="document_parametr">
-                                              
-                                                
-                                                <span>    ${item.documentLabel}</span>
+                                            <div class="document_parametr" data-doc-hash="unique_document_hash">
+                                                <span class="document-label" data-label-hash="current_label_hash">
+                                                    <!-- Текущий ярлык -->
+                                                    ${item.documentLabel}
+                                                </span>
+                                                <button class="labels_btn" id="labelButton">
+                                                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="..."></path>
+                                                    </svg>
+                                                    <span>Ярлыки</span>
+                                                </button>
+
+                                                <!-- Окно для выбора ярлыков -->
+                                                <div class="labels_checkbox" id="labelsCheckbox">
+                                                    <button id="chooseLabelBtn">Выберите +</button>
+                                                    <div class="filter_checkbox" id="filterCheckbox">
+                                                        <!-- Здесь будут отображаться ярлыки -->
+                                                    </div>
+                                                    <form class="labels_input_content" id="labelForm">
+                                                        <div class="labels_input">
+                                                            <label for="">Введите название ярлыка</label>
+                                                            <input type="text" id="labelInput">
+                                                        </div>
+                                                        <div class="labels_input">
+                                                            <label for="">Выберите цвет ярлыка</label>
+                                                            <div class="labels_input_flex">
+                                                                <select id="colorSelect">
+                                                                    <option value="blue">Синий</option>
+                                                                    <option value="red">Красный</option>
+                                                                    <option value="green">Зеленый</option>
+                                                                    <option value="yellow">Желтый</option>
+                                                                </select>
+                                                                <button type="button" class="okay_btn" id="addLabel">ОК</button>
+                                                                <button type="button" class="no_btn" id="cancelLabel">ОТМЕНА</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
