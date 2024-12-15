@@ -69,20 +69,7 @@ function loadDataFromBase64(base64Str, base64Labels) {
     }
 }
 
-// Функция для отображения ярлыков в контейнере
-function displayLabels(labelMap) {
-    const filterCheckbox = document.getElementById('filterCheckbox'); // Контейнер для ярлыков
-    filterCheckbox.innerHTML = ''; // Очищаем содержимое перед вставкой новых данных
 
-    Object.values(labelMap).forEach(label => {
-        const labelElement = document.createElement('div');
-        labelElement.className = 'label-item'; // Класс для стилей
-        labelElement.textContent = label.name; // Название ярлыка
-        labelElement.style.backgroundColor = `#${label.color}`; // Цвет ярлыка
-        labelElement.dataset.labelhash = label.hash; // Добавляем хэш ярлыка как data-атрибут
-        filterCheckbox.appendChild(labelElement); // Вставляем ярлык в контейнер
-    });
-}
 
 // Функция для обновления значений в кнопке
 function updateButtons(data) {
