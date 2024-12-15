@@ -157,7 +157,7 @@ function generateTableRow(data) {
                  <div class="table_flexes">
                                 <div class="box_flexes">
                                     <div class="select_input">
-                                        <input type="checkbox" id="${item.hash}" data-id="${item.id}" name="${item.hash}" value="${item.hash}">
+                                        <input type="checkbox" id="${item.hash}" data-id="${item.id}" name='forsign[]' value="${item.hash}">
                                         <label for="ID-${item.hash}">Выбрать</label>
                                     </div>
                                     <div class="table_line_process">
