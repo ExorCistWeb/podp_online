@@ -201,7 +201,9 @@ function generateTableRow(data) {
                                             <div class="document_parametr">
                                               
                                                 
-                                                <button class="labels_btn" id="labelButton"><span>    ${item.documentLabel}</span>
+                                                <button class="labels_btn" id="labelButton" type="button">
+  <span>${item.documentLabel}</span>
+</button>
                                                
                                                 
                                             </div>
@@ -375,7 +377,11 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.add('active');
         }
     };
-
+    labelsBtn.addEventListener('click', (event) => {
+        event.preventDefault(); // Предотвращает действие по умолчанию (например, отправку формы)
+        event.stopPropagation(); // Предотвращает всплытие события
+        toggleDisplay(labelsBtn, labelsCheckbox);
+    });
     // Показ/скрытие блока фильтров
     filterBtn.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -578,6 +584,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const colorSelect = document.getElementById("colorSelect");
     const filterCheckbox = document.getElementById("filterCheckbox");
     const labelButton = document.getElementById("labelButton");
+    
 
     // Показываем форму для добавления ярлыка
     document.querySelector(".labels_checkbox button").addEventListener("click", function() {
