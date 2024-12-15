@@ -201,7 +201,33 @@ function generateTableRow(data) {
                                             <div class="document_parametr">
                                               
                                                 
-                                                <span>    ${item.documentLabel}</span>
+                                                <button class="labels_btn" id="labelButton"><span>    ${item.documentLabel}</span><button>
+                                               
+                                                <div class="labels_checkbox" id="labelsCheckbox">
+                                                    <button id="chooseLabelBtn">Выберите +</button>
+                                                    <div class="filter_checkbox" id="filterCheckbox">
+                                                        <!-- Здесь будут отображаться ярлыки -->
+                                                    </div>
+                                                    <form class="labels_input_content" id="labelForm">
+                                                        <div class="labels_input">
+                                                            <label for="">Введите название ярлыка</label>
+                                                            <input type="text" id="labelInput">
+                                                        </div>
+                                                        <div class="labels_input">
+                                                            <label for="">Выберите цвет ярлыка</label>
+                                                            <div class="labels_input_flex">
+                                                                <select id="colorSelect">
+                                                                    <option value="blue">Синий</option>
+                                                                    <option value="red">Красный</option>
+                                                                    <option value="green">Зеленый</option>
+                                                                    <option value="yellow">Желтый</option>
+                                                                </select>
+                                                                <button type="button" class="okay_btn" id="addLabel">ОК</button>
+                                                                <button type="button" class="no_btn" id="cancelLabel">ОТМЕНА</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
